@@ -6,8 +6,10 @@
   
   <mapper namespace="com.winter.app.product.ProductDAO">
   
-  	<select id="list" resultType="ProductDTO" parameterType="ProductDTO">
-  		SELECT * FROM PRODUCT
+  	<select id="list" resultType="ProductDTO" parameterType="Pager">
+  		SELECT * FROM 
+		(SELECT ROWNUM R, PR.* FROM
+		(SELECT * FROM PRODUCT ORDER BY PRODUCTNUM DESC) PR) WHERE R BETWEEN #{startRow} AND #{lastRow} 
   	</select>
   	
   	<select id="detail" resultType="ProductDTO" parameterType="ProductDTO">

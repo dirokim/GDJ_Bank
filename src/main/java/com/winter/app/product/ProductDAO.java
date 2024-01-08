@@ -10,6 +10,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.winter.app.util.Pager;
+
 
 
 
@@ -40,7 +42,7 @@ public class ProductDAO {
 		 return  sqlSeesion.selectOne(namespace+"detail",productDTO);
 	}
 	
-	public List<ProductDTO> list() throws Exception{
-		return	 sqlSeesion.selectList(namespace+"list");
+	public List<ProductDTO> list(Pager pager) throws Exception{
+		return	 sqlSeesion.selectList(namespace+"list",pager);
 	}
 }
