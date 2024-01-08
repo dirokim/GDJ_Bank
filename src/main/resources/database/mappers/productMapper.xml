@@ -10,7 +10,7 @@
   		SELECT * FROM PRODUCT
   	</select>
   	
-  	<select id="detail" resultType="com.winter.app.product.ProductDTO" parameterType="com.winter.app.product.ProductDTO]">
+  	<select id="detail" resultType="com.winter.app.product.ProductDTO" parameterType="com.winter.app.product.ProductDTO">
   		SLECT * FROM PRODUCT WHERE PRODUCNTNUM=#{productNum}
   	</select>	
   
