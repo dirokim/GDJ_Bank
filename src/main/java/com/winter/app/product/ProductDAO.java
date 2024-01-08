@@ -18,7 +18,7 @@ public class ProductDAO {
 	
 	@Autowired
 	private SqlSession sqlSeesion;
-	private final String namespace = "com.winter.app.product.";
+	private final String namespace = "com.winter.app.product.ProductDAO.";
 	
 	
 	//c리스트 r추가 u수정하기 d삭제하기 
@@ -41,6 +41,6 @@ public class ProductDAO {
 	}
 	
 	public List<ProductDTO> list() throws Exception{
-		return	 sqlSeesion.selectList(namespace+"lsit");
+		return	 sqlSeesion.selectList(namespace+"list");
 	}
 }

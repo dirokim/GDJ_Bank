@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 	<c:import url="../temps/bootStrap_css.jsp"></c:import>
-	<c:import url="../temps/bpptStrap_js.jsp"></c:import>
+	<c:import url="../temps/bootStrap_js.jsp"></c:import>
 
 <body>
 	<div>

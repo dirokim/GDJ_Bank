@@ -9,7 +9,7 @@
 	<c:import url="../temps/bootStrap_css.jsp"></c:import>
 </head>
 <body>
-	<c:import url="../temps/bpptStrap_js.jsp"></c:import>
+	<c:import url="../temps/bootStrap_js.jsp"></c:import>
 
     	<section id="contents" class="container-fluid" >
     	 <div class="row mt-4">

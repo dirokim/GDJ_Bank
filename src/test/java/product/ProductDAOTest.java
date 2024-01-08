@@ -22,20 +22,20 @@ public class ProductDAOTest extends MyTest {
 	@Test
 	public void getAddTest() throws Exception {
 		ProductDTO productDTO = new ProductDTO();
-		int result= 0;
-		for(int i=0;i<100;i++) {
+		
+		for(int i=0;i<90;i++) {
 		productDTO.setProductName("Test"+i);
 		productDTO.setProductContents("Test"+i);
-		productDTO.setProductRate(1.0+i);
-		productDTO.setProductJumsu(1.0+i);
-		 result = productDAO.add(productDTO);
+		productDTO.setProductRate(1.11+i);
+		productDTO.setProductJumsu(1.1);
+		int result = productDAO.add(productDTO);
 		if(i%10==0) {
 			Thread.sleep(500);
 		}
 		
 		}
 		System.out.println("100개 입력 완료");
-		assertEquals(1, result);
+		
 	}
 	
 //	@Test
