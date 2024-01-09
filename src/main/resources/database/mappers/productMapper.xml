@@ -28,7 +28,9 @@
   	</delete>
   	
   	<update id="update" parameterType="ProductDTO">
-  		UPDATE PRODUCT SET PRODUCTNAME=#{productName},PRODUCTCONTENTS=#{productContents},PRODUCTRATE=#{productRate},PRODUCTJUMSU=#{productJumsu} WHERE PRODUCTNUM=#{productNum}
+  		UPDATE PRODUCT SET PRODUCTNAME=#{productName},
+  		PRODUCTCONTENTS=#{productContents},PRODUCTRATE=#{productRate},
+  		PRODUCTJUMSU=#{productJumsu} WHERE PRODUCTNUM=#{productNum}
   	</update>
   	
   	
