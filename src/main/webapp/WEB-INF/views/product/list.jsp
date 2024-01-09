@@ -24,9 +24,9 @@
 		
 	<select name="kind" class="form-select" aria-label="Default select example">
   		
- 	 	<option selected value="kind1">Title</option>
+ 	 	<option selected value="kind1">Name</option>
  	 	<option value="kind2">Contents</option>
-  		<option value="kind3">Writer</option>
+  		<option value="kind3">Rate</option>
   		<option value="kind4">Title+Contents+Writer</option>
 	</select>
 		</div>
