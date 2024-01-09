@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 	<c:import url="../temps/bootStrap_css.jsp"></c:import>
 </head>

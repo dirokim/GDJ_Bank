@@ -33,6 +33,9 @@
   		PRODUCTJUMSU=#{productJumsu} WHERE PRODUCTNUM=#{productNum}
   	</update>
   	
+  	<select id="total" resultType="Long">
+  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+  	</select>
   	
   	
   </mapper>

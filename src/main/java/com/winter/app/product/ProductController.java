@@ -24,7 +24,7 @@ public class ProductController {
 	private ProductService productService;
 	
 	@RequestMapping(value="delete",method=RequestMethod.POST)
-	public String conDelete(ProductDTO productDTO , Model model) throws Exception {
+	public String delete(ProductDTO productDTO , Model model) throws Exception {
 	 int result =productService.getDelete(productDTO);
 	 String message = "삭제 실패";
 	 if(result>0) {
@@ -37,7 +37,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="update",method=RequestMethod.POST)
-	public ModelAndView conUpdate(ProductDTO productDTO,ModelAndView mv) throws Exception {
+	public ModelAndView update(ProductDTO productDTO,ModelAndView mv) throws Exception {
 		int result = productService.getUpdate(productDTO);
 		String message = "수정 실패";
 		if(result>0) {
@@ -51,7 +51,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="update",method=RequestMethod.GET)
-	public void conUpdate (ProductDTO productDTO,Model model) throws Exception {
+	public void update (ProductDTO productDTO,Model model) throws Exception {
 		productDTO = productService.getDetail(productDTO);
 		model.addAttribute("dto",productDTO);
 	}
@@ -59,7 +59,7 @@ public class ProductController {
 	
 	
 	@RequestMapping(value="add",method=RequestMethod.POST)
-	public String conAdd(ProductDTO productDTO,Model model) throws Exception {
+	public String add(ProductDTO productDTO,Model model) throws Exception {
 		int result = productService.getAdd(productDTO);
 	
 		 String msg = "추가 실패";
@@ -74,7 +74,7 @@ public class ProductController {
 
 	
 	@RequestMapping(value="detail",method=RequestMethod.GET)
-	public String conDetail(Long productNum,Model model) throws Exception {
+	public String detail(Long productNum,Model model) throws Exception {
 		ProductDTO productDTO = new ProductDTO();
 		productDTO.setProductNum(productNum);
 		productDTO = productService.getDetail(productDTO);
@@ -83,10 +83,10 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="list",method=RequestMethod.GET)
-	public ModelAndView conList(Pager pager) throws Exception {
+	public ModelAndView List(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<ProductDTO> ar = productService.getList(pager);
-		
+		mv.addObject("pager",pager);
 		mv.addObject("list",ar);
 		mv.setViewName("product/list");
 		return mv;

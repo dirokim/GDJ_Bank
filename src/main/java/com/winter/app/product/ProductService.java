@@ -33,8 +33,11 @@ public class ProductService {
 	
 	public List<ProductDTO> getList(Pager pager) throws Exception {
 		pager.makeRow();
+		Long totalCount = productDAO.total();
+		pager.makeNum(totalCount);
 		List<ProductDTO>ar = productDAO.list(pager);
 		
 		return ar;
 	}
+	
 }
