@@ -15,6 +15,12 @@ public class Pager {
 	private boolean start;
 	private boolean last;
 	
+	//게시판 검색 선언
+	private String search;
+	private String kind;
+	
+	
+	
 	public void makeNum(Long totalCount) {
 		//1.총갯수로 총페이지수 구하기
 		//2.총 페이지수로 총 블럭수 구하기
@@ -173,6 +179,33 @@ public class Pager {
 
 	public void setLastNum(Long lastNum) {
 		this.lastNum = lastNum;
+	}
+
+
+
+	public String getSearch() {
+		if(this.search==null) {
+			search="";
+		}
+		return search;
+	}
+
+
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+
+
+	public String getKind() {
+		return kind;
+	}
+
+
+
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 	
 	
