@@ -9,7 +9,8 @@
   	<select id="list" resultType="ProductDTO" parameterType="Pager">
   		SELECT * FROM 
 		(SELECT ROWNUM R, PR.* FROM
-		(SELECT * FROM PRODUCT ORDER BY PRODUCTNUM DESC) PR) WHERE R BETWEEN #{startRow} AND #{lastRow} 
+		(SELECT * FROM PRODUCT ORDER BY PRODUCTNUM DESC) PR) 
+		WHERE R BETWEEN #{startRow} AND #{lastRow} 
   	</select>
   	
   	<select id="detail" resultType="ProductDTO" parameterType="ProductDTO">
@@ -17,7 +18,9 @@
   	</select>	
   
   	<insert id="add" parameterType="ProductDTO">
-  		INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.NEXTVAL,#{productName},#{productContents},#{productRate},#{productJumsu})
+  		INSERT INTO PRODUCT VALUES
+  		(PRODUCT_SEQ.NEXTVAL,#{productName},
+  		#{productContents},#{productRate},#{productJumsu})
   	</insert>
   
   	<delete id="delete" parameterType="ProductDTO">

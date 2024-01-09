@@ -5,7 +5,7 @@ public class Pager {
 	
 	private Long startRow;
 	private Long lastRow;
-	private Long perPage=10L;//몇개씩 볼거냐
+	private Long perPage;//몇개씩 볼거냐
 	//startRow 랑 lastRow 계싼하는 메서드
 	private Long page;
 	
@@ -19,6 +19,9 @@ public class Pager {
 	
 	}
 	public Long getPerPage() {
+		if(this.perPage==null||this.perPage<1) {
+			this.perPage=10L;
+		}
 		return perPage;
 	}
 
