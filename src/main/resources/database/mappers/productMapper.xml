@@ -12,10 +12,10 @@
   
   	<sql id="search2">
   	WHERE
-  	<if test="kind='kind1">
+  	<if test="kind='kind1'">
   		PRODUCTNAME LIKE = '%'||#{search}||'%'
   	</if>
-  	<if test="kind='kind2">
+  	<if test="kind='kind2'">
   		PRODUCTCONTENTS LIKE = '%'||#{search}||'%'
   	</if>
   	<if test="kind='kind3'">
