@@ -107,21 +107,9 @@
 	
 	
 	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<button type="submit" class="btn btn-primary">Add</button>
+
+
+	<a href="./add" class="btn btn-primary">Add</a>
 	<c:import url="../temps/bootStrap_js.jsp"></c:import>
 </body>
 </html>

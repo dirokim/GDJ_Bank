@@ -1,9 +1,15 @@
 package com.winter.app.product;
 
+import java.io.File;
+import java.util.Calendar;
 import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.app.util.Pager;
 
@@ -12,7 +18,12 @@ public class ProductService {
 	
 	@Autowired
 	private ProductDAO productDAO;
-		
+	
+	@Autowired
+	private ServletContext servletContext;
+	
+	
+	
 	public int getDelete (ProductDTO productDTO) throws Exception {
 		return productDAO.delete(productDTO);
 	}
@@ -23,10 +34,40 @@ public class ProductService {
 	}
 	
 	
-	public int getAdd(ProductDTO productDTO) throws Exception {
-	return productDAO.add(productDTO);
+	public int getAdd(ProductDTO productDTO,MultipartFile file) throws Exception {
+		  productDAO.add(productDTO);
+	
+	String path = servletContext.getRealPath("/resources/upload");
+		System.out.println(path);
+		File f = new File(path,"product");
+		
+		if(f.exists()) {
+			
+		}else {
+			f.mkdirs();
+		}
+	
+		Calendar ca =  Calendar.getInstance();
+		String filename = ca.getTimeInMillis()+"_"+file.getOriginalFilename();
+		f = new File(f,filename);
+		FileCopyUtils.copy(file.getBytes(), f);
+		
+		ProductFileDTO dto = new ProductFileDTO();
+		dto.setProductNum(productDTO.getProductNum());
+		dto.setFileName(filename);
+		dto.setOriName(file.getOriginalFilename());
+		
+		
+				int result = productDAO.addFile(dto);
+				return result;
 	}
 	
+	
+
+
+
+
+
 	public ProductDTO getDetail (ProductDTO productDTO) throws Exception {
 		return productDAO.detail(productDTO);
 	}
@@ -38,6 +79,16 @@ public class ProductService {
 		List<ProductDTO>ar = productDAO.list(pager);
 		
 		return ar;
+	}
+
+
+	public ServletContext getServletContext() {
+		return servletContext;
+	}
+
+
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
 	}
 	
 }

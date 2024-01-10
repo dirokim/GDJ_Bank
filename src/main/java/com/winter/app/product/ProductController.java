@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winter.app.util.Pager;
@@ -59,8 +60,8 @@ public class ProductController {
 	
 	
 	@RequestMapping(value="add",method=RequestMethod.POST)
-	public String add(ProductDTO productDTO,Model model) throws Exception {
-		int result = productService.getAdd(productDTO);
+	public String add(ProductDTO productDTO,Model model,MultipartFile photo) throws Exception {
+		int result = productService.getAdd(productDTO,photo);
 	
 		 String msg = "추가 실패";
 		 if(result>0) {
@@ -71,6 +72,10 @@ public class ProductController {
 		 return "commons/result";
 	}
 	
+	@RequestMapping(value = "add" ,method = RequestMethod.GET)
+	public String add() throws Exception {
+		return "product/add";
+	}
 
 	
 	@RequestMapping(value="detail",method=RequestMethod.GET)
