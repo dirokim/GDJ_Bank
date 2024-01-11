@@ -49,7 +49,7 @@
   		<result column="PRODUCTRATE" property="productRate"/>
   		<result column="PRODUCTJUMSU" property="productJumsu"/>
   		<collection property="java.util.List" ofType="com.winter.app.product.ProductDTO.productFileDTOs">
-  		<id column="FILENUM" property="fileNum"></id>
+  		<id column="FILENUM" property="fileNum"/>
   		<result column="FILENAME" property="fileName" />
   		<result column="ORINAME"  property="oriName"/>
   		</collection>
