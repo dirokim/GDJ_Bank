@@ -29,7 +29,7 @@ public class ProductService {
 	
 	public int getDelete (ProductDTO productDTO) throws Exception {
 		List<ProductFileDTO> ar = productDAO.getListFile(productDTO);
-		
+		int result = productDAO.delete(productDTO);
 		
 		for(ProductFileDTO f: ar) {
 		String path = servletContext.getRealPath("resources/upload/product");
@@ -37,7 +37,7 @@ public class ProductService {
 		}
 		
 		//db 삭제 
-		return productDAO.delete(productDTO);
+		return result;
 	}
 	
 	
@@ -69,6 +69,7 @@ public class ProductService {
 	
 	public ProductDTO getDetail (ProductDTO productDTO) throws Exception {
 		return   productDAO.detail(productDTO);
+		
 	}
 	
 	public List<ProductDTO> getList(Pager pager) throws Exception {

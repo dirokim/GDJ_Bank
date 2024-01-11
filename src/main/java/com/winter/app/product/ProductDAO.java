@@ -44,8 +44,8 @@ public class ProductDAO {
 		return sqlSession.selectList(NAMESPACE+"getListFile",productDTO);
 	}
 	
-	public productDTO detail(ProductDTO productDTO) throws Exception{
-		 return  sqlSession.selectList(NAMESPACE+"detail",productDTO);
+	public ProductDTO detail(ProductDTO productDTO) throws Exception{
+		 return  sqlSession.selectOne(NAMESPACE+"detail",productDTO);
 	}
 	
 	public List<ProductDTO> list(Pager pager) throws Exception{
