@@ -12,6 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileManager {
 	
 
+	public boolean fileDelete (String path,String name) throws Exception {
+		File f = new File(path,name);
+		return f.delete();
+	}
+	
+	
 	public String fileSave(String path,MultipartFile file) throws Exception {
 		System.out.println(path);
 	File f = new File(path);

@@ -22,11 +22,21 @@ public class ProductService {
 	
 	@Autowired
 	private ServletContext servletContext;
-	
+	@Autowired
+	private FileManager fileManager;
 	
 	
 	
 	public int getDelete (ProductDTO productDTO) throws Exception {
+		List<ProductFileDTO> ar = productDAO.getListFile(productDTO);
+		
+		
+		for(ProductFileDTO f: ar) {
+		String path = servletContext.getRealPath("resources/upload/product");
+			fileManager.fileDelete(path,f.getFileName());
+		}
+		
+		//db 삭제 
 		return productDAO.delete(productDTO);
 	}
 	
@@ -58,7 +68,7 @@ public class ProductService {
 	}
 	
 	public ProductDTO getDetail (ProductDTO productDTO) throws Exception {
-		return productDAO.detail(productDTO);
+		return   productDAO.detail(productDTO);
 	}
 	
 	public List<ProductDTO> getList(Pager pager) throws Exception {

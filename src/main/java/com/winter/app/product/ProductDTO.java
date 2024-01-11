@@ -10,7 +10,7 @@ public class ProductDTO {
 	private Double productRate;
 	private Double productJumsu;
 	private List<ProductFileDTO> productFileDTOs;
-	
+	private ProductFileDTO productFileDTO;
 	
 	public Long getProductNum() {
 		return productNum;
@@ -47,6 +47,12 @@ public class ProductDTO {
 	}
 	public void setProductFileDTOs(List<ProductFileDTO> productFileDTOs) {
 		this.productFileDTOs = productFileDTOs;
+	}
+	public ProductFileDTO getProductFileDTO() {
+		return productFileDTO;
+	}
+	public void setProductFileDTO(ProductFileDTO productFileDTO) {
+		this.productFileDTO = productFileDTO;
 	}
 	
 	
