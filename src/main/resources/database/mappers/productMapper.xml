@@ -43,12 +43,12 @@
   	</select>	
   	
   	<resultMap type="ProductDTO" id="detailResult">
-  		<id column="PRODUCTNUM" property="productNUM"/>
+  		<id column="PRODUCTNUM"  property="productNUM"/>
   		<result column="PRODUCTNAME" property="productName"/>
   		<result column="PRODUCTCONTENTS" property="productContents"/>
   		<result column="PRODUCTRATE" property="productRate"/>
   		<result column="PRODUCTJUMSU" property="productJumsu"/>
-  		<collection property="java.util.List" ofType="productFileDTOs">
+  		<collection property="java.util.List" ofType="com.winter.app.product.ProductDTO.productFileDTOs">
   		<id column="FILENUM" property="fileNum"></id>
   		<result column="FILENAME" property="fileName" />
   		<result column="ORINAME"  property="oriName"/>
