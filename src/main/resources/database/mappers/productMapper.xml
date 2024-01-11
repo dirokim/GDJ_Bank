@@ -53,7 +53,7 @@
   		<result column="FILENAME" property="fileName" />
   		<result column="ORINAME"  property="oriName"/>
   		</collection>
-  	</resultMap>	
+  	</resultMap>
   		
   		
 
