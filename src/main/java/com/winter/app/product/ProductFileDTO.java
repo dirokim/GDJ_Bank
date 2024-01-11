@@ -8,7 +8,10 @@ public class ProductFileDTO extends FileDTO {
 	
 	
 	
-
+	
+	
+	
+	
 	public Long getProductNum() {
 		return ProductNum;
 	}

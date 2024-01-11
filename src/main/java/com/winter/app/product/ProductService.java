@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.winter.app.util.FileManager;
 import com.winter.app.util.Pager;
 
 @Service
@@ -24,6 +25,7 @@ public class ProductService {
 	
 	
 	
+	
 	public int getDelete (ProductDTO productDTO) throws Exception {
 		return productDAO.delete(productDTO);
 	}
@@ -34,40 +36,27 @@ public class ProductService {
 	}
 	
 	
-	public int getAdd(ProductDTO productDTO,MultipartFile file) throws Exception {
+	public int getAdd(ProductDTO productDTO,MultipartFile[]file) throws Exception {
 		  productDAO.add(productDTO);
 	
-	String path = servletContext.getRealPath("/resources/upload");
-		System.out.println(path);
-		File f = new File(path,"product");
-		
-		if(f.exists()) {
-			
-		}else {
-			f.mkdirs();
-		}
+	String path = servletContext.getRealPath("/resources/upload/product");	
+	FileManager fileManager = new FileManager();
 	
-		Calendar ca =  Calendar.getInstance();
-		String filename = ca.getTimeInMillis()+"_"+file.getOriginalFilename();
-		f = new File(f,filename);
-		FileCopyUtils.copy(file.getBytes(), f);
-		
+	for(MultipartFile f : file) {
+			if(f.isEmpty()) {
+			 continue;
+			}
+		String fileName = fileManager.fileSave(path,f); // 파일저장
 		ProductFileDTO dto = new ProductFileDTO();
-		dto.setProductNum(productDTO.getProductNum());
-		dto.setFileName(filename);
-		dto.setOriName(file.getOriginalFilename());
-		
-		
-				int result = productDAO.addFile(dto);
-				return result;
+		dto.setProductNum(productDTO.getProductNum());  // db 정보저장
+		dto.setFileName(fileName);
+		dto.setOriName(f.getOriginalFilename());
+		productDAO.addFile(dto);		
 	}
 	
+	return 1;
+	}
 	
-
-
-
-
-
 	public ProductDTO getDetail (ProductDTO productDTO) throws Exception {
 		return productDAO.detail(productDTO);
 	}

@@ -38,13 +38,26 @@
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 
   	</select>
   	
-  	<select id="detail" resultType="ProductDTO" parameterType="ProductDTO">
-  		SELECT * FROM PRODUCT WHERE PRODUCTNUM=#{productNum}
+  	<select id="detail" resultMap="detailResult" parameterType="ProductDTO">
+  		SELECT * FROM PRODUCT LEFT OUTER JOIN PRODUCTFILES USING (PRODUCTNUM) WHERE PRODUCTNUM=#{productNum}
   	</select>	
-  
-  
   	
-  
+  	<resultMap type="ProductDTO" id="detailResult">
+  		<id column="PRODUCTNUM" property="productNUM"/>
+  		<result column="PRODUCTNAME" property="productName"/>
+  		<result column="PRODUCTCONTENTS" property="productContents"/>
+  		<result column="PRODUCTRATE" property="productRate"/>
+  		<result column="PRODUCTJUMSU" property="productJumsu"/>
+  		<collection property="java.util.List" ofType="productFileDTOs">
+  		<id column="FILENUM" property="fileNum"></id>
+  		<result column="FILENAME" property="fileName" />
+  		<result column="ORINAME"  property="oriName"/>
+  		</collection>
+  	
+  	</resultMap>	
+  		
+  		
+
   
   	<insert id="add" parameterType="ProductDTO">
   		<selectKey keyProperty="productNum" order="BEFORE" resultType="Long">

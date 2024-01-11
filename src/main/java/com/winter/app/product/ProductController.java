@@ -60,9 +60,9 @@ public class ProductController {
 	
 	
 	@RequestMapping(value="add",method=RequestMethod.POST)
-	public String add(ProductDTO productDTO,Model model,MultipartFile photo) throws Exception {
+	public String add(ProductDTO productDTO,Model model,MultipartFile [] photo) throws Exception {
 		int result = productService.getAdd(productDTO,photo);
-	
+		
 		 String msg = "추가 실패";
 		 if(result>0) {
 			 msg="추가 성공";

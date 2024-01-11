@@ -1,5 +1,10 @@
 package com.winter.app.files;
 
+import java.io.File;
+import java.util.Calendar;
+
+import org.springframework.util.FileCopyUtils;
+
 public class FileDTO {
 	
 	
@@ -9,6 +14,10 @@ public class FileDTO {
 	private String oriName;
 	
 	
+	
+	
+	
+
 	
 	
 	public Long getFileNum() {

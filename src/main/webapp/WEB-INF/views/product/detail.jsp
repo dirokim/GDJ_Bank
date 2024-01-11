@@ -21,6 +21,11 @@
 				<div>${dto.productContents}</div>
 				<div>${dto.productRate}</div>
 				<div>${dto.productJumsu}</div>
+				<div><a href="./resources/upload/product/${dto.productFileDTOs.fileName}">
+				${dto.productFileDTOs.oriName}
+				</a></div>
+				
+				
 		</c:if>
 		<c:if test="${empty dto}">
 			<h3>그런 정보는 없습니다.</h3>		
