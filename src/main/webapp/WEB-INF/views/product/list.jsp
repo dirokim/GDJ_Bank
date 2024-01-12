@@ -20,7 +20,7 @@
 	<form class="row g-3">
 		
 
-		<div class="col-auto">
+	<!-- 	<div class="col-auto">
 		
 	<select name="kind" class="form-select" aria-label="Default select example">
   		
@@ -29,7 +29,7 @@
   		<option value="kind3">Rate</option>
   		<option value="kind4">Title+Contents+Writer</option>
 	</select>
-		</div>
+		</div> -->
 			
 		
 		
