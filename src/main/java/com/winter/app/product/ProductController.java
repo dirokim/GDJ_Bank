@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ProductController {
 	
 	@RequestMapping(value="list",method=RequestMethod.GET)
-	public void getList ( ) throws Exception {
+	public void setList ( ) throws Exception {
 		
 		return ;
 	}
 	@RequestMapping(value="detail",method=RequestMethod.GET)
-	public void getDetail() throws Exception {
+	public void setDetail() throws Exception {
 		
 		return;
 	}
 	@RequestMapping(value="add",method=RequestMethod.GET)
-	public void getAdd()throws Exception {
+	public void setAdd()throws Exception {
 		
 		return;
 	}
