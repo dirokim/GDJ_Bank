@@ -27,7 +27,7 @@
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
                          
-                                <form id="contactForm" action="./add" method="POST" enctype="multipart/form-data">
+                                <form id="contactForm" action="/product/add" method="POST" enctype="multipart/form-data">
                                     <!-- Name input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="productName" name="productName" type="text" placeholder="상품명 입력하세요" data-sb-validations="required" />

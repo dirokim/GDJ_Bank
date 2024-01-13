@@ -8,5 +8,11 @@
 </head>
 <body>
 
+
+<script>
+	let msg=${}
+	alert(msg);
+	
+</script>
 </body>
 </html>
