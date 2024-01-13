@@ -2,6 +2,8 @@ package com.winter.app.board;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+@Service
 public interface BoardService {
 
 	
