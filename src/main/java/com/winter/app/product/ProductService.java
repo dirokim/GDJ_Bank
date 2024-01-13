@@ -19,5 +19,8 @@ public class ProductService {
 	public ProductDTO serDetail(ProductDTO productDTO) throws Exception {
 	return productDTO = productDAO.detail(productDTO);
 	}
-	
+	public int serAdd(ProductDTO productDTO) throws Exception {
+	int result = productDAO.add(productDTO);
+	return 	result;
+	}
 }

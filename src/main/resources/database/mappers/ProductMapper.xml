@@ -13,7 +13,7 @@
   		  SELECT * FROM PRODUCT WHERE PRODUCTNUM=#{productNum}
   		  </select>
   		  
-  		  <insert id="">
+  		  <insert id="add"  parameterType="ProductDTO">
   		  INSERT INTO PRODUCT VALUES (PRODUCT_SEQ.NEXTVAL,#{productName},#{productContents},#{productRate},#{productJumsu})
   		  </insert>
   		  

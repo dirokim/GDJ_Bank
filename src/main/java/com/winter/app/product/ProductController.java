@@ -36,10 +36,19 @@ public class ProductController {
 		
 		return;
 	}
-//	@RequestMapping(value="add",method=RequestMethod.POST)
-//	public String getAdd()throws Exception{
-//		return "produt/list";
-//	}
+	@RequestMapping(value="add",method=RequestMethod.POST)
+	public ModelAndView getAdd(ProductDTO productDTO)throws Exception{
+		int result = productService.serAdd(productDTO);
+		String msg = "등록 실패";
+		if(result>0) {
+			msg = "등록 성공";
+		}
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg",msg);
+		mv.addObject("path","product/list");
+		mv.setViewName("commons/result");
+		return mv;
+	}
 //	@RequestMapping(value="update",method=RequestMethod.GET)
 //	public void getUpdate() throws Exception{
 //		return;
