@@ -18,6 +18,36 @@
                     <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">ProductList</span></h1>
                     </div>
 						
+						<div>
+							
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th>ProductName</th>
+											<th>ProductJumsu</th>
+											<th>ProductRate</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${requestScope.list}" var="var">
+											<tr>
+						
+												<td><a href="./detail?productNum=${var.productNum}">${pageScope.var.productName}</a></td>
+												<td>${pageScope.var.productRate}</td>
+												<td>${pageScope.var.productJumsu}</td>
+
+											</tr>
+										</c:forEach>
+									
+									</tbody>
+								
+								</table>
+						
+						
+						</div>
+						
+						
+						
 					<div>
 						<a href="add" class="btn btn-primary">상품등록</a>
 					</div>	

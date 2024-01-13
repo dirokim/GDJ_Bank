@@ -13,8 +13,22 @@
                 <!--사용전 경로를 꼭 수정 하세요  -->
 			<c:import url="../temps/header.jsp"></c:import>
         
-
-
+				<div>
+					<c:if test="${not empty dto}">
+						<h3>productName:${dto.productName}</h3>
+						<h3>productContents:${dto.productContents}</h3>
+						<h3>productRate:${dto.productRate}</h3>
+						<h3>productJumsu:${dto.productJumsu}</h3>
+					</c:if>
+				
+				</div>
+				<div>
+				
+						<c:if test="${empty dto}">
+						<h3>그런번호 없습니다.</h3>
+						</c:if>
+				</div>
+					
 
 
 
