@@ -28,7 +28,7 @@
 						<h3>그런번호 없습니다.</h3>
 						</c:if>
 				</div>
-					
+					<a href="./product/update"><button></button></a>
 
 
 
