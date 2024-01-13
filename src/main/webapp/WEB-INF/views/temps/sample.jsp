@@ -5,13 +5,13 @@
 <html lang="en">
     <head>
     <!--사용전 경로를 꼭 수정 하세요  -->
-	<c:import url="./head_css.jsp"></c:import>
+	<c:import url="../head_css.jsp"></c:import>
    
     </head>
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
                 <!--사용전 경로를 꼭 수정 하세요  -->
-			<c:import url="./header.jsp"></c:import>
+			<c:import url="../header.jsp"></c:import>
         
 
 
@@ -22,6 +22,6 @@
 
         </main>
             <!--사용전 경로를 꼭 수정 하세요  -->
-	<c:import url="./footer.jsp"></c:import>
+	<c:import url="../footer.jsp"></c:import>
     </body>
 </html>
