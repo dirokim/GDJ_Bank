@@ -54,7 +54,16 @@ public class ProductController {
 		return;
 	}
 	@RequestMapping(value="update",method=RequestMethod.POST)
-	public void getUpdate() throws Exception{
-		productService.
+	public ModelAndView getUpdate(ProductDTO productDTO) throws Exception{
+		int result = productService.serUpdate(productDTO);
+		ModelAndView mv = new ModelAndView();
+		String msg = "수정실패";
+		if(result>0) {
+			msg = "수정 성공";
+		}
+		mv.addObject("msg",msg);
+		mv.addObject("path","product/list");
+		mv.setViewName("commons/result");
+		return mv;
 	}
 }

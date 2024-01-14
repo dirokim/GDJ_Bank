@@ -24,7 +24,7 @@ public class ProductService {
 	return 	result;
 	}
 	public int serUpdate(ProductDTO produtDTO) throws Exception{
-	int result = productDAO.update(productDTO);
+	int result = productDAO.update(produtDTO);
 		return result;
 	}
 }

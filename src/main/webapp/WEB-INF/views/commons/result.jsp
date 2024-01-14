@@ -10,9 +10,9 @@
 
 
 <script>
-	let msg=${}
+	let msg=${msg};
 	alert(msg);
-	
+	location.href="${path}";
 </script>
 </body>
 </html>
