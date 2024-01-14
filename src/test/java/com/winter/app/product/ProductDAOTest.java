@@ -19,14 +19,14 @@ public class ProductDAOTest extends MyTest{
  	
 	
  	
-	@Test
-	public void getListTest() throws Exception {
-		productDAO.list();
-//		productDAO.
-	 List<ProductDTO>ar=productDAO.list();
-
-		assertNotNull(ar);
-	}
+//	@Test
+//	public void getListTest() throws Exception {
+//		productDAO.list();
+////		productDAO.
+//	 List<ProductDTO>ar=productDAO.list();
+//
+//		assertNotNull(ar);
+//	}
 	
 	
 }

@@ -46,7 +46,7 @@ public class Pager {
 		nowBlock++;
 		}
 		
-		Long startNum=0L;
+		Long startNum= 0L;
 		Long lastNum= nowBlock*perBlock;
 		  	startNum=lastNum-perBlock+1L;
 		 this.setStartNum(startNum);
@@ -76,7 +76,7 @@ public class Pager {
 		this.lastRow = lastRow;
 	}
 	public Long getPage() {
-		if(this.page<1||this.page==null) {
+		if(this.page==null||this.page<1) {
 			this.page=1L;
 		}
 		return page;
