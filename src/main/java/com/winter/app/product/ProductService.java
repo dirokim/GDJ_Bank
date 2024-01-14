@@ -23,4 +23,8 @@ public class ProductService {
 	int result = productDAO.add(productDTO);
 	return 	result;
 	}
+	public int serUpdate(ProductDTO produtDTO) throws Exception{
+	int result = productDAO.update(productDTO);
+		return result;
+	}
 }

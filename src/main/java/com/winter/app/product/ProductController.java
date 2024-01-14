@@ -49,12 +49,12 @@ public class ProductController {
 		mv.setViewName("commons/result");
 		return mv;
 	}
-//	@RequestMapping(value="update",method=RequestMethod.GET)
-//	public void getUpdate() throws Exception{
-//		return;
-//	}
-//	@RequestMapping(value="update",method=RequestMethod.POST)
-//	public void getUpdate() throws Excteption{
-//		
-//	}
+	@RequestMapping(value="update",method=RequestMethod.GET)
+	public void setUpdate() throws Exception{
+		return;
+	}
+	@RequestMapping(value="update",method=RequestMethod.POST)
+	public void getUpdate() throws Exception{
+		productService.
+	}
 }
