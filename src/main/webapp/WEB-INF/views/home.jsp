@@ -170,7 +170,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> 
         </main>
         <!-- Footer-->
 	<c:import url="./temps/footer.jsp"></c:import>
