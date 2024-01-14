@@ -17,8 +17,13 @@
   		  INSERT INTO PRODUCT VALUES (PRODUCT_SEQ.NEXTVAL,#{productName},#{productContents},#{productRate},#{productJumsu})
   		  </insert>
   		  
+  		  <update id="delete" parameterType="ProductDTO" >
+  		  	UPDATE PRODUCT SET PRODUCTSALE=#{productSale} WHERE PRODUCTNUM=#{productNum}
+  		  </update>
   		  
-  		  
+  		  <update id="update">
+  		  UPDATE PRODUCT SET PRODUCTNAME=#{productName},PRODUCTCONTENTS=#{productContents}, PRODUCTRATE=#{productRate},PRODUCTJUMSU=#{productJumsu} WHERE PRODUCTNUM=#{productNum}
+  		  </update>
   		  
   		  
   		  
