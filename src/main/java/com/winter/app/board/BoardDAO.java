@@ -3,14 +3,16 @@ package com.winter.app.board;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+
+import com.winter.app.util.Pager;
 @Repository
 public interface BoardDAO {
 
 	
-	public Long getTotalCount() throws Exception;
+	public Long getTotalCount(Pager pager) throws Exception;
 	
 	//목록 가져오기 
-	public List<BoardDTO> getList() throws Exception;
+	public List<BoardDTO> getList(Pager pager) throws Exception;
 	
 	
 	
