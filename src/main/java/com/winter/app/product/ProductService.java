@@ -8,14 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.winter.app.util.FileManager;
 import com.winter.app.util.Pager;
 
 @Service
 public class ProductService {
 	
 	@Autowired
-	ProductDAO productDAO;
-	
+	private ProductDAO productDAO;
+	@Autowired
+	private ServletContext servletContext; 
+	@Autowired
+	private FileManager fileManager;
 	
 	public List<ProductDTO> serList(Pager pager) throws Exception {
 		pager.makeRow();
@@ -31,8 +35,11 @@ public class ProductService {
 	
 	public int serAdd(ProductDTO productDTO,MultipartFile file) throws Exception {
 	int result = productDAO.add(productDTO);
-	
-	
+		String path = servletContext.getRealPath("/resources/upload/product");
+		String fileName = fileManager.fileSave(path,file);
+		
+		
+		
 	return 	result;
 	}
 	
