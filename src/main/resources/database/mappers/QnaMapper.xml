@@ -39,7 +39,7 @@
   		  	SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
   		  </selectKey>
   		  INSERT INTO QNA VALUES(#{noticeNum},#{noticeWriter},#{noticeHead},#{noticeContents}
-  		  ,SYSDATE,0,0,QNA_SEQ.NEXTVAL,0)
+  		  ,SYSDATE,0,0,QNA_SEQ.CURRVAL,0)
   		  </insert>
   		  
   		  
