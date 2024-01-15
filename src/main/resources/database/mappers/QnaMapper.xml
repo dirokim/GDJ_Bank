@@ -10,5 +10,9 @@
   		  WHERE R BETWEEN #{startRow} AND #{lastRow}
   		  </select>
   		  
+  		  <select id="getDetail" parameterType="QnaDTO" resultType="QnaDTO">
+  		  SELECT * FROM Qna LEFT JOIN NOTICEFILES NF 
+  		  USING(NOTICENUM) WHERE NOTICENUM = #{noticeNum}
+  		  </select>
   		  
   		  </mapper>	

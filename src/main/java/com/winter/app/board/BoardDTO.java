@@ -1,6 +1,7 @@
 package com.winter.app.board;
 
 import java.sql.Date;
+import java.util.List;
 
 public class BoardDTO {
 
@@ -13,6 +14,7 @@ public class BoardDTO {
 	private Long noticeViews;
 	
 	
+
 	
 	
 	public Long getNoticeNum() {

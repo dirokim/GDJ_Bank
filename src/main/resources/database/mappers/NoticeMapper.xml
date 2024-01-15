@@ -16,6 +16,33 @@
   		  WHERE R BETWEEN #{startRow} AND #{lastRow}
    		  </select>
   		  
+  		  <select id="getDetail" parameterType="NoticeDTO" resultMap="getDetailResult">
+  		  SELECT * FROM NOTICE LEFT JOIN NOTICEFILES NF 
+  		  USING(NOTICENUM) WHERE NOTICENUM = #{noticeNum}
+  		  </select>
+  		  <resultMap type="NoticeDTO" id="getDetailResult">
+  		  <id column="NOTICENUM"  property="noticeNum"/>
+  		  <result column="NOTICEWRITER" property="noticeWriter"/>
+  		  <result column="NOTICEHEAD"  property="noticeHead"/>
+  		  <result column="NOTICECONTENTS" property="noticeContents"/>
+  		  <result column="NOTICEDATE" property="noticeDate"/>
+  		  <result column="NOTICEVIEWS" property="noticeViews"/>
+  		  <collection property="fileDTOs" javaType="List" ofType="BoardFileDTO">
+  		  <id column="FILENUM" property="fileNum"/>
+  		  <result column="FILENAME" property="fileName"/>
+  		  <result column="ORINAME" property="oriName"/>
+  		  </collection>
+  		  </resultMap>
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
   		  
   		  
   		  </mapper>	
