@@ -22,8 +22,9 @@ public class Pager {
 	
 	
 	public void makeRow() {
-	this.lastRow = this.getPage()*this.getPerPage();
-	this.startRow = this.getLastRow()-this.getPerPage()+1;	
+		this.startRow = ((this.getPage()-1)*this.getPerPage())+1;
+		this.lastRow =  this.getPage()*this.getPerPage();
+	
 	}
 	
 	public void makePage(Long totalCount) {
@@ -32,23 +33,23 @@ public class Pager {
 		totalPage++;
 		}
 		
-		this.setTotalPage(totalPage);	
+			
 		Long totalBlock = 0L;
 		Long perBlock = 10L;
 		totalBlock = totalPage/perBlock;
-		if(totalPage/perBlock!=0) {
+		if(totalPage%perBlock!=0) {
 		totalBlock++;
 		}
 		
 		Long nowBlock =0L;
 		nowBlock = this.getPage()/perBlock;
-		if(this.getPage()/perBlock!=0) {
+		if(this.getPage()%perBlock!=0) {
 		nowBlock++;
 		}
 		
 		
 		Long lastNum= nowBlock*perBlock;
-		Long startNum=lastNum-perBlock+1L;
+		Long startNum=lastNum-perBlock+1;
 		 this.setStartNum(startNum);
 		 this.setLastNum(lastNum);
 		 
