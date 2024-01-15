@@ -32,5 +32,21 @@
 		  </collection>
   		  </resultMap>
   		 
+  		 
+  		 
+  		  <insert id="setAdd" parameterType="BoardDTO">
+  		  <selectKey keyProperty="noticeNum" resultType="Long" order="BEFORE">
+  		  	SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
+  		  </selectKey>
+  		  INSERT INTO QNA VALUES(#{noticeNum},#{noticeWriter},#{noticeHead},#{noticeContents}
+  		  ,SYSDATE,0,0,QNA_SEQ.NEXTVAL,0)
+  		  </insert>
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
   		  
   		  </mapper>	
