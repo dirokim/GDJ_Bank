@@ -4,4 +4,7 @@ public class FileDTO {
 	private Long fileNum;
 	private String fileName;
 	private String oriName;
+	
+	
+	
 }

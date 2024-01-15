@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winter.app.util.Pager;
@@ -41,8 +42,8 @@ public class ProductController {
 		return;
 	}
 	@RequestMapping(value="add",method=RequestMethod.POST)
-	public ModelAndView getAdd(ProductDTO productDTO)throws Exception{
-		int result = productService.serAdd(productDTO);
+	public ModelAndView getAdd(ProductDTO productDTO,MultipartFile file)throws Exception{
+		int result = productService.serAdd(productDTO,file);
 		String msg = "등록 실패";
 		if(result>0) {
 			msg = "등록 성공";

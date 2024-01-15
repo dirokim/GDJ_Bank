@@ -2,8 +2,11 @@ package com.winter.app.product;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.app.util.Pager;
 
@@ -26,8 +29,10 @@ public class ProductService {
 	return productDTO = productDAO.detail(productDTO);
 	}
 	
-	public int serAdd(ProductDTO productDTO) throws Exception {
+	public int serAdd(ProductDTO productDTO,MultipartFile file) throws Exception {
 	int result = productDAO.add(productDTO);
+	
+	
 	return 	result;
 	}
 	

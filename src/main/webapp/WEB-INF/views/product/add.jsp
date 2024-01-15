@@ -57,10 +57,12 @@
 
                                     <!-- 첨부파일 -->
                                     <div class=" mb-3">
-                                        <label for="name">파일 첨부</label>
-                                        <input class="form-control" id="name" type="file" name="attach" />
-
-                                        
+                                        <label for="photo">파일 첨부</label>
+                                        <input class="form-control" id="photo" type="file" name="photo" />
+										<input class="form-control" id="photo" type="file" name="photo" />
+                                        <input class="form-control" id="photo" type="file" name="photo" />
+                                        <input class="form-control" id="photo" type="file" name="photo" />
+                                        <input class="form-control" id="photo" type="file" name="photo" />
                                         <div class="invalid-feedback" data-sb-feedback="name:required"></div>
                                     </div>
 
