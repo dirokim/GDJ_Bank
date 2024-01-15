@@ -29,7 +29,7 @@ public class Pager {
 	
 	public void makePage(Long totalCount) {
 		totalPage = totalCount/this.getPerPage();
-		if(totalCount/this.getPerPage()!=0) {
+		if(totalCount%this.getPerPage()!=0) {
 		totalPage++;
 		}
 		
