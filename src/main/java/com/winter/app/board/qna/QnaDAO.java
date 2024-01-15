@@ -1,4 +1,4 @@
-package com.winter.app.board.notice;
+package com.winter.app.board.qna;
 
 import java.util.List;
 
@@ -10,12 +10,13 @@ import com.winter.app.board.BoardDAO;
 import com.winter.app.board.BoardDTO;
 import com.winter.app.util.Pager;
 
-@Repository("noticeDAO")
-public class NoticeDAO implements BoardDAO {
-		
+@Repository("qnaDAO")
+public class QnaDAO implements BoardDAO{
+	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.winter.app.board.notice.NoticeDAO.";
+	private final String NAMESPACE = "com.winter.app.board.qna.QnaDAO.";
+	
 	
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
@@ -25,6 +26,7 @@ public class NoticeDAO implements BoardDAO {
 
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
+		
 		return sqlSession.selectList(NAMESPACE+"getList",pager);
 	}
 
@@ -51,7 +53,6 @@ public class NoticeDAO implements BoardDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	
 
+	
 }

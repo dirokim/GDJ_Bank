@@ -23,7 +23,7 @@ public class Pager {
 	
 	public void makeRow() {
 	this.lastRow = this.getPage()*this.getPerPage();
-	this.startRow = this.getLastRow()-this.getPerPage() +1;	
+	this.startRow = this.getLastRow()-this.getPerPage()+1;	
 	}
 	
 	public void makePage(Long totalCount) {
