@@ -16,7 +16,7 @@
   		  WHERE R BETWEEN #{startRow} AND #{lastRow}
    		  </select>
   		  
-  		  <select id="getDetail" parameterType="NoticeDTO" resultMap="getDetailResult">
+  		  <select id="getDetail" parameterType="BoardDTO" resultMap="getDetailResult">
   		  SELECT * FROM NOTICE LEFT JOIN NOTICEFILES NF 
   		  USING(NOTICENUM) WHERE NOTICENUM = #{noticeNum}
   		  </select>

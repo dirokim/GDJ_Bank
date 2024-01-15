@@ -31,8 +31,8 @@ public class NoticeService implements BoardService {
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+			
+		return noticeDAO.getDetail(boardDTO);
 	}
 
 	@Override

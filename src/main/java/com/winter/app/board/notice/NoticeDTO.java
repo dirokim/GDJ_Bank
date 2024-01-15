@@ -7,7 +7,7 @@ import com.winter.app.board.BoardFileDTO;
 
 public class NoticeDTO extends BoardDTO {
 	
-	private List<BoardFileDTO> fileDTOs;
+
 	
 	
 }

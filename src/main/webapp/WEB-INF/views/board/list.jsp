@@ -39,7 +39,7 @@
                                		 	<tr  class="table-light">
                                		 		<td>${dto.noticeNum}</td>
                                		 		<td>${dto.noticeWriter}</td>
-                               		 		<td>${dto.noticeHead}</td>
+                               		 		<td><a href="./detail?noticeNum=${dto.noticeNum}">${dto.noticeHead}</a></td>
                                		 		<td>${dto.noticeDate}</td>
                                		 		<td>${dto.noticeViews}</td>
                                    		</tr>

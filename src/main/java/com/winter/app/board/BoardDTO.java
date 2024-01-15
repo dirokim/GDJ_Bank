@@ -14,9 +14,17 @@ public class BoardDTO {
 	private Long noticeViews;
 	
 	
-
+	private List<BoardFileDTO> fileDTOs;
 	
 	
+	
+	
+	public List<BoardFileDTO> getFileDTOs() {
+		return fileDTOs;
+	}
+	public void setFileDTOs(List<BoardFileDTO> fileDTOs) {
+		this.fileDTOs = fileDTOs;
+	}
 	public Long getNoticeNum() {
 		return noticeNum;
 	}
