@@ -34,7 +34,9 @@
   		  </collection>
   		  </resultMap>
   		  
-  		  
+  		  <insert id="setAdd" parameterType="BoardDTO">
+  		  INSERT INTO NOTICE VALUES(PRODUCT_SEQ.NEXTVAL,#{noticeWriter},#{noticeHead},#{noticeContents},SYSDATE,1)
+  		  </insert>
   		  
   		  
   		  

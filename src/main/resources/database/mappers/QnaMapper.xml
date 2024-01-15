@@ -11,11 +11,11 @@
   		  </select>
   		  
   		  <select id="getDetail" parameterType="BoardDTO" resultMap="getDetailResult">
-  		  SELECT * FROM QNA LEFT JOIN NOTICEFILES NF 
+  		  SELECT * FROM QNA LEFT JOIN QNAFILES NF 
   		  USING(NOTICENUM) WHERE NOTICENUM = #{noticeNum}
   		  </select>
   		  <resultMap type="QnaDTO" id="getDetailResult">
-  		  <id column="NOTICENUM" property="noticeNum"/>
+  		  <id 	  column="NOTICENUM" property="noticeNum"/>
   		  <result column="NOTICEWRITER" property="noticeWriter"/>
   		  <result column="NOTICEHEAD" property="noticeHead"/>
   		  <result column="NOTICECONTENTS" property="noticeContents"/>
@@ -26,7 +26,7 @@
 		  <result column="NOTICEDEPTH" property="noticeDepth"/>
 		  
 		  <collection property="fileDTOs" javaType="List"  ofType="BoardFileDTO">
-		  <id column="FILENUM" property="fileNum"/>
+		  <id     column="FILENUM" property="fileNum"/>
 		  <result column="FILENAME" property="fileName"/>
 		  <result column="ORINAME" property="oriName"/>
 		  </collection>

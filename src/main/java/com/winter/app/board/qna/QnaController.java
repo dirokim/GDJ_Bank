@@ -33,6 +33,9 @@ public class QnaController {
 		boardDTO = boardService.getDetail(boardDTO);
 		model.addAttribute("boardDTO",boardDTO);
 		return "board/detail";
-		
+	}
+	@GetMapping("add")
+	public String getAdd () throws Exception {
+		return "board/add";
 	}
 }
