@@ -31,7 +31,12 @@
                                             <div>
                                             ${boardDTO.noticeContents}
                                             </div>
+                                            <div>
+                                                <c:forEach items="${boardDTO.fileDTOs}" var="f">
+                                                	<a href="/resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+                                                </c:forEach>
 
+                                            </div>
 
                                         </div>
                                       

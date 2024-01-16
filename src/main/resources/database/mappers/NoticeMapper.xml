@@ -43,7 +43,7 @@
   		  </resultMap>
   		  
   		  <insert id="setAdd" parameterType="BoardDTO">
-  		  <selectKey keyProperty="noticeNum" resultType="Long">
+  		  <selectKey keyProperty="noticeNum" resultType="Long" order="BEFORE">
   		  SELECT NOTICE_SEQ.NEXTVAL FROM DUAL
   		  </selectKey>
   		  INSERT INTO NOTICE VALUES(#{noticeNum},#{noticeWriter},#{noticeHead},#{noticeContents},SYSDATE,0)

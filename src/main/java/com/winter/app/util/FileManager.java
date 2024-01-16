@@ -12,6 +12,9 @@ public class FileManager {
 	public String fileSave(String path,MultipartFile file) throws Exception {
 		
 		File f = new File(path);
+		if(f.isFile()) {
+			throw new Exception();
+		}
 		if(f.exists()) {
 			
 		}else {

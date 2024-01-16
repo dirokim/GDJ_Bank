@@ -31,7 +31,7 @@ public class QnaController {
 	
 	@ModelAttribute("board")
 	public String getBoard() {
-		return"Qna";
+		return"qna";
 	}
 	
 	@PostMapping("reply")
@@ -57,7 +57,7 @@ public class QnaController {
 	
 	@GetMapping("detail")
 	public String getDetail(BoardDTO boardDTO,Model model) throws Exception {
-		boardDTO = qnaService.getDetail(boardDTO);
+		boardDTO = (QnaDTO)qnaService.getDetail(boardDTO);
 		model.addAttribute("boardDTO",boardDTO);
 		return "board/detail";
 	}
