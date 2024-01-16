@@ -24,6 +24,9 @@ public class QnaController {
 
 	private QnaService qnaService;
 	
+	
+	
+	
 	@ModelAttribute("bbs")
 	public Integer getKind() {
 		return 1;
@@ -33,6 +36,20 @@ public class QnaController {
 	public String getBoard() {
 		return"qna";
 	}
+	
+	
+	
+	
+	
+	
+	@PostMapping("delete")
+	public String setDelete(QnaDTO boardDTO)throws Exception {
+		boardDTO.setFlag(1);
+		int result = qnaService.setDelete(boardDTO);
+		
+		return "redirect:./list";
+	}
+	
 	
 	@PostMapping("reply")
 	public String setReply(QnaDTO qnaDTO) throws Exception {

@@ -43,11 +43,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <c:if test="${bbs eq 1}">
+                        
                             <div>
-                                <a href="reply?noticeNum=${boardDTO.noticeNum}">답글</a>
+                                <c:if test="${bbs eq 1}">
+                                <a class="btn btn-primary" href="reply?noticeNum=${boardDTO.noticeNum}">답글</a>
+                                </c:if>
+                                <a class="btn btn-info" id="update" href="#">Update</a>
+                                <a class="btn btn-primary" id="del" href="#">Delete</a>
+                                <form id="frm" action="/update" method="get">
+                                    <input type="hidden" name="noticeNum" value="${boardDTO.noticeNum}">
+
+                                </form>
                             </div>
-								</c:if>
+					
                      </div>
                     </div>
                 </div>
@@ -56,6 +64,7 @@
 
 
         </main>
+        <script src="/resources/js/boardDetail.js" type="text/javascript"></script>
             <!--사용전 경로를 꼭 수정 하세요  -->
 	<c:import url="../temps/footer.jsp"></c:import>
     </body>

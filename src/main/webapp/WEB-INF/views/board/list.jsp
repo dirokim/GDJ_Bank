@@ -36,6 +36,22 @@
                             </thead>
                             <tbody >
                                 	<c:forEach items="${list}"  var="dto">
+                            <c:set  var="f" value="0"></c:set>                                   
+                                    <c:catch>
+								<c:set var="f" vlaue="${dto.flag}"></c:set>
+                                         <c:if test="${f eq 1}">
+                                          <tr>
+                                          	<td></td>
+                                          	<td>삭제되었다</td>
+                                          	<td></td>
+                                          	<td></td>
+                                          	<td></td>
+                                          </tr>
+                                         </c:if> 
+
+                                    </c:catch>
+                                     <c:if test="${f eq 0}">
+                                    
                                		 	<tr  class="table-light">
                                		 		<td>${dto.noticeNum}</td>
                                		 		<td>${dto.noticeWriter}</td>
@@ -50,7 +66,8 @@
                                		 		<td>${dto.noticeDate}</td>
                                		 		<td>${dto.noticeViews}</td>
                                    		</tr>
-                                	
+                                   		
+                                		</c:if>
                                 	</c:forEach>
 	
 

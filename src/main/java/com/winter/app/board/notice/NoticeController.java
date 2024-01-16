@@ -36,6 +36,12 @@ public class NoticeController {
 	}
 	
 	
+	@PostMapping
+	public String setDelete (BoardDTO boardDTO) throws Exception{
+		boardService.setDelete(boardDTO);
+		return "redirect:./list";
+	}
+	
 	//@RequestMapping(value = "list",method = RequestMethod.GET)
 	@GetMapping("list")
 	public String getList(Pager pager,Model model) throws Exception {

@@ -7,7 +7,7 @@ public class QnaDTO extends BoardDTO{
 	private Long noticeRef;
 	private Long noticeStep;
 	private Long noticeDepth;
-	
+	private Integer flag;
 	
 	
 	
@@ -31,9 +31,15 @@ public class QnaDTO extends BoardDTO{
 	public void setNoticeDepth(Long noticeDepth) {
 		this.noticeDepth = noticeDepth;
 	}
+	public Integer getFlag() {
+		return flag;
+	}
+	public void setFlag(Integer flag) {
+		this.flag = flag;
+	}
 
 
-
+	
 	
 	
 	

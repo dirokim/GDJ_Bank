@@ -4,6 +4,26 @@
   	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   		  <mapper namespace="com.winter.app.board.qna.QnaDAO">
   		  
+  		  <!--  -->
+  		  <update id="setDelete" parameterType="QnaDTO">
+  		  	UPDATE QNA SET FLAG = #{flag} 
+  		  	WHERE NOTICENUM=#{noticeNum}
+  		  </update>
+  		  
+  		  <!--file delete  -->
+  		  <delete id="setFileDelete" parameterType="BoardDTO">
+  		  DELETE QNAFILES WHERE NOTICENUM=#{noticeNum}
+  		  </delete>
+  		  
+  		  <!-- file list -->
+			<select id="getFileList" parameterType="BoardDTO" resultType="BoardFileDTO">
+			SELECT FILENAME FROM  QNAFILES WHERE NOTICENUM = #{noticeNum}
+			</select>
+		
+		
+		
+		
+		
 		
 			<insert id="setAddFile"  parameterType="BoardFileDTO">
 			INSERT INTO QNAFILES VALUES (QNA_SEQ.NEXTVAL,#{fileName},#{oriName},#{noticeNum})
@@ -15,7 +35,7 @@
   		  	SELECT QNA_SEQ.NEXTVAL FROM DUAL
   		  </selectKey>
   		  INSERT INTO QNA VALUES(#{noticeNum},#{noticeWriter},#{noticeHead},#{noticeContents}
-  		  ,SYSDATE,0,#{noticeRef},#{noticeStep},#{noticeDepth})
+  		  ,SYSDATE,0,#{noticeRef},#{noticeStep},#{noticeDepth},0)
   		  </insert>
   		  
   		  
@@ -63,7 +83,7 @@
   		  	SELECT QNA_SEQ.NEXTVAL FROM DUAL
   		  </selectKey>
   		  INSERT INTO QNA VALUES(#{noticeNum},#{noticeWriter},#{noticeHead},#{noticeContents}
-  		  ,SYSDATE,0,#{noticeNum},0,0)
+  		  ,SYSDATE,0,#{noticeNum},0,0,0)
   		  </insert>
   		  
   		  

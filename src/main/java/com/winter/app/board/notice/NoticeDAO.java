@@ -48,12 +48,17 @@ public class NoticeDAO implements BoardDAO {
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE+"setDelete",boardDTO);
+	}
+	public List<BoardFileDTO> getFileList(BoardDTO boardDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getFileList",boardDTO);
 	}
 	
 	public int setFileAdd (BoardFileDTO boardFileDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setFileAdd",boardFileDTO);
 	}
 
+	public int setFileDelete (BoardDTO boardDTO)throws Exception {
+		return sqlSession.delete(NAMESPACE+"setFileDelete",boardDTO);
+	}
 }
