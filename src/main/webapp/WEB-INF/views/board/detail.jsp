@@ -31,12 +31,16 @@
                                             <div>
                                             ${boardDTO.noticeContents}
                                             </div>
+
+
                                         </div>
                                       
                                     </div>
                                 </div>
                             </div>
-
+                            <div>
+                                <a href="reply?noticeNum=${boardDTO.noticeNum}">답글</a>
+                            </div>
 
                      </div>
                     </div>

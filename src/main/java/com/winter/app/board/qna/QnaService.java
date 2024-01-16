@@ -18,6 +18,12 @@ public class QnaService implements BoardService {
 	@Qualifier("qnaDAO")
 	private BoardDAO boardDAO;
 	
+	
+	
+	public int setReply(QnaDTO qnaDTO)throws Exception{
+		
+	}
+	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		pager.makeRow();

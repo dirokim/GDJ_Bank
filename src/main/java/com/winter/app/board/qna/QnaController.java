@@ -21,6 +21,12 @@ public class QnaController {
 	@Qualifier("qnaService")
 	private BoardService boardService;
 	
+	
+	public void setReply(BoardDTO boardDTO,Model model) throws Exception {
+		model.addAttribute("dto",boardDTO);
+		return "board/reply";
+	}
+	
 	@GetMapping("list")
 	public String getList(Pager pager,Model model) throws Exception {
 		
