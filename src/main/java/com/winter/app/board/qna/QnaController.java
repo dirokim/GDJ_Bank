@@ -19,10 +19,18 @@ public class QnaController {
 	
 	@Autowired
 	@Qualifier("qnaService")
-	private BoardService boardService;
+
+	private QnaService qnaService;
 	
 	
-	public void setReply(BoardDTO boardDTO,Model model) throws Exception {
+	@PostMapping("reply")
+	public String setReply(QnaDTO qnaDTO) throws Exception {
+		int result = qnaService.setReply(qnaDTO);
+		return "redirect:./list";
+	}
+	
+	@GetMapping("reply")
+	public String setReply(BoardDTO boardDTO,Model model) throws Exception {
 		model.addAttribute("dto",boardDTO);
 		return "board/reply";
 	}
@@ -30,14 +38,15 @@ public class QnaController {
 	@GetMapping("list")
 	public String getList(Pager pager,Model model) throws Exception {
 		
-		List<BoardDTO> ar = boardService.getList(pager);
+		List<BoardDTO> ar = qnaService.getList(pager);
 		model.addAttribute("list",ar);
+		model.addAttribute("board","Qna");
 		return "board/list";
 	}
 	
 	@GetMapping("detail")
 	public String getDetail(BoardDTO boardDTO,Model model) throws Exception {
-		boardDTO = boardService.getDetail(boardDTO);
+		boardDTO = qnaService.getDetail(boardDTO);
 		model.addAttribute("boardDTO",boardDTO);
 		return "board/detail";
 	}
@@ -47,7 +56,7 @@ public class QnaController {
 	}
 	@PostMapping("add")
 	public String getAdd (BoardDTO boardDTO) throws Exception {
-		int result = boardService.setAdd(boardDTO);
+		int result = qnaService.setAdd(boardDTO);
 		return "redirect:./list";
 	}
 	

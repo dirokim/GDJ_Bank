@@ -6,7 +6,7 @@
     <head>
     <!--사용전 경로를 꼭 수정 하세요  -->
 	<c:import url="../temps/head_css.jsp"></c:import>
-   <title>BoardList</title>
+   <title>${board} List</title>
     </head>
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
@@ -15,7 +15,7 @@
         
             <section class="py-5">
                 <div class="text-center mb-5">
-                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">BoardList</span></h1>
+                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">${board} List</span></h1>
                 </div>
 
 
@@ -39,7 +39,14 @@
                                		 	<tr  class="table-light">
                                		 		<td>${dto.noticeNum}</td>
                                		 		<td>${dto.noticeWriter}</td>
-                               		 		<td><a href="./detail?noticeNum=${dto.noticeNum}">${dto.noticeHead}</a></td>
+                               		 		<td>
+                               		 		<a href="./detail?noticeNum=${dto.noticeNum}">
+                               		 		
+                               		 		<c:catch>
+                               		 		<c:forEach begin="1" end="${dto.noticeDepth}" >--</c:forEach>
+                               		 		</c:catch>
+                               		 		${dto.noticeHead}
+                               		 		</a></td>
                                		 		<td>${dto.noticeDate}</td>
                                		 		<td>${dto.noticeViews}</td>
                                    		</tr>

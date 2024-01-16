@@ -16,12 +16,25 @@ public class QnaService implements BoardService {
 
 	@Autowired
 	@Qualifier("qnaDAO")
-	private BoardDAO boardDAO;
+	private QnaDAO boardDAO;
 	
 	
 	
 	public int setReply(QnaDTO qnaDTO)throws Exception{
-		
+		// board Num 부모의 글번호
+		// title  답글 제목
+		// writer 답글 작성자
+		//contents 답글 내용
+		//1. 부모의 정보 조회  - 디테일 (ref , step ,depth 
+	  QnaDTO parent = (QnaDTO)boardDAO.getDetail(qnaDTO);
+	  	//2.답글 정보 저장(REF,STEP,DEPTH)
+	  	qnaDTO.setNoticeRef(parent.getNoticeRef());
+	  	qnaDTO.setNoticeStep(parent.getNoticeStep()+1);
+	  	qnaDTO.setNoticeDepth(parent.getNoticeDepth()+1);
+	  	//3.step 을 업데이트
+	  	int result = boardDAO.setReplyUpdate(parent);
+	  	result = boardDAO.setReplyAdd(qnaDTO);
+		return result;
 	}
 	
 	@Override
