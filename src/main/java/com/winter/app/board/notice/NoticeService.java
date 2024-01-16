@@ -2,13 +2,18 @@ package com.winter.app.board.notice;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.app.board.BoardDAO;
 import com.winter.app.board.BoardDTO;
+import com.winter.app.board.BoardFileDTO;
 import com.winter.app.board.BoardService;
+import com.winter.app.util.FileManager;
 import com.winter.app.util.Pager;
 
 
@@ -16,10 +21,12 @@ import com.winter.app.util.Pager;
 public class NoticeService implements BoardService {
 	
 	@Autowired
-	@Qualifier("noticeDAO")
-	private BoardDAO noticeDAO;
+	private NoticeDAO noticeDAO;
+	@Autowired
+	private FileManager fileManager;
+	@Autowired
+	private ServletContext servletContext;
 	
-
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
@@ -36,8 +43,25 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
-		return noticeDAO.setAdd(boardDTO);
+	public int setAdd(BoardDTO boardDTO,MultipartFile[]attachs) throws Exception {
+			int result = noticeDAO.setAdd(boardDTO);
+			String path = servletContext.getRealPath("/resources/upload/notice");
+			
+			for(MultipartFile f :attachs) {
+			if(f.isEmpty()) {
+				continue;
+			}
+				
+			String fileName = fileManager.fileSave(path, f);
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(f.getOriginalFilename());
+			boardFileDTO.setNoticeNum(boardDTO.getNoticeNum());
+			result = noticeDAO.setFileAdd(boardFileDTO);
+			}
+		
+			
+		return result ;
 	}
 
 	@Override

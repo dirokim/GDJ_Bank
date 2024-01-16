@@ -6,7 +6,7 @@
     <head>
     <!--사용전 경로를 꼭 수정 하세요  -->
 	<c:import url="../temps/head_css.jsp"></c:import>
-   <title>Board Reply</title>
+   <title>${board} Reply</title>
     </head>
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
@@ -16,7 +16,7 @@
 
             <section class="py-5">
                 <div class="text-center mb-5">
-                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Board Add</span></h1>
+                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">${board} Add</span></h1>
                 </div>
 
 

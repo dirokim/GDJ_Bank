@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.app.board.BoardDAO;
 import com.winter.app.board.BoardDTO;
@@ -49,7 +50,7 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int setAdd(BoardDTO boardDTO) throws Exception {
+	public int setAdd(BoardDTO boardDTO,MultipartFile[]attachs) throws Exception {
 
 		return boardDAO.setAdd(boardDTO);
 	}

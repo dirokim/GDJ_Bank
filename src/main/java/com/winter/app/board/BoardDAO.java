@@ -29,4 +29,6 @@ public interface BoardDAO {
 	
 	
 	public int setDelete (BoardDTO boardDTO) throws Exception;
+	
+
 }

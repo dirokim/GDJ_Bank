@@ -37,9 +37,15 @@
                           
                           
                         <div class="mb-3">
-                            <label for="noticeContents" class="form-label">Example textarea</label>
+                            <label for="noticeContents" class="form-label">Contents</label>
                             <textarea class="form-control" name="noticeContents" id="noticeContents" rows="3"></textarea>
                         </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="file" name="attachs">
+                            <input class="form-control" type="file" name="attachs">
+                            <input class="form-control" type="file" name="attachs">
+                        </div>
+
 
                        <div class="mb-3">
 
