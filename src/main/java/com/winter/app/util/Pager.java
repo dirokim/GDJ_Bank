@@ -9,7 +9,7 @@ public class Pager {
 	private Long startRow;
 	private Long lastRow;
 	private Long page;
-	private Long perPage=10L;
+	private Long perPage=5L;
 	
 	//블럭
 	private Long totalPage;

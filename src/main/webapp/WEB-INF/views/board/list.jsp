@@ -77,20 +77,20 @@
 							<nav aria-label="Page navigation example">
   								<ul class="pagination">
   							
-  							 <c:if test="${!pager.start}">
+  								<c:if test="${!pager.start}">
     								<li class="page-item">
-     								 <a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous">
-    			  					 <span aria-hidden="true">&laquo;</span></a></li>
+     								 <a class="page-link " href="#"  aria-label="Previous">
+    			  					 <span aria-hidden="true" class="pager" data-page="${pager.startNum-1}">&laquo;</span></a></li>
     								</c:if>
     				  					 
     			  				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="p">
-  								<li class="page-item"><a class="page-link" href="./list?page=${p}&kind=${pager.kind}&search=${pager.search}">${p}</a></li>
+  								<li class="page-item"><a class="page-link pager" data-page="${p}" href="./list?page=${p}&kind=${pager.kind}&search=${pager.search}">${p}</a></li>
   					 			</c:forEach>
   					 		
-  					 		<c:if test="${!pager.last}">
+  					 	<c:if test="${!pager.last}">
    								 <li class="page-item">
-   							   <a class="page-link" href="./list?page= ${pager.lastNum+1}" aria-label="Next">
-   	 			 			   <span aria-hidden="true">&raquo;</span></a> </li>
+   							   <a class="page-link" href="#" aria-label="Next">
+   	 			 			   <span aria-hidden="true" class="pager"  data-page="${pager.startNum+1}" >&raquo;</span></a> </li>
  								</c:if>
  							
  							 </ul>
@@ -102,17 +102,18 @@
 						
 						
 						<div>
-   							<form class="form-select form-select-lg mb-3" action="list" method="get">
- 								<select class="form-select" name="kind" aria-label="Default select example">
+   							<form id="searchForm" class="form-select form-select-lg mb-3" action="./list" method="get">
+   							<input id="page" type="hidden" name="page" value="1">
+ 								<select class="form-select" id="kind" data-kind="${pager.kind}" name="kind" aria-label="Default select example">
 
-  											<option value="kind1">Title</option>
-  											<option value="kind2">Contents</option>
-  											<option value="kind3">Writer</option>
+  											<option class="a" value="kind1">Title</option>
+  											<option class="a" value="kind2">Contents</option>
+  											<option class="a" value="kind3">Writer</option>
 								</select>
 					
  								 <div class="col-auto"> 
  						 		  <label for="search" class="visually-hidden">Password</label>              						
- 							 	  <input type="text" class="form-control" name="search" id="search" placeholder="검색어을 입력해주세요"> 
+ 							 	  <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="검색어을 입력해주세요"> 
  								 </div>
 
 
@@ -145,6 +146,10 @@
 
         </main>
             <!--사용전 경로를 꼭 수정 하세요  -->
+			<script src="/resources/js/boardSearch.js">
+
+
+			</script>
 	<c:import url="../temps/footer.jsp"></c:import>
     </body>
 </html>
