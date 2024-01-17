@@ -38,14 +38,14 @@ public class QnaController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("update")
 	public String setUpdate (BoardDTO boardDTO,Model model,MultipartFile [] attachs)throws Exception {
 		int result = qnaService.setUpdate(boardDTO,attachs);
 		model.addAttribute("boardDTO",boardDTO);
 		return "board/list";
 	}
 	
-	@GetMapping
+	@GetMapping("update")
 	public String setUpdate (BoardDTO boardDTO,Model model)throws Exception {
 		boardDTO = qnaService.getDetail(boardDTO);
 		model.addAttribute("boardDTO",boardDTO);
@@ -82,6 +82,7 @@ public class QnaController {
 		List<BoardDTO> ar = qnaService.getList(pager);
 		model.addAttribute("list",ar);
 		model.addAttribute("board","Qna");
+		model.addAttribute("pager",pager);
 		return "board/list";
 	}
 	

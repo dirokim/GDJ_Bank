@@ -29,11 +29,11 @@ public class NoticeService implements BoardService {
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
 		pager.makeRow();
-		
-		//검색
-		return noticeDAO.getList(pager);
+		Long totalCount = noticeDAO.getTotalCount();
+		pager.makePage(totalCount);
+		List<BoardDTO>ar = noticeDAO.getList(pager);
+		return ar ; 
 	}
 
 	@Override

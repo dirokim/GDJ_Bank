@@ -20,6 +20,9 @@ public class Pager {
 	private boolean start;
 	private boolean last;
 	
+	private String search;
+	private String kind;
+	
 	
 	public void makeRow() {
 		this.startRow = ((this.getPage()-1)*this.getPerPage())+1;
@@ -136,6 +139,22 @@ public class Pager {
 
 	public void setLast(boolean last) {
 		this.last = last;
+	}
+
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 
 

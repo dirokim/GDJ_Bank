@@ -51,7 +51,7 @@ public class NoticeController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("delete")
 	public String setDelete (BoardDTO boardDTO) throws Exception{
 		boardService.setDelete(boardDTO);
 		return "redirect:./list";
@@ -62,6 +62,7 @@ public class NoticeController {
 	public String getList(Pager pager,Model model) throws Exception {
 		List<BoardDTO> ar = boardService.getList(pager);
 		model.addAttribute("list",ar);
+		model.addAttribute("pager",pager);
 		return "board/list";
 	}
 	

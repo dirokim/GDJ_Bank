@@ -5,6 +5,11 @@
   		  <mapper namespace="com.winter.app.board.notice.NoticeDAO">
   		  
   		  
+  		  <select id="getTotalCount" resultType="Long">
+  		  SELECT COUNT(NOTICENUM)FROM NOTICE 
+  		  </select>
+  		  
+  		  
   		  <update id="setUpdate" parameterType="BoardDTO">
   		  UPDATE NOTICE
   		  <set>
@@ -40,6 +45,7 @@
   		  	INSERT INTO NOTICEFILES VALUES(NOTICE_SEQ.NEXTVAL,#{fileName},#{oriName},#{noticeNum})
   		  </insert>
   		  
+  	
   		  
   		  <!--list  -->
   		  <select id="getList" resultType="NoticeDTO" parameterType="Pager">
@@ -47,6 +53,8 @@
   		  (SELECT ROWNUM R , NO.* FROM
   		  	(
   		  		SELECT * FROM NOTICE 
+  		  	
+  		  	
   		  	
   		 	 ORDER BY NOTICENUM DESC
   		 	 )

@@ -16,7 +16,6 @@
   		  </if>
   		  </set>
   		  WHERE NOTICENUM=#{noticeNum} 
-  		 
   		  </update>
   		  
   		  
@@ -61,7 +60,9 @@
   		  </update>
   		  
   		  
-  		  
+  		  <select id="getTotalCount">
+  		  SELECT COUNT(NOTICENUM) FROM QNA
+  		  </select>
   		  
   		  <select id="getList" resultType="QnaDTO" parameterType="Pager">
   		  SELECT * FROM

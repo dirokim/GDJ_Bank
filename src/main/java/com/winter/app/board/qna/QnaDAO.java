@@ -18,6 +18,7 @@ public class QnaDAO implements BoardDAO{
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.winter.app.board.qna.QnaDAO.";
 	
+
 	
 	public int setReplyAdd (QnaDTO qnaDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setReplyAdd",qnaDTO);
@@ -28,9 +29,9 @@ public class QnaDAO implements BoardDAO{
 	}
 	
 	@Override
-	public Long getTotalCount(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Long getTotalCount() throws Exception {
+
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
 	}
 
 	@Override

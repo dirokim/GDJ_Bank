@@ -24,5 +24,9 @@ public class NoticeDAOTest extends MyTest{
 		List<BoardDTO> ar =noticeDAO.getList(pager);
 		assertNotEquals(0,ar.size());
 	}
+	
+	public void add() throws Exception{
+		
+	}
 
 }
