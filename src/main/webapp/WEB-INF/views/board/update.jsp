@@ -24,7 +24,7 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-11 col-xl-9 col-xxl-8">
 
-                    <form  action="./add" method="post" enctype="multipart/form-data">
+                    <form  action="./update" method="post" enctype="multipart/form-data">
                     	<input type="hidden" name="noticeNum" value="${boardDTO.noticeNum}">
                         <div class="mb-3">
                             <label for="head" class="form-label">Title</label>
