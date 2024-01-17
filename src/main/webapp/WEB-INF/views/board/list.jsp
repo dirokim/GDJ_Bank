@@ -84,7 +84,7 @@
     								</c:if>
     				  					 
     			  				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="p">
-  								<li class="page-item"><a class="page-link" href="./list?page=${p}">${p}</a></li>
+  								<li class="page-item"><a class="page-link" href="./list?page=${p}&kind=${pager.kind}&search=${pager.search}">${p}</a></li>
   					 			</c:forEach>
   					 		
   					 		<c:if test="${!pager.last}">
