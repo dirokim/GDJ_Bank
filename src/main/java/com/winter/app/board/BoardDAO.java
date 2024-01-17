@@ -9,7 +9,7 @@ import com.winter.app.util.Pager;
 public interface BoardDAO {
 
 	
-	public Long getTotalCount() throws Exception;
+	public Long getTotalCount(Pager pager) throws Exception;
 	
 	//목록 가져오기 
 	public List<BoardDTO> getList(Pager pager) throws Exception;

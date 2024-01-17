@@ -19,7 +19,7 @@ public class NoticeDAO implements BoardDAO {
 	private final String NAMESPACE = "com.winter.app.board.notice.NoticeDAO.";
 	
 	@Override
-	public Long getTotalCount() throws Exception {
+	public Long getTotalCount(Pager pager) throws Exception {
 		
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
 	}

@@ -57,7 +57,7 @@ public class NoticeController {
 		return "redirect:./list";
 	}
 	
-	//@RequestMapping(value = "list",method = RequestMethod.GET)
+	
 	@GetMapping("list")
 	public String getList(Pager pager,Model model) throws Exception {
 		List<BoardDTO> ar = boardService.getList(pager);

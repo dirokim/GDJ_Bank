@@ -81,7 +81,6 @@ public class QnaController {
 		
 		List<BoardDTO> ar = qnaService.getList(pager);
 		model.addAttribute("list",ar);
-		model.addAttribute("board","Qna");
 		model.addAttribute("pager",pager);
 		return "board/list";
 	}

@@ -5,6 +5,24 @@
   		  <mapper namespace="com.winter.app.board.notice.NoticeDAO">
   		  
   		  
+  		  
+  		  <sql id="search">
+  		  	<where>
+  		  		<if test="kind=='kind1'">
+  		  		NOTICEHEAD LIKE '%'||#{noticeHead}||'%'
+  		  		</if>
+  		  		<if test="kind=='kind1'">
+  		  		NOTICECONTENTS LIKE '%'||#{noticeContents}||'%'
+  		  		</if>
+  		  		<if test="kind=='kind1'">
+  		  		NOTICEWRITER LIKE '%'||#{noticeWriter}||'%'
+  		  		</if>
+  		  	
+  		  	</where>
+  		  
+  		  </sql>
+  		  
+  		  
   		  <select id="getTotalCount" resultType="Long">
   		  SELECT COUNT(NOTICENUM)FROM NOTICE 
   		  </select>
@@ -54,7 +72,7 @@
   		  	(
   		  		SELECT * FROM NOTICE 
   		  	
-  		  	
+  		  	<include refid="search"></include>
   		  	
   		 	 ORDER BY NOTICENUM DESC
   		 	 )

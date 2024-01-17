@@ -5,6 +5,22 @@
   		  <mapper namespace="com.winter.app.board.qna.QnaDAO">
   		  
   		  
+		<sql id="search">
+		<where>							
+			<if test="kind=='kind1'">		
+				NOTICEHEAD LIKE '%'||#{search}||'%'
+			</if>
+			<if test="kind=='kind2'">
+				NOTICECONTENTS LIKE '%'||#{search}||'%'
+			</if>
+			<if test="kind=='kind3'">
+				NOTICEWRITER LIKE '%'||#{search}||'%'
+			</if>
+		</where>
+		</sql>  		  
+  		  
+  		  
+  		  
   		  <update id="setUpdate" parameterType="BoardDTO">
   		  UPDATE QNA 
   		  <set> 
@@ -60,14 +76,18 @@
   		  </update>
   		  
   		  
-  		  <select id="getTotalCount">
+  		  <select id="getTotalCount" resultType="Long">
   		  SELECT COUNT(NOTICENUM) FROM QNA
   		  </select>
   		  
   		  <select id="getList" resultType="QnaDTO" parameterType="Pager">
   		  SELECT * FROM
   		  (SELECT ROWNUM R , Q.* FROM
-  		  (SELECT * FROM QNA ORDER BY NOTICEREF DESC,NOTICESTEP ASC)Q)
+  		  (SELECT * FROM QNA 
+  		  	
+  		  	<include refid="search"></include>
+  		  
+  		  ORDER BY NOTICEREF DESC,NOTICESTEP ASC)Q)
   		  WHERE R BETWEEN #{startRow} AND #{lastRow}
   		  </select>
   		  
