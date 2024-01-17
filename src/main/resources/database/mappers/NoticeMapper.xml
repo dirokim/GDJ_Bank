@@ -4,6 +4,22 @@
   	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   		  <mapper namespace="com.winter.app.board.notice.NoticeDAO">
   		  
+  		  
+  		  <update id="setUpdate" parameterType="BoardDTO">
+  		  UPDATE NOTICE
+  		  <set>
+  			  <if test="noticeHead != null and noticeHead !=''" >
+  		 	 NOTICEHEAD=#{noticeHead},
+  		 	 </if>
+  		  	<if test="noticeContents != null">
+  		 	 NOTICECONTENTS=#{noticeContents}
+  		  	</if>
+  		  </set> 
+  		  WHERE NOTICENUM = #{noticeNum}
+  		  </update>
+  		  
+  		  
+  		  
   		  <!--notice table delete -->
   		  <delete id="setDelete" parameterType="BoardDTO">
   		  DELETE NOTICE WHERE NOTICENUM=#{noticeNum}

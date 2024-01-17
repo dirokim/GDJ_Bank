@@ -36,11 +36,18 @@ public class NoticeController {
 	}
 	
 	
-	@GetMapping
+	@GetMapping("update")
 	public String setUpdate(BoardDTO boardDTO,Model model) throws Exception {
 	boardDTO = boardService.getDetail(boardDTO);
 	model.addAttribute("boardDTO",boardDTO);
 		return "board/update";
+	}
+	
+	@PostMapping("update")
+	public String setUpdate(BoardDTO boardDTO,Model model,MultipartFile [] attachs) throws Exception {
+	int result = boardService.setUpdate(boardDTO,attachs);
+	model.addAttribute("boardDTO",boardDTO);
+		return "board/list";
 	}
 	
 	

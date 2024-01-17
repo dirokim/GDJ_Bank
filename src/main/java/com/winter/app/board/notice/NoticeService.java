@@ -65,9 +65,8 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setUpdate(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int setUpdate(BoardDTO boardDTO,MultipartFile[]attachs) throws Exception {
+		return noticeDAO.setUpdate(boardDTO);
 	}
 
 	@Override
@@ -75,6 +74,8 @@ public class NoticeService implements BoardService {
 	List<BoardFileDTO> ar =	noticeDAO.getFileList(boardDTO);
 	String path = servletContext.getRealPath("/resources/upload/notice");	
 	for(BoardFileDTO d: ar) {
+		
+			
 			fileManager.fileDelete(path, d.getFileName());
 
 		}
