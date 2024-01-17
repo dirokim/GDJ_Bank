@@ -3,15 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <!--사용전 경로를 꼭 수정 하세요  -->
-	<c:import url="../temps/head_css.jsp"></c:import>
-   <title>${board} List</title>
-    </head>
-    <body class="d-flex flex-column h-100">
-        <main class="flex-shrink-0">
-                <!--사용전 경로를 꼭 수정 하세요  -->
-			<c:import url="../temps/header.jsp"></c:import>
+<head>
+<!--사용전 경로를 꼭 수정 하세요  -->
+<c:import url="../temps/head_css.jsp"></c:import>
+<title>${board}List</title>
+</head>
+<body class="d-flex flex-column h-100">
+	<main class="flex-shrink-0">
+		<!--사용전 경로를 꼭 수정 하세요  -->
+		<c:import url="../temps/header.jsp"></c:import>
 
 		<section class="py-5">
 			<div class="text-center mb-5">
@@ -37,7 +37,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:if test="${list.size()==0} ">
+								<c:if test="${list.size()==0}">
 									<tr>
 										<td colspan="4">검색 결과 없습니다</td>
 									</tr>
@@ -122,7 +122,7 @@
 								</select>
 
 								<div class="col-auto">
-									<label for="search" class="visually-hidden">Password</label> <input
+									<label for="search" class="visually-hidden">search</label> <input
 										type="text" class="form-control" name="search" id="search"
 										placeholder="검색어을 입력해주세요">
 								</div>
@@ -156,7 +156,7 @@
 
 
 	</main>
-            <!--사용전 경로를 꼭 수정 하세요  -->
+	<!--사용전 경로를 꼭 수정 하세요  -->
 	<c:import url="../temps/footer.jsp"></c:import>
-    </body>
+</body>
 </html>

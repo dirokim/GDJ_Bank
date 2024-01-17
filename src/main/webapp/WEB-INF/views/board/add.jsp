@@ -18,48 +18,10 @@
                 <div class="text-center mb-5">
                     <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Board Add</span></h1>
                 </div>
+				
+				<!-- borardForm import -->
+                <c:import url="../temps/boardForm.jsp"></c:import>
 
-
-
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-11 col-xl-9 col-xxl-8">
-
-                    <form  action="./add" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="head" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="head" name="noticeHead" placeholder="제목을 입력하세요">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="noticeWriter" class="form-label">Writer</label>
-                            <input type="text" class="form-control" id="noticeWriter" name="noticeWriter" placeholder="작성자를 입력하세요">
-                        </div>
-                          
-                          
-                        <div class="mb-3">
-                            <label for="noticeContents" class="form-label">Contents</label>
-                            <textarea class="form-control" name="noticeContents" id="noticeContents" rows="3"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <input class="form-control" type="file" name="attachs">
-                            <input class="form-control" type="file" name="attachs">
-                            <input class="form-control" type="file" name="attachs">
-                        </div>
-
-
-                       <div class="mb-3">
-
-                        <button  class="btn btn-primary"> 등록</button>
-                       </div> 
-                    </form>
-
-
-
-
-
-
-                    </div>
-                </div>
             </section>
 
 

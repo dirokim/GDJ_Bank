@@ -21,41 +21,7 @@
 
 
 
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-11 col-xl-9 col-xxl-8">
-
-                    <form  action="./reply" method="post" enctype="multipart/form-data">
-                    	<input type="hidden" value="${dto.noticeNum}" name="noticeNum">
-                    	
-                        <div class="mb-3">
-                            <label for="head" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="head" name="noticeHead" placeholder="제목을 입력하세요">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="noticeWriter" class="form-label">Writer</label>
-                            <input type="text" class="form-control" id="noticeWriter" name="noticeWriter" placeholder="작성자를 입력하세요">
-                        </div>
-                          
-                          
-                        <div class="mb-3">
-                            <label for="noticeContents" class="form-label">Example textarea</label>
-                            <textarea class="form-control" name="noticeContents" id="noticeContents" rows="3"></textarea>
-                        </div>
-
-                       <div class="mb-3">
-
-                        <button  class="btn btn-primary"> 등록</button>
-                       </div> 
-                    </form>
-
-
-
-
-
-
-                    </div>
-                </div>
+  				<c:import url="../temps/boardForm.jsp"></c:import>
             </section>
 
 
