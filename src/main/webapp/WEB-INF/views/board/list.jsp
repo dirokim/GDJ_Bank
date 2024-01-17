@@ -38,7 +38,7 @@
                                 	<c:forEach items="${list}"  var="dto">
                             <c:set  var="f" value="0"></c:set>                                   
                                     <c:catch>
-								<c:set var="f" vlaue="${dto.flag}"></c:set>
+								<c:set var="f" value="${dto.flag}"></c:set>
                                          <c:if test="${f eq 1}">
                                           <tr>
                                           	<td></td>
@@ -48,7 +48,7 @@
                                           	<td></td>
                                           </tr>
                                          </c:if> 
-
+										
                                     </c:catch>
                                      <c:if test="${f eq 0}">
                                     

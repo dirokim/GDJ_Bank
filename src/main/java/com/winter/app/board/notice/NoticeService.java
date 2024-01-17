@@ -78,7 +78,9 @@ public class NoticeService implements BoardService {
 			fileManager.fileDelete(path, d.getFileName());
 
 		}
-			noticeDAO.setFileDelete(boardDTO);
+	
+	
+		noticeDAO.setFileDelete(boardDTO);
 			
 		int result = noticeDAO.setDelete(boardDTO);
 		

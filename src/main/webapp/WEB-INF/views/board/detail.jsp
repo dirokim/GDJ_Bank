@@ -50,7 +50,7 @@
                                 </c:if>
                                 <a class="btn btn-info" id="update" href="#">Update</a>
                                 <a class="btn btn-primary" id="del" href="#">Delete</a>
-                                <form id="frm" action="/update" method="get">
+                                <form id="frm" action="./update" method="get">
                                     <input type="hidden" name="noticeNum" value="${boardDTO.noticeNum}">
 
                                 </form>
