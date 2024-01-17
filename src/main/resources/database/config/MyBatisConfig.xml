@@ -3,4 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
  	 
- 	 	  <configuration></configuration>
+
+ 	 	  <configuration>  
+ 	 	  
+ 	 	  	<typeAliases>
+ 	 	  		<typeAlias type="com.winter.app.product.ProductDTO" alias="ProductDTO"/>
+ 	 	  		<typeAlias type="com.winter.app.util.Pager" alias="Pager" />
+ 	 	  		<typeAlias type="com.winter.app.board.notice.NoticeDTO" alias="NoticeDTO"/>
+ 	 	  		<typeAlias type="com.winter.app.board.qna.QnaDTO" alias="QnaDTO"/>
+ 	 	  		<typeAlias type="com.winter.app.board.BoardFileDTO" alias="BoardFileDTO"/>
+ 	 	 		<typeAlias type="com.winter.app.board.BoardDTO" alias="BoardDTO"/>
+ 	 	  	</typeAliases>
+ 	 	  
+ 	 	 </configuration>
+

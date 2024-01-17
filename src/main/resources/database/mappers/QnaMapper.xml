@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  		  <mapper namespace="com.winter.app.board.qna.QnaDAO">
+  		  
+  		  
+		<sql id="search">
+		<where>							
+			<if test="kind=='kind1'">		
+				NOTICEHEAD LIKE '%'||#{search}||'%'
+			</if>
+			<if test="kind=='kind2'">
+				NOTICECONTENTS LIKE '%'||#{search}||'%'
+			</if>
+			<if test="kind=='kind3'">
+				NOTICEWRITER LIKE '%'||#{search}||'%'
+			</if>
+		</where>
+		</sql>  		  
+  		  
+  		  
+  		  
+  		  <update id="setUpdate" parameterType="BoardDTO">
+  		  UPDATE QNA 
+  		  <set> 
+  		  <if test="noticeHead!=null and noticeHead!=''">
+  		  NOTICEHEAD=#{noticeHead},
+  		  </if>
+  		  <if test="noticeContents=null">
+  		  NOTICECONTENTS=#{noticeContents}
+  		  </if>
+  		  </set>
+  		  WHERE NOTICENUM=#{noticeNum} 
+  		  </update>
+  		  
+  		  
+  		  <!--  -->
+  		  <update id="setDelete" parameterType="QnaDTO">
+  		  	UPDATE QNA SET FLAG = #{flag} 
+  		  	WHERE NOTICENUM=#{noticeNum}
+  		  </update>
+  		  
+  		  <!--file delete  -->
+  		  <delete id="setFileDelete" parameterType="BoardDTO">
+  		  DELETE QNAFILES WHERE NOTICENUM=#{noticeNum}
+  		  </delete>
+  		  
+  		  <!-- file list -->
+			<select id="getFileList" parameterType="BoardDTO" resultType="BoardFileDTO">
+			SELECT FILENAME FROM  QNAFILES WHERE NOTICENUM = #{noticeNum}
+			</select>
+		
+		
+		
+		
+		
+		
+			<insert id="setAddFile"  parameterType="BoardFileDTO">
+			INSERT INTO QNAFILES VALUES (QNA_SEQ.NEXTVAL,#{fileName},#{oriName},#{noticeNum})
+			</insert>
+		
+		
+  		  <insert id="setReplyAdd" parameterType="QnaDTO">
+  		    <selectKey keyProperty="noticeNum" resultType="Long" order="BEFORE">
+  		  	SELECT QNA_SEQ.NEXTVAL FROM DUAL
+  		  </selectKey>
+  		  INSERT INTO QNA VALUES(#{noticeNum},#{noticeWriter},#{noticeHead},#{noticeContents}
+  		  ,SYSDATE,0,#{noticeRef},#{noticeStep},#{noticeDepth},0)
+  		  </insert>
+  		  
+  		  
+  		  <update id="setReplyUpdate" parameterType="QnaDTO">
+  		  UPDATE QNA SET NOTICESTEP=NOTICESTEP+1
+  		  WHERE NOTICEREF=#{noticeRef} AND NOTICESTEP > #{noticeStep}
+  		  </update>
+  		  
+  		  
+  		  <select id="getTotalCount" resultType="Long">
+  		  SELECT COUNT(NOTICENUM) FROM QNA
+  		  </select>
+  		  
+  		  <select id="getList" resultType="QnaDTO" parameterType="Pager">
+  		  SELECT * FROM
+  		  (SELECT ROWNUM R , Q.* FROM
+  		  (SELECT * FROM QNA 
+  		  	
+  		  	<include refid="search"></include>
+  		  
+  		  ORDER BY NOTICEREF DESC,NOTICESTEP ASC)Q)
+  		  WHERE R BETWEEN #{startRow} AND #{lastRow}
+  		  </select>
+  		  
+  		  <select id="getDetail" parameterType="BoardDTO" resultMap="getDetailResult">
+  		  SELECT * FROM QNA LEFT JOIN QNAFILES NF 
+  		  USING(NOTICENUM) WHERE NOTICENUM = #{noticeNum}
+  		  </select>
+  		  <resultMap type="QnaDTO" id="getDetailResult">
+  		  <id 	  column="NOTICENUM" property="noticeNum"/>
+  		  <result column="NOTICEWRITER" property="noticeWriter"/>
+  		  <result column="NOTICEHEAD" property="noticeHead"/>
+  		  <result column="NOTICECONTENTS" property="noticeContents"/>
+  		  <result column="NOTICEDATE" property="noticeDate"/>
+		  <result column="NOTICEVIEWS" property="noticeViews"/>
+		  <result column="NOTICEREF" property="noticeRef"/>
+		  <result column="NOTICESTEP" property="noticeStep"/>
+		  <result column="NOTICEDEPTH" property="noticeDepth"/>
+		  
+		  <collection property="fileDTOs" javaType="List"  ofType="BoardFileDTO">
+		  <id     column="FILENUM" property="fileNum"/>
+		  <result column="FILENAME" property="fileName"/>
+		  <result column="ORINAME" property="oriName"/>
+		  </collection>
+  		  </resultMap>
+  		 
+  		 
+  		 
+  		  <insert id="setAdd" parameterType="BoardDTO">
+  		  <selectKey keyProperty="noticeNum" resultType="Long" order="BEFORE">
+  		  	SELECT QNA_SEQ.NEXTVAL FROM DUAL
+  		  </selectKey>
+  		  INSERT INTO QNA VALUES(#{noticeNum},#{noticeWriter},#{noticeHead},#{noticeContents}
+  		  ,SYSDATE,0,#{noticeNum},0,0,0)
+  		  </insert>
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  </mapper>	
