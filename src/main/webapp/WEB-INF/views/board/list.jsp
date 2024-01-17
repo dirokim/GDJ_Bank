@@ -37,7 +37,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:if test="${list.size()==0} ">
+								<c:if test="${list.size()==0}">
 									<tr>
 										<td colspan="4">검색 결과 없습니다</td>
 									</tr>
@@ -122,12 +122,12 @@
 								</select>
 
 								<div class="col-auto">
-									<label for="search" class="visually-hidden">Password</label> <input
+									<label for="search" class="visually-hidden">search</label> <input
 										type="text" class="form-control" name="search" id="search"
 										placeholder="검색어을 입력해주세요">
 								</div>
 
-
+ 
 								<div class="col-auto">
 									<button type="submit" class="btn btn-primary mb-3">검색</button>
 								</div>
