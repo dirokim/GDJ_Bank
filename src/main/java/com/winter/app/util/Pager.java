@@ -38,7 +38,7 @@ public class Pager {
 		
 			
 		Long totalBlock = 0L;
-		Long perBlock = 10L;
+		Long perBlock = 5L;
 		totalBlock = totalPage/perBlock;
 		if(totalPage%perBlock!=0) {
 		totalBlock++;
