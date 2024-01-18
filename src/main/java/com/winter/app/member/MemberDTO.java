@@ -1,5 +1,7 @@
 package com.winter.app.member;
 
+import java.util.List;
+
 public class MemberDTO {
 
 	
@@ -10,7 +12,7 @@ public class MemberDTO {
 	private String phone;
 	private String address;
 	
-	
+	private List<Avatar> avatarFiles;
 	
 	
 	public String getUserName() {
@@ -48,6 +50,12 @@ public class MemberDTO {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public List<Avatar> getAvatarFiles() {
+		return avatarFiles;
+	}
+	public void setAvatarFiles(List<Avatar> avatarFiles) {
+		this.avatarFiles = avatarFiles;
 	}
 	
 	
