@@ -11,6 +11,11 @@
                             <li class="nav-item"><a class="nav-link" href="/notice/list">Notice</a></li>
                             <li class="nav-item"><a class="nav-link" href="/qna/list">QnA</a></li>
                         </ul>
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="/">로그인</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/product/list">회원가입</a></li>
+
+                        </ul>
                     </div>
                 </div>
             </nav>
