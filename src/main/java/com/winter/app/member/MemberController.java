@@ -45,7 +45,7 @@ public class MemberController {
 		if(memberDTO==null) {
 			model.addAttribute("msg","id 또는 pw 를 확인하세요");
 
-			return "";
+			return "member/login";
 		}
 		
 		 session.setAttribute("member", memberDTO);

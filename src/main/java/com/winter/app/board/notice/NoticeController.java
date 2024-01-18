@@ -87,7 +87,7 @@ public class NoticeController {
 	public String setAdd(BoardDTO boardDTO,MultipartFile[]attachs,HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		boardDTO.setNoticeWriter(memberDTO.getUserName());
-				
+		System.out.println(boardDTO.getNoticeHead());		
 		int result = boardService.setAdd(boardDTO,attachs);
 		return "redirect:./list";
 	}
