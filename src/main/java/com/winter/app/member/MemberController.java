@@ -20,6 +20,12 @@ public class MemberController {
 	
 	
 	
+	
+	@GetMapping("mypage")
+	public String setMypage () throws Exception {
+		return "member/mypage";
+	}
+	
 	@GetMapping("logout")
 	public String getLogout(HttpSession session)throws Exception {
 //		session.setAttribute("member",null);

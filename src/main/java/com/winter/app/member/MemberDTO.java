@@ -51,10 +51,10 @@ public class MemberDTO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Avatar getAvatarFiles() {
+	public Avatar getAvatarFile() {
 		return avatarFile;
 	}
-	public void setAvatarFiles(Avatar avatarFiles) {
+	public void setAvatarFile(Avatar avatarFiles) {
 		this.avatarFile = avatarFiles;
 	}
 	

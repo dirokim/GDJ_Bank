@@ -2,6 +2,8 @@ package com.winter.app.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.app.board.BoardDTO;
 import com.winter.app.board.BoardService;
+import com.winter.app.member.MemberDTO;
 import com.winter.app.util.Pager;
 @Controller
 @RequestMapping(value = "/qna/*")
@@ -46,7 +49,9 @@ public class QnaController {
 	}
 	
 	@GetMapping("update")
-	public String setUpdate (BoardDTO boardDTO,Model model)throws Exception {
+	public String setUpdate (BoardDTO boardDTO,Model model,HttpSession session)throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		boardDTO.setNoticeWriter(memberDTO.getUserName());
 		boardDTO = qnaService.getDetail(boardDTO);
 		model.addAttribute("boardDTO",boardDTO);
 		return "board/update";
@@ -71,7 +76,9 @@ public class QnaController {
 	}
 	
 	@GetMapping("reply")
-	public String setReply(BoardDTO boardDTO,Model model) throws Exception {
+	public String setReply(BoardDTO boardDTO,Model model,HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		boardDTO.setNoticeWriter(memberDTO.getUserName());
 		model.addAttribute("dto",boardDTO);
 		return "board/reply";
 	}
@@ -96,7 +103,9 @@ public class QnaController {
 		return "board/add";
 	}
 	@PostMapping("add")
-	public String getAdd (BoardDTO boardDTO,MultipartFile [] attachs) throws Exception {
+	public String getAdd (BoardDTO boardDTO,MultipartFile [] attachs,HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		boardDTO.setNoticeWriter(memberDTO.getUserName());
 		int result = qnaService.setAdd(boardDTO,attachs);
 		return "redirect:./list";
 	}
