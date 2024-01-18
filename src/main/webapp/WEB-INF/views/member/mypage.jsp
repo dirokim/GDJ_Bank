@@ -21,6 +21,18 @@
 				</h1>
 			</div>
 
+			<c:if test="${not empty member.avatarFile}">
+				<div>
+
+					<img src="/resources/upload/avatar/${member.avatarFile.fileName}">
+
+				</div>
+				<%-- 				<div class="mb-3">
+						<a href="/resources/upload/avatar/${member.avatarFile.fileName}">${member.avatarFile.oriName}</a>
+						</div> --%>
+			</c:if>
+
+
 
 			<div class="row gx-5 justify-content-center">
 				<div class="col-lg-11 col-xl-9 col-xxl-8">
@@ -65,11 +77,7 @@
 	
 
 						
-						<c:if test="${not empty member.avatarFile}">
-						<div class="mb-3">
-						<a href="/resources/upload/avatar/${avatarFile.fileName}">${avatarFile.oriName}</a>
-						</div>
-						</c:if>
+
 <!-- 
 						<div class="mb-3">
 
