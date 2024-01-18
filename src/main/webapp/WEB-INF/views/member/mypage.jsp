@@ -45,40 +45,40 @@
 						</div>
 
 						<div class="mb-3">
-							<label for="password" class="form-label"></label> <input
-								type="text" value="${member.password}"
-								class="form-control" id="password" name="password"
-								placeholder="${member.password}">
+							<label for="password" class="form-label">password</label> <input
+								type="text" value="${member.password}" class="form-control"
+								id="password" name="password" placeholder="${member.password}">
 						</div>
-												<div class="mb-3">
-							<label for="name" class="form-label">${member.name}</label> <input
-								type="text" value="${member.name}"
-								class="form-control" id="name" name="name"
-								placeholder="${member.name}">
-						</div>
-												<div class="mb-3">
-							<label for="email" class="form-label">${member.email}</label> <input
-								type="text" value="${member.email}"
-								class="form-control" id="email" name="email"
-								placeholder="${member.email}">
-						</div>
-												<div class="mb-3">
-							<label for="phone" class="form-label">${member.phone}</label> <input
-								type="text" value="${member.phone}"
-								class="form-control" id="phone" name="phone"
-								placeholder="${member.phone}">
-						</div>
-												<div class="mb-3">
-							<label for="address" class="form-label">${member.address}</label> <input
-								type="text" value="${member.address}"
-								class="form-control" id="address" name="address"
-								placeholder="address 입력하세요">
-						</div>
-	
-
 						
+						<div class="mb-3">
+							<label for="name" class="form-label">name</label> <input
+								type="text" value="${member.name}" class="form-control"
+								id="name" name="name" placeholder="${member.name}">
+						</div>
+						
+						<div class="mb-3">
+							<label for="email" class="form-label">email</label> <input
+								type="text" value="${member.email}" class="form-control"
+								id="email" name="email" placeholder="${member.email}">
+						</div>
+						
+						<div class="mb-3">
+							<label for="phone" class="form-label">phone</label> <input
+								type="text" value="${member.phone}" class="form-control"
+								id="phone" name="phone" placeholder="${member.phone}">
+						</div>
+						
+						<div class="mb-3">
+							<label for="address" class="form-label">address</label> 
+						<input
+								type="text" value="${member.address}" class="form-control"
+								id="address" name="address" placeholder="address 입력하세요">
+						</div>
 
-<!-- 
+
+
+
+						<!-- 
 						<div class="mb-3">
 
 							<button class="btn btn-primary">회원 가입</button>
