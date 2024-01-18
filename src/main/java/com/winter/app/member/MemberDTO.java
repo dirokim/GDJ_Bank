@@ -12,7 +12,7 @@ public class MemberDTO {
 	private String phone;
 	private String address;
 	
-	private Avatar avatarFiles;
+	private Avatar avatarFile;
 	
 	
 	public String getUserName() {
@@ -52,10 +52,10 @@ public class MemberDTO {
 		this.address = address;
 	}
 	public Avatar getAvatarFiles() {
-		return avatarFiles;
+		return avatarFile;
 	}
 	public void setAvatarFiles(Avatar avatarFiles) {
-		this.avatarFiles = avatarFiles;
+		this.avatarFile = avatarFiles;
 	}
 	
 	

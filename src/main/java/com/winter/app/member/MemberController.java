@@ -1,5 +1,8 @@
 package com.winter.app.member;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,35 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService; 
+	
+	
+	
+	@GetMapping("logout")
+	public String getLogout(HttpSession session)throws Exception {
+//		session.setAttribute("member",null);
+//		session.removeAttribute("member");
+//		session.removeValue("member");
+		session.invalidate();
+		return "redirect:../";
+	}
+	
+	@GetMapping("login")
+	public void getLogin ()throws Exception{
+		
+	}
+	@PostMapping("login")
+	public String getLogin (MemberDTO memberDTO,HttpSession session,Model model)throws Exception{
+		memberDTO = memberService.getLogin(memberDTO);
+		if(memberDTO==null) {
+			model.addAttribute("msg","id 또는 pw 를 확인하세요");
+
+			return "";
+		}
+		
+		 session.setAttribute("member", memberDTO);
+		 
+		 return "redirect:../";
+	}
 	
 	@PostMapping("join")
 	public String getJoin (MemberDTO memberDTO , MultipartFile attachs,Model model) throws Exception {

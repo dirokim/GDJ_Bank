@@ -17,10 +17,27 @@ public class MemberService {
 	private ServletContext servletContext;
 	
 	
+	
+	
+	
+	
+	public MemberDTO getLogin (MemberDTO memberDTO) throws Exception {
+		MemberDTO m = memberDAO.getDetail(memberDTO);
+		 
+		if(m!=null) {
+			 if(m.getPassword().equals(memberDTO.getPassword())) {
+				 
+				 return m;
+			 }else {
+				 m = null;
+			 }
+		 }
+		return m;
+
+	}
+	
 	public int getJoin (MemberDTO memberDTO,MultipartFile attachs)throws Exception {
 	 int result = memberDAO.joinAdd(memberDTO);
-		
-		
 		FileManager fileManager = new FileManager();
 		String path =  servletContext.getRealPath("/resources/upload/avatar");
 	
@@ -30,9 +47,7 @@ public class MemberService {
 		avatar.setFileName(fileName);
 		avatar.setOriName(attachs.getOriginalFilename());
 		 memberDAO.addAvatar(avatar);
-		
-	
-		
+
 		return result;
 
 	}

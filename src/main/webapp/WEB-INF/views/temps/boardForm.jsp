@@ -12,13 +12,13 @@
 					value="${boardDTO.noticeHead}" placeholder="제목을 입력하세요">
 			</div>
 
-			<div class="mb-3">
+<%-- 			<div class="mb-3">
 				<label for="noticeWriter" class="form-label">Writer</label> <input
-					type="text"  value="${boardDTO.noticeWriter}"
+					type="text"  value="${member.userName}"
 					class="form-control" id="noticeWriter" name="noticeWriter"
 					placeholder="작성자를 입력하세요">
 			</div>
-
+ --%>
 
 			<div class="mb-3">
 				<label for="noticeContents" class="form-label">Contents</label>
