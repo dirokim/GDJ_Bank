@@ -15,18 +15,23 @@
   		  <select id="detail" resultType="ProductDTO" parameterType="ProductDTO">
   		  SELECT * FROM PRODUCT WHERE PRODUCTNUM=#{productNum}
   		  </select>
+  	
   		  
   		  <insert id="add"  parameterType="ProductDTO">
   		  INSERT INTO PRODUCT VALUES (PRODUCT_SEQ.NEXTVAL,#{productName},#{productContents},#{productRate},#{productJumsu})
   		  </insert>
+  		
   		  
   		  <update id="delete" parameterType="ProductDTO" >
   		  	UPDATE PRODUCT SET PRODUCTSALE=#{productSale} WHERE PRODUCTNUM=#{productNum}
   		  </update>
+  		
   		  
   		  <update id="update" parameterType="ProductDTO">
   		  UPDATE PRODUCT SET PRODUCTNAME=#{productName},PRODUCTCONTENTS=#{productContents}, PRODUCTRATE=#{productRate},PRODUCTJUMSU=#{productJumsu} WHERE PRODUCTNUM=#{productNum}
   		  </update>
+  		
+  		
   		  <select id="getTotal" resultType="Long">
   		  SELECT COUNT(PRODUCTNUM) FROM PRODUCT
   		  </select>
