@@ -27,6 +27,7 @@ public class NoticeService implements BoardService {
 	@Autowired
 	private ServletContext servletContext;
 	
+	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 
@@ -39,6 +40,7 @@ public class NoticeService implements BoardService {
 		List<BoardDTO>ar = noticeDAO.getList(pager);
 		return ar ; 
 	}
+	
 
 	@Override
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception {
