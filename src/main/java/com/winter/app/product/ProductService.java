@@ -26,25 +26,23 @@ public class ProductService {
 		Long totalCount = productDAO.getTotal();
 		pager.makePage(totalCount);
 		List<ProductDTO> ar = this.productDAO.list(pager);
-	return ar;
+		return ar;
 	}
-	
+
 	public ProductDTO serDetail(ProductDTO productDTO) throws Exception {
-	return productDTO = productDAO.detail(productDTO);
+		return productDTO = productDAO.detail(productDTO);
 	}
-	
-	public int serAdd(ProductDTO productDTO,MultipartFile file) throws Exception {
-	int result = productDAO.add(productDTO);
+
+	public int serAdd(ProductDTO productDTO, MultipartFile file) throws Exception {
+		int result = productDAO.add(productDTO);
 		String path = servletContext.getRealPath("/resources/upload/product");
-		String fileName = fileManager.fileSave(path,file);
-		
-		
-		
-	return 	result;
+		String fileName = fileManager.fileSave(path, file);
+
+		return result;
 	}
-	
-	public int serUpdate(ProductDTO produtDTO) throws Exception{
-	int result = productDAO.update(produtDTO);
+
+	public int serUpdate(ProductDTO produtDTO) throws Exception {
+		int result = productDAO.update(produtDTO);
 		return result;
 	}
 }
