@@ -37,68 +37,65 @@ public class QnaController {
 		return"qna";
 	}
 	
-	
 	@PostMapping("update")
-	public String setUpdate (BoardDTO boardDTO,Model model,MultipartFile [] attachs)throws Exception {
-		int result = qnaService.setUpdate(boardDTO,attachs);
-		model.addAttribute("boardDTO",boardDTO);
+	public String setUpdate(BoardDTO boardDTO, Model model, MultipartFile[] attachs) throws Exception {
+		int result = qnaService.setUpdate(boardDTO, attachs);
+		model.addAttribute("boardDTO", boardDTO);
 		return "board/list";
 	}
-	
+
 	@GetMapping("update")
-	public String setUpdate (BoardDTO boardDTO,Model model)throws Exception {
+	public String setUpdate(BoardDTO boardDTO, Model model) throws Exception {
 		boardDTO = qnaService.getDetail(boardDTO);
-		model.addAttribute("boardDTO",boardDTO);
+		model.addAttribute("boardDTO", boardDTO);
 		return "board/update";
 	}
-	
-	
-	
-	
+
 	@PostMapping("delete")
-	public String setDelete(QnaDTO boardDTO)throws Exception {
+	public String setDelete(QnaDTO boardDTO) throws Exception {
 		boardDTO.setFlag(1);
 		int result = qnaService.setDelete(boardDTO);
-		
+
 		return "redirect:./list";
 	}
-	
-	
+
 	@PostMapping("reply")
 	public String setReply(QnaDTO qnaDTO) throws Exception {
 		int result = qnaService.setReply(qnaDTO);
 		return "redirect:./list";
 	}
-	
+
 	@GetMapping("reply")
-	public String setReply(BoardDTO boardDTO,Model model) throws Exception {
-		model.addAttribute("dto",boardDTO);
+	public String setReply(BoardDTO boardDTO, Model model) throws Exception {
+		model.addAttribute("dto", boardDTO);
 		return "board/reply";
 	}
-	
+
 	@GetMapping("list")
-	public String getList(Pager pager,Model model) throws Exception {
-		
+	public String getList(Pager pager, Model model) throws Exception {
+
 		List<BoardDTO> ar = qnaService.getList(pager);
-		model.addAttribute("list",ar);
-		model.addAttribute("pager",pager);
+		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
 		return "board/list";
 	}
-	
+
 	@GetMapping("detail")
-	public String getDetail(BoardDTO boardDTO,Model model) throws Exception {
-		boardDTO = (QnaDTO)qnaService.getDetail(boardDTO);
-		model.addAttribute("boardDTO",boardDTO);
+	public String getDetail(BoardDTO boardDTO, Model model) throws Exception {
+		boardDTO = (QnaDTO) qnaService.getDetail(boardDTO);
+		model.addAttribute("boardDTO", boardDTO);
 		return "board/detail";
 	}
+
 	@GetMapping("add")
-	public String getAdd () throws Exception {
+	public String getAdd() throws Exception {
 		return "board/add";
 	}
+
 	@PostMapping("add")
-	public String getAdd (BoardDTO boardDTO,MultipartFile [] attachs) throws Exception {
-		int result = qnaService.setAdd(boardDTO,attachs);
+	public String getAdd(BoardDTO boardDTO, MultipartFile[] attachs) throws Exception {
+		int result = qnaService.setAdd(boardDTO, attachs);
 		return "redirect:./list";
 	}
-	
+
 }
