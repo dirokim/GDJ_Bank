@@ -9,25 +9,26 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileManager {
 	
-	public String fileSave(String path,MultipartFile file) throws Exception {
-		
+	public String fileSave(String path, MultipartFile file) throws Exception {
+
 		File f = new File(path);
-		if(f.isFile()) {
+		if (f.isFile()) {
 			throw new Exception();
 		}
-		if(f.exists()) {
-			
-		}else {
+		if (f.exists()) {
+
+		} else {
 			f.mkdir();
 		}
 		Calendar ca = Calendar.getInstance();
-		String fileName = ca.getTimeInMillis()+"_"+file.getOriginalFilename();
-		f= new File(f,fileName);
+		String fileName = ca.getTimeInMillis() + "_" + file.getOriginalFilename();
+		f = new File(f, fileName);
 		file.transferTo(f);
 		return fileName;
 	}
-	public boolean fileDelete(String path,String fileName) throws Exception {
-		File file = new File(path,fileName);
+
+	public boolean fileDelete(String path, String fileName) throws Exception {
+		File file = new File(path, fileName);
 		return file.delete();
 	}
 }
