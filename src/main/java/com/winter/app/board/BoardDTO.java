@@ -15,9 +15,8 @@ public class BoardDTO {
 	
 	
 	private List<BoardFileDTO> fileDTOs;
-	
+
 	 
-	
 	
 	public List<BoardFileDTO> getFileDTOs() {
 		return fileDTOs;
