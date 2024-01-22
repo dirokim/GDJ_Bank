@@ -9,11 +9,11 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                             <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                             
-                                 <c:if test="${not empty sessionScope.member}">
+                   
                             <li class="nav-item"><a class="nav-link" href="/product/list">Product</a></li>
                             <li class="nav-item"><a class="nav-link" href="/notice/list">Notice</a></li>
                             <li class="nav-item"><a class="nav-link" href="/qna/list">QnA</a></li>
-                            	</c:if>
+                            
                         </ul>
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                         	<c:if test="${empty sessionScope.member}">

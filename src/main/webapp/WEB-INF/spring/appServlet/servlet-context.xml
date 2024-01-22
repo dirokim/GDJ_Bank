@@ -25,4 +25,21 @@
 	
 	
 	
+	<!-- <beans:bean class="com.winter.app.interceptors.TestInterceptors" id="testInterceptors"></beans:bean> -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/notice/*"/>
+			<beans:ref  bean="testInterceptors"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/**"/>
+			<exclude-mapping path="/qna/list"/>
+			<beans:bean class="com.winter.app.interceptors.AuthenticationCeptor" id="authenticationCeptor"></beans:bean>
+		</interceptor>
+	</interceptors>
+	
+	
+	
 </beans:beans>

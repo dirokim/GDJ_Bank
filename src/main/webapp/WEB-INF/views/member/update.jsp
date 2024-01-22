@@ -33,12 +33,6 @@
 						</div>
 
 						<div class="mb-3">
-							<label for="password" class="form-label">password</label> <input
-								type="text" value="${member.password}"
-								class="form-control" id="password" name="password"
-								placeholder="password를 입력하세요">
-						</div>
-												<div class="mb-3">
 							<label for="name" class="form-label">Name</label> <input
 								type="text" value="${member.name}"
 								class="form-control" id="name" name="name"
@@ -81,6 +75,8 @@
 						<div class="mb-3">
 
 							<button class="btn btn-primary">Update</button>
+							<a class="btn btn-primary" href="./uddatePassword">비밀번호 수정</a>
+							<a class="btn btn-primary" href="./delete">탈퇴</a>
 						</div>
 					</form>
 
