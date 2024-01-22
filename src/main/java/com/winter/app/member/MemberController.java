@@ -28,7 +28,7 @@ public class MemberController {
 		memberDTO.setUserName(m.getUserName()); 	
 		memberDTO.setAvatarFile(m.getAvatarFile());
 		memberService.getUpdate(memberDTO);
-		 session.setAttribute("member", memberDTO);
+		session.setAttribute("member", memberDTO);
 		 return "redirect:./mypage";
 	}
 	
