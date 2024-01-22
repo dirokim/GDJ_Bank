@@ -15,7 +15,7 @@
 			<if test="name !=null or name !=''">
 			NAME=#{name},</if>
 			<if test="email !=null or email !=''">
-			Email=#{email},</if>
+			EMAIL=#{email},</if>
 			<if test="phone !=null or phone !=''">
 			PHONE=#{phone},</if>
 			<if test="address !=null ">
