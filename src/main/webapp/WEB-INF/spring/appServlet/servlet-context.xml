@@ -33,10 +33,28 @@
 			<beans:ref  bean="testInterceptors"/>
 		</interceptor>
 		
+		
 		<interceptor>
-			<mapping path="/qna/**"/>
+			<mapping path="/qna/update"/>
+			<mapping path="/qna/delete"/>			
+			<mapping path="/notice/update"/>	
+			<mapping path="/notice/delete"/>		
+			<beans:ref bean="writerCheck" />
+			
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/*"/>
+			<mapping path="/notice/*"/>
+		
+			<mapping path="/member/mypage"/>
+			<mapping path="/member/update"/>
+			<mapping path="/member/delete"/>
+			
 			<exclude-mapping path="/qna/list"/>
-			<beans:bean class="com.winter.app.interceptors.AuthenticationCeptor" id="authenticationCeptor"></beans:bean>
+			<exclude-mapping path="/notice/list"/>
+			<beans:ref bean="authenticationCeptor"/>					
+
 		</interceptor>
 	</interceptors>
 	
