@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -48,8 +48,10 @@
                                 <c:if test="${bbs eq 1}">
                                 <a class="btn btn-primary" href="reply?noticeNum=${boardDTO.noticeNum}">답글</a>
                                 </c:if>
+                                <c:if test="${boardDTO.noticeWriter eq member.userName}">
                                 <a class="btn btn-info" id="update" href="#">Update</a>
                                 <a class="btn btn-primary" id="del" href="#">Delete</a>
+                                </c:if>
                                 <form id="frm" action="./update" method="get">
                                     <input type="hidden" name="noticeNum" value="${boardDTO.noticeNum}">
 

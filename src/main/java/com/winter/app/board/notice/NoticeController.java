@@ -2,6 +2,8 @@ package com.winter.app.board.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.app.board.BoardDTO;
 import com.winter.app.board.BoardService;
+import com.winter.app.member.MemberDTO;
 import com.winter.app.util.Pager;
 
 @Controller
@@ -43,9 +46,11 @@ public class NoticeController {
 	}
 
 	@PostMapping("update")
-	public String setUpdate(BoardDTO boardDTO, Model model, MultipartFile[] attachs) throws Exception {
-		int result = boardService.setUpdate(boardDTO, attachs);
-		model.addAttribute("boardDTO", boardDTO);
+	public String setUpdate(BoardDTO boardDTO,Model model,MultipartFile [] attachs,HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		boardDTO.setNoticeWriter(memberDTO.getUserName());
+		int result = boardService.setUpdate(boardDTO,attachs);
+	model.addAttribute("boardDTO",boardDTO);
 		return "board/list";
 	}
 
@@ -77,8 +82,11 @@ public class NoticeController {
 	}
 
 	@PostMapping("add")
-	public String setAdd(BoardDTO boardDTO, MultipartFile[] attachs) throws Exception {
-		int result = boardService.setAdd(boardDTO, attachs);
+	public String setAdd(BoardDTO boardDTO,MultipartFile[]attachs,HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		boardDTO.setNoticeWriter(memberDTO.getUserName());
+		System.out.println(boardDTO.getNoticeHead());		
+		int result = boardService.setAdd(boardDTO,attachs);
 		return "redirect:./list";
 	}
 }

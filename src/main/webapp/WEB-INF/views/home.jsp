@@ -22,9 +22,12 @@
                                 <div class="fs-3 fw-light text-muted">hello</div>
                                 <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">김승균</span></h1>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
+                                
+                                <c:if test="${not empty sessionScope.member}">
                                     <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="/product/list">ProductList</a>
                                     <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/notice/list">NoticeList</a>
                                     <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/qna/list">QnaList</a>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>
