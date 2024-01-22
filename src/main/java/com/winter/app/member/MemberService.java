@@ -19,6 +19,10 @@ public class MemberService {
 	
 	
 	
+	public MemberDTO getDetail (MemberDTO memberDTO ) throws Exception {
+		return memberDAO.getDetail(memberDTO);
+	}
+	
 	
 	public void getUpdate (MemberDTO memberDTO) throws Exception {
 		memberDAO.setUpdate(memberDTO);
@@ -30,7 +34,7 @@ public class MemberService {
 		if(m!=null) {
 			 if(m.getPassword().equals(memberDTO.getPassword())) {
 				 
-				 return m;
+				 return memberDTO;
 			 }else {
 				 m = null;
 			 }

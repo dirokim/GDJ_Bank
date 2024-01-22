@@ -26,20 +26,26 @@ public class MemberController {
 		//디비에 업데이트후 마이페이지로 리다이렉트 
 		MemberDTO m = (MemberDTO) session.getAttribute("member");
 		memberDTO.setUserName(m.getUserName()); 	
-		memberDTO.setAvatarFile(m.getAvatarFile());
 		memberService.getUpdate(memberDTO);
-		session.setAttribute("member", memberDTO);
 		 return "redirect:./mypage";
 	}
 	
 	@GetMapping("mypage")
-	public String setMypage () throws Exception {
+	public String setMypage (HttpSession session,Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberService.getDetail(memberDTO);
+		model.addAttribute("member",memberDTO);
 		return "member/mypage";
+		
+		
 	}
 	
 	@GetMapping("update")
-	public void setUpdate() throws Exception {
+	public void setUpdate(HttpSession session,Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.getDetail(memberDTO);
 		
+		model.addAttribute("member",memberDTO);
 		
 	}
 	
