@@ -84,7 +84,12 @@
 							<button class="btn btn-primary">회원 가입</button>
 						</div> -->
 					</form>
+					
 
+					<div>
+					<a class="btn btn-primary" href="./update">수정</a>
+
+					</div>
 				</div>
 			</div>
 

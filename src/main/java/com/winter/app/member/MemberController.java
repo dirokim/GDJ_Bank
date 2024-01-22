@@ -20,10 +20,26 @@ public class MemberController {
 	
 	
 	
+
+	@PostMapping("update")
+	public String setUpdate(MemberDTO memberDTO,HttpSession session) throws Exception {
+		//디비에 업데이트후 마이페이지로 리다이렉트 
+		MemberDTO m = (MemberDTO) session.getAttribute("member");
+		memberDTO.setUserName(m.getUserName()); 	
+		memberService.getUpdate(memberDTO);
+		 session.setAttribute("member", memberDTO);
+		 return "redirect:../";
+	}
 	
 	@GetMapping("mypage")
 	public String setMypage () throws Exception {
 		return "member/mypage";
+	}
+	
+	@GetMapping("update")
+	public void setUpdate() throws Exception {
+		
+		
 	}
 	
 	@GetMapping("logout")
