@@ -10,15 +10,13 @@
 		
 			<update id="setUpdate" parameterType="MemberDTO">
 			UPDATE MEMBER <set>
-			<if test="password !=null or password !=''"> 
-			PASSWORD=#{password},</if>
 			<if test="name !=null or name !=''">
 			NAME=#{name},</if>
 			<if test="email !=null or email !=''">
 			EMAIL=#{email},</if>
 			<if test="phone !=null or phone !=''">
 			PHONE=#{phone},</if>
-			<if test="address !=null ">
+			<if test="address !=null or address  !=''">
 			ADDRESS=#{address}</if>
 			</set> 
 			WHERE USERNAME = #{userName}

@@ -25,8 +25,8 @@
                                 
                                 <c:if test="${not empty sessionScope.member}">
                                     <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="/product/list">ProductList</a>
-                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/notice/list">NoticeList</a>
-                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/qna/list">QnaList</a>
+                                    <a id="b1" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/notice/list">NoticeList</a>
+                                    <a id="b2"class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/qna/list">QnaList</a>
                                     </c:if>
                                 </div>
                             </div>

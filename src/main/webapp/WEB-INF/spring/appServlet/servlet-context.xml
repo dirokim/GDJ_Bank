@@ -45,14 +45,11 @@
 		
 		<interceptor>
 			<mapping path="/qna/*"/>
-			<mapping path="/notice/*"/>
-		
 			<mapping path="/member/mypage"/>
 			<mapping path="/member/update"/>
 			<mapping path="/member/delete"/>
-			
 			<exclude-mapping path="/qna/list"/>
-			<exclude-mapping path="/notice/list"/>
+
 			<beans:ref bean="authenticationCeptor"/>					
 
 		</interceptor>

@@ -76,6 +76,11 @@ public class MemberController {
 		 return "redirect:../";
 	}
 	
+	@GetMapping("agreement")
+	public void setAgreement()throws Exception {
+		
+	}
+	
 	@PostMapping("join")
 	public String getJoin (MemberDTO memberDTO , MultipartFile attachs,Model model) throws Exception {
 		int result = memberService.getJoin(memberDTO, attachs);

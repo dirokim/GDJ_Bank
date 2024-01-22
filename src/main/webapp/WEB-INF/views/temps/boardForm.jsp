@@ -21,9 +21,9 @@
  --%>
 
 			<div class="mb-3">
-				<label for="noticeContents" class="form-label">Contents</label>
+				<label for="Contents" class="form-label">Contents</label>
 				<textarea class="form-control" name="noticeContents"
-					id="noticeContents" rows="3">${boardDTO.noticeContents}</textarea>
+					id="Contents" rows="3">${boardDTO.noticeContents}</textarea>
 			</div>
 			<div class="mb-3">
 				<input class="form-control" type="file" name="attachs"> <input
@@ -33,11 +33,13 @@
 
 
 			<div class="mb-3">
-
+				
 				<button class="btn btn-primary">수정</button>
 			</div>
 		</form>
-
+	
 	</div>
 </div>
+
+
 
