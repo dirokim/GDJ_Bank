@@ -71,7 +71,7 @@
         
         
         
-        <script src="../resources/js/agreement.js" type="text/javascript"></script>
+        <script src="../resources/js/member/agreement.js" type="text/javascript"></script>
         
             <!--사용전 경로를 꼭 수정 하세요  -->
 	<c:import url="../temps/footer.jsp"></c:import>

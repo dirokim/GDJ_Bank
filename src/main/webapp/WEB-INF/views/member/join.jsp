@@ -33,14 +33,26 @@
 						</div>
 
 						<div class="mb-3">
-							<label for="password" class="form-label">password</label> <input
-								type="text" value="${memberDTO.password}"
-								class="form-control" id="password" name="password"
+							<label for="password" class="form-label">password</label> 
+							<input type="text"  class="form-control" id="password" name="password"
 								placeholder="password를 입력하세요">
 						</div>
+						<div id="passwordResult">
+							
+						</div>
+						<div class="mb-3">
+							<label for="passwordCheck" class="form-label">passwordCheck</label>
+							 <input type="text" class="form-control" id="passwordCheck" name="password"
+								placeholder="password를 입력하세요">
+						</div>
+						<div id="passwordCheckResult">
+
+
+						</div>
+
 												<div class="mb-3">
 							<label for="name" class="form-label">Name</label> <input
-								type="text" value="${memberDTO.name}"
+								type="text" 
 								class="form-control" id="name" name="name"
 								placeholder="name 입력하세요">
 						</div>
@@ -80,7 +92,7 @@
 
 						<div class="mb-3">
 
-							<button class="btn btn-primary">회원 가입</button>
+							<button type="button" id="joinBtn" class="btn btn-primary">회원 가입</button>
 						</div>
 					</form>
 
@@ -160,5 +172,6 @@
 	</main>
 	<!--사용전 경로를 꼭 수정 하세요  -->
 	<c:import url="../temps/footer.jsp"></c:import>
+	<script src="../resources/js/member/joinCheck.js" ></script>;
     </body>
 </html>
