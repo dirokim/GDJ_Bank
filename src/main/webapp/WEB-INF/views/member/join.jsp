@@ -28,13 +28,13 @@
 					<form method="post" action="./join" enctype="multipart/form-data">
 						<div class="mb-3">
 							<label for="userName" class="form-label">I D</label> <input
-								type="text" class="form-control" id="userName" name="userName"
-								value="${memberDTO.userName}" placeholder="아이디를 입력하세요">
+								type="text" class="form-control req" id="userName" name="userName"
+								 placeholder="아이디를 입력하세요">
 						</div>
 
 						<div class="mb-3">
 							<label for="password" class="form-label">password</label> 
-							<input type="text"  class="form-control" id="password" name="password"
+							<input type="text"  class="form-control " id="password" 
 								placeholder="password를 입력하세요">
 						</div>
 						<div id="passwordResult">
@@ -42,7 +42,7 @@
 						</div>
 						<div class="mb-3">
 							<label for="passwordCheck" class="form-label">passwordCheck</label>
-							 <input type="text" class="form-control" id="passwordCheck" name="password"
+							 <input type="text" class="form-control req" id="passwordCheck" name="password"
 								placeholder="password를 입력하세요">
 						</div>
 						<div id="passwordCheckResult">
@@ -53,19 +53,19 @@
 												<div class="mb-3">
 							<label for="name" class="form-label">Name</label> <input
 								type="text" 
-								class="form-control" id="name" name="name"
+								class="form-control req" id="name" name="name"
 								placeholder="name 입력하세요">
 						</div>
 												<div class="mb-3">
 							<label for="email" class="form-label">email</label> <input
-								type="text" value="${memberDTO.email}"
-								class="form-control" id="email" name="email"
+								type="text" 
+								class="form-control req" id="email" name="email"
 								placeholder="email 입력하세요">
 						</div>
 												<div class="mb-3">
 							<label for="phone" class="form-label">phone</label> <input
-								type="text" value="${memberDTO.phone}"
-								class="form-control" id="phone" name="phone"
+								type="text"
+								class="form-control req" id="phone" name="phone"
 								placeholder="phone 입력하세요">
 						</div>
 						
@@ -75,7 +75,7 @@
 						
 						<input type="text" id="sample6_postcode" placeholder="우편번호"> 
 						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> 
-						<input type="text" id="sample6_address" name="address" placeholder="address 입력하세요"><br> 
+						<input type="text" id="sample6_address" class="req" name="address" placeholder="address 입력하세요"><br> 
 						<input type="text" id="sample6_detailAddress" placeholder="상세주소"> 
 						<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 						
