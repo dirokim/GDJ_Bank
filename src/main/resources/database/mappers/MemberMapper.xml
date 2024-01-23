@@ -48,7 +48,7 @@
   		  </insert>
   		  
   		  <insert id="addAvatar" parameterType="Avatar" >
-  		  INSERT INTO AVATAR VALUES (AVATAR_SEQ.NEXTVAL,#{password},#{userName},#{fileName},#{oriName})
+  		  INSERT INTO AVATAR VALUES (AVATAR_SEQ.NEXTVAL,#{userName},#{fileName},#{oriName})
   		  </insert>
 
 		  		  

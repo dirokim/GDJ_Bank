@@ -28,8 +28,8 @@
 						<h3>그런번호 없습니다.</h3>
 						</c:if>
 				</div>
-					<a href="./product/update"><button></button></a>
-
+					<a href="./update">업데이트</a>
+					<a href="../account/add?productNum=${dto.productNum}">등록</a>
 
 
 

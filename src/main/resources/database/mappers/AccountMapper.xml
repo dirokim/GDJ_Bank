@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper
+  	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  		  <mapper namespace="com.winter.app.account.AccountDAO">
+  		  
+  		  
+  		  <insert id="add" parameterType="AccountDTO">
+  		  INSERT INTO ACCOUNT VALUES(#{accountNum},#{userName},#{productNum},#{accountPw},
+  		  SYSDATE,0)
+  		  </insert>
+  		  
+  		  
+  		  <select id="list"  parameterType="AccountDTO" resultMap="accountDTOresult">
+  		SELECT PRODUCTNUM,PRODUCTNAME,PRODUCTRATE, ACCOUNTNUM,ACCOUNTDATE,ACCOUNTBALANCE 
+		FROM PRODUCT LEFT JOIN ACCOUNT USING(PRODUCTNUM) WHERE USERNAME=#{userName}
+  		  </select>
+  		  <resultMap type="ProductDTO" id="accountDTOresult">
+  		  <id column="PRODUCTNUM" property="productNum"/>
+  		  <result column="PRODUCTNAME" property="productName"/>
+		  <result column="PRODUCTRATE" property="productRate"/>
+  		
+  		  <collection property="accountDTOs"  javaType="List" ofType="AccountDTO">
+  		  <id column="ACCOUNTNUM" property="accountNum"/>
+		  <result column="ACCOUNTDATE" property="accountDate"/>
+  		  <result column="ACCOUNTBALANCE" property="accountBalance"/>
+  		  </collection>	
+  		  </resultMap>
+  		  
+  		  
+  		  
+  		  <select id="detail" parameterType="AccountDTO" resultType="AccountDTO" >
+  		  SELECT * FROM ACCOUNT WHERE ACCOUNTNUM = #{accountNum}
+  		  </select>
+  		  
+  		  
+  		  
+  		  
+  		  
+  		  </mapper>	
