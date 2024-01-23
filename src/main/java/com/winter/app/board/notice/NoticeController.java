@@ -81,6 +81,7 @@ public class NoticeController {
 		return "board/add";
 	}
 
+	
 	@PostMapping("add")
 	public String setAdd(BoardDTO boardDTO,MultipartFile[]attachs,HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
