@@ -12,10 +12,27 @@
 			WHERE R BETWEEN #{startRow} AND #{lastRow}
   		  </select>
   		  
-  		  <select id="detail" resultType="ProductDTO" parameterType="ProductDTO">
-  		  SELECT * FROM PRODUCT WHERE PRODUCTNUM=#{productNum}
+  		  <select id="detail" parameterType="ProductDTO" resultMap="ProductDTOresult">
+  		  SELECT * FROM PRODUCT LEFT JOIN PRODUCTFILES USING (PRODUCTNUM) 
+  		  WHERE PRODUCTNUM=#{productNum}
   		  </select>
-  	
+  		  <resultMap type="ProductDTO" id="ProductDTOresult">
+  		  <id column="PRODUCTNUM" property="productNum"/>
+  		  <result column="PRODUCTNAME" property="productName"/>
+  		  <result column="PRODUCTCONTENTS" property="productContents"/>
+  		  <result column="PRODUCTNRATE" property="productRate"/>
+  		  <result column="PRODUCTJUMSU" property="productJumsu"/>
+  		  <result column="PRODUCTCOUNT" property="productCount"/>
+  		  <result column="PRODUCTSALE" property="productSale"/>
+  		  
+  		  <association  property="productFileDTO"  javaType="ProductFileDTO">
+ 
+  		  <id column="FILENUM" property="fileNum"/>
+  		  <result column="FILENAME" property="fileName"/>
+  		  <result column="ORINAME" property="oriName"/>
+  		  </association>
+  		  
+  		  </resultMap>
   		  
   		  <insert id="add"  parameterType="ProductDTO">
   		  INSERT INTO PRODUCT VALUES (PRODUCT_SEQ.NEXTVAL,#{productName},#{productContents},#{productRate},#{productJumsu})

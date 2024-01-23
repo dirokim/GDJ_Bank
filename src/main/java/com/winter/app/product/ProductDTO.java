@@ -11,6 +11,7 @@ public class ProductDTO {
 	private Long productCount;
 	private Long productSale;
 	
+	private ProductFileDTO productFileDTO;
 	
 	
 	
@@ -56,6 +57,12 @@ public class ProductDTO {
 	}
 	public void setProductSale(Long productSale) {
 		this.productSale = productSale;
+	}
+	public ProductFileDTO getProductFileDTO() {
+		return productFileDTO;
+	}
+	public void setProductFileDTO(ProductFileDTO productFileDTO) {
+		this.productFileDTO = productFileDTO;
 	}
 	
 	
