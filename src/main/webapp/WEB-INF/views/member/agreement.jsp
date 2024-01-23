@@ -29,28 +29,28 @@
 					</div>
 					<div class="form-check">
 						<input class="form-check-input checks" type="checkbox" value="" id="a1"> 
-						<label class="form-check-label" for="a1"> 필수 동의 1 </label>
+						<label class="form-check-label req" for="a1"> 필수 동의 1 </label>
 					</div>
 
 					<div class="form-check">
 						<input class="form-check-input checks" type="checkbox" value="" id="a2"> 
-						<label class="form-check-label" for="a2"> 필수 동의 2 </label>
+						<label class="form-check-label req" for="a2"> 필수 동의 2 </label>
 						
 					</div>
 
 					<div class="form-check">
 						<input class="form-check-input checks" type="checkbox" value="" id="a3"> 
-						<label class="form-check-label" for="a3"> 필수 동의 3 </label>
+						<label class="form-check-label req" for="a3"> 필수 동의 3 </label>
 					</div>
 
 					<div class="form-check">
 						<input class="form-check-input checks opts" type="checkbox" value="" id="a4"> 
-						<label class="form-check-label" for="a4"> 선택 동의 1 </label>
+						<label class="form-check-label" for="a4"> 선택 동의 4 </label>
 					</div>
 
 					<div class="form-check">
 						<input class="form-check-input checks opts" type="checkbox" value="" id="a5"> 
-						<label class="form-check-label" for="a5"> 선택 동의 2 </label>
+						<label class="form-check-label" for="a5"> 선택 동의 5 </label>
 					</div>
 
 					<div>
