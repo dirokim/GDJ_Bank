@@ -53,6 +53,11 @@
 						<label class="form-check-label" for="a5"> 선택 동의 2 </label>
 					</div>
 
+					<div>
+						<a class="btn btn-primary" id="btn" href="./join">회원 가입</a>
+
+
+					</div>		
 				</div>
 			</div>
 		</section>
