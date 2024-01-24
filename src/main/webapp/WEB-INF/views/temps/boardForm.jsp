@@ -25,10 +25,13 @@
 				<textarea class="form-control" name="noticeContents"
 					id="Contents" rows="3">${boardDTO.noticeContents}</textarea>
 			</div>
-			<div class="mb-3">
-				<input class="form-control" type="file" name="attachs"> <input
-					class="form-control" type="file" name="attachs"> <input
-					class="form-control" type="file" name="attachs">
+			
+			<div class="mb-3" id="filelist">
+				<button type="button" id="fileAdd">파일 추가 </button>
+				
+
+
+
 			</div>
 
 

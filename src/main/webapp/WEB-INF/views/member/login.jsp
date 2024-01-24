@@ -31,14 +31,14 @@
 						<div class="mb-3">
 
 				
-							<label for="userName" class="form-label">I D</label> <input
+							<label for="userName"  class="form-label">I D</label> <input
 								type="text" class="form-control" id="userName" name="userName"
 								value="${memberDTO.userName}" placeholder="아이디를 입력하세요">
 						</div>
 
 						<div class="mb-3">
-							<label for="password" class="form-label">password</label> <input
-								type="text" value="${memberDTO.password}" class="form-control"
+							<label for="password"  class="form-label">password</label> <input
+								type="text" value="${memberDTO.password}" value="dddd" class="form-control"
 								id="password" name="password" placeholder="password를 입력하세요">
 						</div>
 

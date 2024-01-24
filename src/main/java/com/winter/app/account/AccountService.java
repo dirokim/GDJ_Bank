@@ -1,7 +1,9 @@
 package com.winter.app.account;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,8 +23,9 @@ public class AccountService {
 	
 	
 	public List<ProductDTO> getList(AccountDTO accountDTO,Pager pager) throws Exception {
-		
-		
+		pager.makeRow();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("Pager", pager);
 		
 		return accountDAO.list(accountDTO);
 	}
