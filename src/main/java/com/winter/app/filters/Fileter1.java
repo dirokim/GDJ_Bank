@@ -13,16 +13,12 @@ import javax.servlet.ServletResponse;
  */
 public class Fileter1 implements Filter {
 
-    /**
-     * Default constructor. 
-     */
+
     public Fileter1() {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see Filter#destroy()
-	 */
+	
 	public void destroy() {
 		// TODO Auto-generated method stub
 	}
