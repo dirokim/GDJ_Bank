@@ -27,7 +27,7 @@
 
 					<form method="post" action="./join" enctype="multipart/form-data">
 						<div class="mb-3">
-							<label for="userName" class="form-label">I D</label> 
+							<label for="userName" class="form-label">I D</label> <div id="idResult"></div>
 							<input
 								type="text" class="form-control req" id="userName" name="userName"
 								 placeholder="아이디를 입력하세요">
