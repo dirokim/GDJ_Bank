@@ -71,20 +71,26 @@
 
 
 let count = $("#filelist").attr(data-file-count);
-let max = $("#filelist").attr(data-file-count);
+let max = $("#filelist").attr(data-file-max);
+
+$("#filelist").on("click",".del",()=>{
+    $(this).parent().remove();
+    count--;
+})
+
 $("#fileAdd").click(function(){
 
-    if(count>=5){
+    if(count>=max){
         alert("5개 까지만 가능합니다");
         return;
-    }else{
+    }
     let element = `<div class="input-group">
     <input class="form-control" type="file" name="attachs">
     <span class="input-group-text text-danger del" >X</span>
     </div>` ;
     
     $("#filelist").append(element);
-    }   
+      
     check++;
 });
 

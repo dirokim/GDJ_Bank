@@ -27,6 +27,13 @@
                                     <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="/product/list">ProductList</a>
                                     <a id="b1" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/notice/list">NoticeList</a>
                                     <a id="b2"class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/qna/list">QnaList</a>
+                                   <button id="btn">NOTICELIST</button>
+                                   <div id="result"></div>
+                                   <input type="text" id="title">
+                                   <textarea id="contents">
+
+                                   </textarea>
+                                   <button id="btn2">공지사항 추가</button>
                                     </c:if>
                                 </div>
                             </div>
@@ -177,6 +184,7 @@
             </section> 
         </main>
         <!-- Footer-->
+        <script src="/resources/js/basic.js"></script>
 	<c:import url="./temps/footer.jsp"></c:import>
     </body>
 </html>

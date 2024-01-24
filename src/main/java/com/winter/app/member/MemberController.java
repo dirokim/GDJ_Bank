@@ -18,7 +18,11 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService; 
 	
-	
+	@GetMapping("idCheck")
+	public void getIdCheck (MemberDTO membetDTO)throws Exception{
+		 membetDTO = memberService.getDetail(membetDTO);
+		
+	}
 	
 
 	@PostMapping("update")

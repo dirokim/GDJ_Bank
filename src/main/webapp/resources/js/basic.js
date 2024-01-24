@@ -1,27 +1,35 @@
-//js
-const b1 = document.getElementById("b1");
-const b2 = document.querySelector("#b2");
-b1.addEventListener("click",()=>{
+
+let btn = document.getElementById("btn");
+let btn2 = document.getElementById("btn2");
+
+btn2.addEventListener("click",function(){
+    let t = document.getElementById("title").value;
+    let c = document.getElementById("contents").value;
+    fetch("/notice/add",{
+        method:"POST",
+        headers:{
+            "Content-type":"application/x-www-form-urlencoded"
+        },
+        body:"noticeHead="+t+"&noticeContents="+c
+    }).then(response=> response.text())
+    .then(response=>console.log(response));
+    
+})
+
+btn.addEventListener("click",()=>{
+    
+    console.log("Ajax 시작");
+
+    fetch("https://localhost/notice/list",{
+        method:"GET",
+       
+
+    }).then(response=>{return response.text()})
+    .then((res)=>{
+        document.getElementById("result").innerHTML=res;
+        console.log(res);
+    });
+
+    console.log("Ajax 끝");
 
 })
-let v = b1.innerHTML;
-b1.innerText='test';
-b1.getAttribute("");
-b1.setAttribute("속성명","값");
-b1.value;
-// jquery
-//$().action() 
-$("#b1").click(()=>{
-
-}); 
-
-$("#b2").html();//text()
-$("#b2").html("test");
-
-$("#b1").attr("속성명");
-$("#b1").attr("속성명","값");
-
-$("#b1").prop("속성명");
-$("#b1").prop("속성명","값");
-
-$("#b1").val();
