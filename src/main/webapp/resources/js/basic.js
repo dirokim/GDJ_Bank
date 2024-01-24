@@ -20,7 +20,7 @@ btn.addEventListener("click",()=>{
     
     console.log("Ajax 시작");
 
-    fetch("https://localhost/notice/list",{
+    fetch("/notice/list",{
         method:"GET",
        
 

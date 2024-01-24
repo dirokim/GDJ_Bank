@@ -63,12 +63,20 @@
 $('#userName').blur(()=>{
     fetch("./idCheck?userName="+$('#userName').val(),{
         method:"GET",
-   
+        
         
 
     })
     .then(response=>response.text())
-    .then(response=>console.log(response))
+    .then(response=>{
+        let result = response.trim()
+        if(result==1){
+            document.getElementById("idResult").innerHTML = "중복확인 되었습니다";
+        }else{
+            document.getElementById("idResult").innerHTML = "중복 사용 불가";
+        }
+    })
+    
 });
 
 

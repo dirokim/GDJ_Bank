@@ -19,9 +19,14 @@ public class MemberController {
 	private MemberService memberService; 
 	
 	@GetMapping("idCheck")
-	public void getIdCheck (MemberDTO membetDTO)throws Exception{
-		 membetDTO = memberService.getDetail(membetDTO);
-		
+	public String getIdCheck (MemberDTO memberDTO,Model model)throws Exception{
+		 memberDTO = memberService.getDetail(memberDTO);
+		int result =0;
+		if(memberDTO==null) {
+			result = 1 ;
+		}
+		 model.addAttribute("result",result);
+		 return "commons/ajaxResult";
 	}
 	
 
