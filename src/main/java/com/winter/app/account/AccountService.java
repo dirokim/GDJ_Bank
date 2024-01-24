@@ -22,12 +22,18 @@ public class AccountService {
 	private AccountDAO accountDAO;
 	
 	
-	public List<ProductDTO> getList(AccountDTO accountDTO,Pager pager) throws Exception {
-		pager.makeRow();
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("Pager", pager);
+	public Map<String,Object> getList(AccountDTO accountDTO,Pager pager) throws Exception {
 		
-		return accountDAO.list(accountDTO);
+		Map<String,Object> map = new HashMap<String,Object>();
+		pager.makeRow();
+		Long totalCount = accountDAO.totalCount(accountDTO);
+		pager.makePage(totalCount);
+		map.put("pager", pager);
+		map.put("accountDTO",accountDTO);
+		map.put("list",accountDAO.list(map));
+		
+		return map;
+				
 	}
 	
 	

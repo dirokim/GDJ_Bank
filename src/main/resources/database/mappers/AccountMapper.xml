@@ -10,10 +10,19 @@
   		  SYSDATE,0)
   		  </insert>
   		  
+  		  <select id="totalCount" parameterType="AccountDTO" resultType="Long" >
+  		  SELECT COUNT(*)FROM ACCOUNT WHERE USERNAME = #{userName}
+  		  </select>
   		  
-  		  <select id="list"  parameterType="AccountDTO" resultMap="accountDTOresult">
-  		SELECT PRODUCTNUM,PRODUCTNAME,PRODUCTRATE, ACCOUNTNUM,ACCOUNTDATE,ACCOUNTBALANCE 
-		FROM PRODUCT LEFT JOIN ACCOUNT USING(PRODUCTNUM) WHERE USERNAME=#{userName}
+  		  <select id="list"  parameterType="Map" resultMap="accountDTOresult">
+SELECT * FROM 
+(SELECT ROWNUM R , PN.* FROM
+(SELECT PRODUCTNUM,PRODUCTNAME,PRODUCTRATE, ACCOUNTNUM,ACCOUNTDATE,ACCOUNTBALANCE 
+FROM PRODUCT LEFT JOIN ACCOUNT USING(PRODUCTNUM) 
+		WHERE USERNAME=#{accountDTO.userName}
+		)PN
+		)
+		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
   		  </select>
   		  <resultMap type="ProductDTO" id="accountDTOresult">
   		  <id column="PRODUCTNUM" property="productNum"/>

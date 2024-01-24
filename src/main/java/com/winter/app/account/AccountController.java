@@ -1,6 +1,7 @@
 package com.winter.app.account;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.winter.app.member.MemberDTO;
-import com.winter.app.product.ProductDTO;
+
 import com.winter.app.util.Pager;
 
 @Controller
@@ -33,10 +34,10 @@ public class AccountController {
 	public ModelAndView setList(ModelAndView mv,HttpSession session,AccountDTO accountDTO,Pager pager) throws Exception {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		accountDTO.setUserName(memberDTO.getUserName());
-		List<ProductDTO> ar = accountService.getList(accountDTO,pager);
-		mv.addObject("list",ar);
+		Map<String,Object> map = accountService.getList(accountDTO,pager);
 		
-		System.out.println(ar.get(0).getProductName());
+		mv.addObject("list",map.get("list"));
+		mv.addObject("pager",map.get("pager"));
 		
 		return mv;
 	}

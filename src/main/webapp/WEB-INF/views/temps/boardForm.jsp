@@ -26,7 +26,8 @@
 					id="Contents" rows="3">${boardDTO.noticeContents}</textarea>
 			</div>
 			
-			<div class="mb-3" id="filelist">
+			<div class="mb-3" id="filelist" data-file-count="0" data-file-max="5">
+				<button class="del" type="button">DEL</button>
 				<button type="button" id="fileAdd">파일 추가 </button>
 				
 
