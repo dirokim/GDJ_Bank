@@ -23,7 +23,7 @@
                     </div>
 					
 						<div>
-		
+							
 							<table class="table table-striped">
 									<thead>
 										<tr>
@@ -36,18 +36,21 @@
 									</thead>
 									<tbody>
 										<c:if test="${list.size()==0} ">
-											<tr>
+<!-- 											<tr>
 												<td colspan="5">검색 결과 없습니다</td>
-											</tr>
+											</tr> -->
 										</c:if>
-										<c:forEach items="${requestScope.list}" var="i">
+										<c:forEach items="${list}" var="v">
+										<c:forEach items="${v.accountDTOs}" var="iac">
 											<tr>
-												<td>${i.productName}</td>
-												<td>${i.productRate}</td>
-												<td>${i.accountDTOs.accountNum}</td>
-												<td>${i.accountDTOs.accountBalance}</td>
-												<td>${i.accountDTOs.accountDate}</td>
-											</tr>
+												<td>${v.productName}</td>
+												<td>${v.productRate}</td>
+
+												<td>${iac.accountNum}</td>
+												<td>${iac.accountDate }</td>
+												<td>${iac.accountBalance}</td>
+												</tr>
+										</c:forEach>
 										</c:forEach>
 									
 									</tbody>

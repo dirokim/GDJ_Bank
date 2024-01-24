@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.winter.app.member.MemberDTO;
 import com.winter.app.product.ProductDTO;
+import com.winter.app.util.Pager;
 
 @Service
 public class AccountService {
@@ -18,9 +19,18 @@ public class AccountService {
 	@Autowired
 	private AccountDAO accountDAO;
 	
-	public List<ProductDTO> getList(AccountDTO accountDTO) throws Exception {
+	
+	public List<ProductDTO> getList(AccountDTO accountDTO,Pager pager) throws Exception {
+		
+		
+		
 		return accountDAO.list(accountDTO);
 	}
+	
+	
+	
+	
+	
 	
 	public int getAdd(AccountDTO accountDTO,HttpSession session) throws Exception {
 	 MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");

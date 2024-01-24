@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.winter.app.member.MemberDTO;
 import com.winter.app.product.ProductDTO;
+import com.winter.app.util.Pager;
 
 @Controller
 @RequestMapping(value = "/account/*")
@@ -29,13 +30,15 @@ public class AccountController {
 	}
 	
 	@GetMapping("list")
-	public void setList(ModelAndView mv,HttpSession session,AccountDTO accountDTO) throws Exception {
+	public ModelAndView setList(ModelAndView mv,HttpSession session,AccountDTO accountDTO,Pager pager) throws Exception {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		accountDTO.setUserName(memberDTO.getUserName());
-		List<ProductDTO> ar = accountService.getList(accountDTO);
+		List<ProductDTO> ar = accountService.getList(accountDTO,pager);
 		mv.addObject("list",ar);
 		
+		System.out.println(ar.get(0).getProductName());
 		
+		return mv;
 	}
 	
 	@PostMapping("add")
