@@ -16,7 +16,6 @@ public class ProductDTO {
 	private Long productSale;
 	private List<AccountDTO> accountDTOs;
 	
-	
 	private ProductFileDTO productFileDTO;
 	
 	

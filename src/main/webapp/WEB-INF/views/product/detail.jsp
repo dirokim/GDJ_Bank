@@ -20,7 +20,7 @@
 						<h3>productRate:${dto.productRate}</h3>
 						<h3>productJumsu:${dto.productJumsu}</h3>
 					</c:if>
-				
+					<input readonly type="text" value="${dto.productNum}" name="productNum" id="productNum">
 				</div>
 				<div>
 				
@@ -30,12 +30,13 @@
 				</div>
 					<a href="./update">업데이트</a>
 					<a href="../account/add?productNum=${dto.productNum}">등록</a>
-
+					<button id="btn3" type="button">장바구니 추가</button>
 
 
 
         </main>
             <!--사용전 경로를 꼭 수정 하세요  -->
 	<c:import url="../temps/footer.jsp"></c:import>
+	<script src="/resources/js/member/wishlistAdd.js"></script>
     </body>
 </html>
