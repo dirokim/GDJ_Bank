@@ -82,3 +82,32 @@ $("#btn").click(function(){
         }
     })
 })
+
+
+
+
+$('#btn3').click(function(){
+    $(".checks").each(function(idx,item){
+        nums.push($(item).val());
+        
+    })
+    $.ajax({
+        method:"POST",
+        url:"./delete",
+        traditional:true,
+        data:{
+            productNum:nums
+        },
+        success:function(res){
+            res.trim();
+            if(res==1){
+            alert("삭제 성공");
+            location.href="/wishlist/list"
+            }
+        },
+        error:function(){
+            alert("알수없는 에러발생");
+            location.href="/wishlist/list"
+        }
+    })
+})

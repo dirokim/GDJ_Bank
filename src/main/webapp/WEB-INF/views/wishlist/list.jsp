@@ -20,7 +20,8 @@
 						
 						<div>
 								<div>
-									<button type="button" id="btn">삭제</button>
+									<button type="button" id="btn">선택삭제</button> &nbsp;
+									<button type="button" id="btn3">전체삭제</button>
 								</div>
 								<table class="table table-striped">
 									<thead>
