@@ -20,6 +20,13 @@ public class WishlistService {
 	@Autowired
 	private WishlistDAO wishlistDAO;
 	
+	
+	public int setDelete (AccountDTO accountDTO,HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		accountDTO.setUserName(memberDTO.getUserName());
+		return wishlistDAO.delete(accountDTO);
+	}
+	
 	public Map<String,Object> setList(AccountDTO accountDTO,HttpSession session,Pager pager) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		accountDTO.setUserName(memberDTO.getUserName());

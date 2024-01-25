@@ -5,10 +5,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.eclipse.jdt.internal.compiler.ast.WhileStatement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.winter.app.account.AccountDTO;
@@ -22,9 +24,18 @@ public class WishlistController {
 	@Autowired
 	private WishlistService wishlistService;
 	
+	
+	
+	@PostMapping("delete")
+	public String getDelete (AccountDTO accountDTO,HttpSession session,Model model) throws Exception {
+		int result = wishlistService.setDelete(accountDTO, session);
+		model.addAttribute("result",result);
+		return "commons/ajaxResult";
+	}
+	
+	
 	@GetMapping("list")
 	public void getList (AccountDTO accountDTO,HttpSession session,Model model,Pager pager) throws Exception {
-		
 	Map<String,Object> map = wishlistService.setList(accountDTO,session,pager);
 		model.addAttribute("list",map.get("list"));
 		model.addAttribute("pager",map.get("pager"));

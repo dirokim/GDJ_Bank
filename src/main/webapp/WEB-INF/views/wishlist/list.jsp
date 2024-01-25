@@ -19,7 +19,9 @@
                     </div>
 						
 						<div>
-							
+								<div>
+									<button type="button" id="btn">삭제</button>
+								</div>
 								<table class="table table-striped">
 									<thead>
 										<tr>
@@ -45,7 +47,7 @@
 											<tr>
 												<td>
 													<div class="form-check">
-														<input class="form-check-input checks" type="checkbox" value="" >
+														<input class="form-check-input checks" type="checkbox" value="${var.productNum}" >
 													</div>
 												</td>
 												<td>${var.productNum}</td>
