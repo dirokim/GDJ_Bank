@@ -21,10 +21,11 @@ public class WishlistService {
 	private WishlistDAO wishlistDAO;
 	
 	
-	public Integer setDelete (AccountDTO accountDTO,HttpSession session) throws Exception {
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		accountDTO.setUserName(memberDTO.getUserName());
-		return wishlistDAO.delete(accountDTO);
+	public Integer setDelete (Long [] productNum, MemberDTO memberDTO) throws Exception {
+		Map<String,Object>map = new HashMap<String, Object>();
+		map.put("nums",productNum);
+		map.put("member", memberDTO);
+		return wishlistDAO.delete(map);
 	}
 	
 	public Map<String,Object> setList(AccountDTO accountDTO,HttpSession session,Pager pager) throws Exception{

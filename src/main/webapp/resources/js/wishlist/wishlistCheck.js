@@ -52,14 +52,29 @@ $('.checks').click(function(){
 // })
 
 let nums=[];
-
+let checkEl=[];
 $("#btn").click(function(){
     $(".checks").each(function(idx,item){
         if($(item).prop("checked")){
             nums.push($(item).val());
             console.log(nums);
+            
+            item.parentNode.parentNode.parentNode.remove();
         }
     })
+
+
+
+    // $(".checks").each(function(idx,item){
+    //     if($(item).prop("checked")){
+    //         item.parentNode.parentNode.parentNode.remove();
+
+    //     }
+    // })
+
+
+
+
 
 
     $.ajax({
@@ -71,14 +86,14 @@ $("#btn").click(function(){
         },
         success:function(res){
             res.trim();
-            if(res==1){
+            if(res>0){
             alert("삭제 성공");
-            location.href="/wishlist/list"
+            location.reload();
             }
         },
         error:function(){
             alert("알수없는 에러발생");
-            location.href="/wishlist/list"
+            location.reload();
         }
     })
 })
@@ -100,14 +115,16 @@ $('#btn3').click(function(){
         },
         success:function(res){
             res.trim();
-            if(res==1){
+            if(res>0){
             alert("삭제 성공");
-            location.href="/wishlist/list"
+            location.reload();
             }
         },
         error:function(){
             alert("알수없는 에러발생");
-            location.href="/wishlist/list"
+            location.reload();
         }
     })
 })
+
+

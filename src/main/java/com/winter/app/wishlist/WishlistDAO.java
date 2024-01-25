@@ -17,8 +17,8 @@ public class WishlistDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE ="com.winter.app.wishlist.WishlistDAO.";
 
-	public int delete (AccountDTO accountDTO) {
-		return sqlSession.delete(NAMESPACE+"delete",accountDTO);
+	public int delete (Map<String,Object> map) {
+		return sqlSession.delete(NAMESPACE+"delete",map);
 	}
 	
 	public Long totalCount (AccountDTO accountDTO) throws Exception {

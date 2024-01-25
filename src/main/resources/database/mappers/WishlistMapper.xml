@@ -5,8 +5,15 @@
   		  <mapper namespace="com.winter.app.wishlist.WishlistDAO">
   	
   	
-  		<delete id="delete" parameterType="AccountDTO">
-  			DELETE WISHLIST WHERE PRODUCTNUM = #{productNum} AND USERNAME= #{userName} 
+  		<delete id="delete" parameterType="Map">
+  			DELETE WISHLIST WHERE 
+  			<!-- ProductNum in (1,2) -->
+  			PRODUCTNUM IN 
+  			<foreach collection="nums" item="n" open="(" separator="," close=")">
+  				#{n}
+  			</foreach>
+  			
+  			 AND USERNAME= #{member.userName} 
   		</delete>
   	
   		 <insert id="add" parameterType="AccountDTO">

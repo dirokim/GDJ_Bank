@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.winter.app.account.AccountDTO;
+import com.winter.app.member.MemberDTO;
 import com.winter.app.product.ProductDTO;
 import com.winter.app.util.Pager;
 
@@ -27,14 +28,10 @@ public class WishlistController {
 	
 	
 	@PostMapping("delete")
-	public String getDelete (Long [] productNum,AccountDTO accountDTO,HttpSession session,Model model) throws Exception {
-
-		for(long a : productNum) {
-			accountDTO.setProductNum(a);
-		    wishlistService.setDelete(accountDTO,session);
-		}
-		
-		model.addAttribute("result",1);
+	public String getDelete (Long [] productNum,Model model,HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");   
+	int result = wishlistService.setDelete(productNum,memberDTO);
+			model.addAttribute("result",result);
 		return "commons/ajaxResult";
 	}
 	
