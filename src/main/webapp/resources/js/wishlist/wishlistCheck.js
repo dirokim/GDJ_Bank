@@ -52,29 +52,27 @@ $('.checks').click(function(){
 // })
 
 let nums=[];
-let checkEl=[];
+// let checkEl=[];
 $("#btn").click(function(){
     $(".checks").each(function(idx,item){
         if($(item).prop("checked")){
             nums.push($(item).val());
             console.log(nums);
-            
+            // checkEl.push($(item).val());
             item.parentNode.parentNode.parentNode.remove();
+            
+
+            //2번쨰
+            // checkEl.forEach((element)=>{
+            //     $(element).parent().parent().parent().remove();
+
+            // })
+
+            //3번쨰 db에서 다시 조회에서 html 을 다시 뿌려준다  
+
+
         }
     })
-
-
-
-    // $(".checks").each(function(idx,item){
-    //     if($(item).prop("checked")){
-    //         item.parentNode.parentNode.parentNode.remove();
-
-    //     }
-    // })
-
-
-
-
 
 
     $.ajax({
@@ -85,11 +83,7 @@ $("#btn").click(function(){
             productNum:nums
         },
         success:function(res){
-            res.trim();
-            if(res>0){
-            alert("삭제 성공");
-            location.reload();
-            }
+            $("#tbody").html(res);
         },
         error:function(){
             alert("알수없는 에러발생");
@@ -101,30 +95,30 @@ $("#btn").click(function(){
 
 
 
-$('#btn3').click(function(){
-    $(".checks").each(function(idx,item){
-        nums.push($(item).val());
+// $('#btn3').click(function(){
+//     $(".checks").each(function(idx,item){
+//         nums.push($(item).val());
         
-    })
-    $.ajax({
-        method:"POST",
-        url:"./delete",
-        traditional:true,
-        data:{
-            productNum:nums
-        },
-        success:function(res){
-            res.trim();
-            if(res>0){
-            alert("삭제 성공");
-            location.reload();
-            }
-        },
-        error:function(){
-            alert("알수없는 에러발생");
-            location.reload();
-        }
-    })
-})
+//     })
+//     $.ajax({
+//         method:"POST",
+//         url:"./delete",
+//         traditional:true,
+//         data:{
+//             productNum:nums
+//         },
+//         success:function(res){
+//             res.trim();
+//             if(res>0){
+//             alert("삭제 성공");
+//             location.reload();
+//             }
+//         },
+//         error:function(){
+//             alert("알수없는 에러발생");
+//             location.reload();
+//         }
+//     })
+// })
 
 

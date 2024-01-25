@@ -38,12 +38,13 @@
 											<th>ProductRate</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id="tbody">
 										<c:if test="${list.size()==0} ">
 											<tr>
 												<td colspan="2">검색 결과 없습니다</td>
 											</tr>
 										</c:if>
+
 										<c:forEach items="${requestScope.list}" var="var">
 											<tr>
 												<td>

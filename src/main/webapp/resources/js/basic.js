@@ -30,7 +30,7 @@ btn.addEventListener("click", function(){
     .then(response=>{return response.text()})
     .then((res)=>{
         document.getElementById("result").innerHTML=res;
-
+        
     })
     //Arrow Function
     //function(){}  -> ()=>console.log

@@ -28,11 +28,13 @@ public class WishlistController {
 	
 	
 	@PostMapping("delete")
-	public String getDelete (Long [] productNum,Model model,HttpSession session) throws Exception {
+	public String getDelete (Long [] productNum,Model model,AccountDTO accountDTO,HttpSession session,Pager pager) throws Exception {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");   
-	int result = wishlistService.setDelete(productNum,memberDTO);
-			model.addAttribute("result",result);
-		return "commons/ajaxResult";
+	 wishlistService.setDelete(productNum,memberDTO);
+	Map<String,Object> map = wishlistService.setList(accountDTO, session, pager);
+		model.addAttribute("list",map.get("list"));
+		model.addAttribute("pager",map.get("pager"));
+		return "wishlist/listForm";
 	}
 	
 	
