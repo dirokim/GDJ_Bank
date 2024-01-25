@@ -30,6 +30,8 @@ btn3.addEventListener("click",()=>{
                 alert('등록 성공');
                 if(confirm("장바구니로 가시겠습니가?")){
                     location.href="/wishlist/list";
+                }else{
+                    location.href="/product/list";
                 }
             }else{
                 alert("등록 실패");

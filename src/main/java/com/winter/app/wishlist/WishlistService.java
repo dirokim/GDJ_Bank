@@ -21,7 +21,7 @@ public class WishlistService {
 	private WishlistDAO wishlistDAO;
 	
 	
-	public int setDelete (AccountDTO accountDTO,HttpSession session) throws Exception {
+	public Integer setDelete (AccountDTO accountDTO,HttpSession session) throws Exception {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		accountDTO.setUserName(memberDTO.getUserName());
 		return wishlistDAO.delete(accountDTO);

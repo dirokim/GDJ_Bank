@@ -73,10 +73,12 @@ $("#btn").click(function(){
             res.trim();
             if(res==1){
             alert("삭제 성공");
+            location.href="/wishlist/list"
             }
         },
         error:function(){
             alert("알수없는 에러발생");
+            location.href="/wishlist/list"
         }
     })
 })

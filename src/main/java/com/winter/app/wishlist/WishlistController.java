@@ -27,9 +27,14 @@ public class WishlistController {
 	
 	
 	@PostMapping("delete")
-	public String getDelete (AccountDTO accountDTO,HttpSession session,Model model) throws Exception {
-		int result = wishlistService.setDelete(accountDTO, session);
-		model.addAttribute("result",result);
+	public String getDelete (Long [] productNum,AccountDTO accountDTO,HttpSession session,Model model) throws Exception {
+
+		for(long a : productNum) {
+			accountDTO.setProductNum(a);
+		    wishlistService.setDelete(accountDTO,session);
+		}
+		
+		model.addAttribute("result",1);
 		return "commons/ajaxResult";
 	}
 	
