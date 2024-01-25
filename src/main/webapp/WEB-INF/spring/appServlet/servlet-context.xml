@@ -48,8 +48,9 @@
 			<mapping path="/member/mypage"/>
 			<mapping path="/member/update"/>
 			<mapping path="/member/delete"/>
+			<mapping path="/wishlist/*" />
 			<exclude-mapping path="/qna/list"/>
-
+			<exclude-mapping path="/wishlist/add"/>
 			<beans:ref bean="authenticationCeptor"/>					
 
 		</interceptor>
