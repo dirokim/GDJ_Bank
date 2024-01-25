@@ -1,5 +1,8 @@
 package com.winter.app.wishlist;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.winter.app.account.AccountDTO;
+import com.winter.app.product.ProductDTO;
+import com.winter.app.util.Pager;
 
 @Controller
 @RequestMapping(value = "/wishlist/*")
@@ -16,6 +21,15 @@ public class WishlistController {
 	
 	@Autowired
 	private WishlistService wishlistService;
+	
+	@GetMapping("list")
+	public void getList (AccountDTO accountDTO,HttpSession session,Model model,Pager pager) throws Exception {
+		
+	Map<String,Object> map = wishlistService.setList(accountDTO,session,pager);
+		model.addAttribute("list",map.get("list"));
+		model.addAttribute("pager",map.get("pager"));
+		return;
+	}
 	
 	@GetMapping("add")
 	public String getAdd(AccountDTO accountDTO,HttpSession session,Model model)throws Exception {

@@ -8,7 +8,18 @@
   		 </insert>
   		  
   		  
+  		  <select id="list" parameterType="Map" resultType="ProductDTO" >
+			SELECT * FROM 
+			(SELECT ROWNUM R , PW.* FROM
+			(SELECT PRODUCTNUM ,PRODUCTNAME,PRODUCTRATE 
+			FROM PRODUCT JOIN WISHLIST USING (PRODUCTNUM) 
+			WHERE USERNAME = #{accountDTO.userName} 
+			ORDER BY PRODUCTNUM DESC) PW)  
+			WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+  		  </select>
   		  
-  		  
+  		  <select id="totalCount" parameterType="AccountDTO" resultType="Long">
+  		  	SELECT COUNT(PRODUCTNUM) FROM WISHLIST WHERE USERNAME = #{userName}
+  		  </select>
   		  
   		  </mapper>	

@@ -20,7 +20,7 @@
 						<h3>productRate:${dto.productRate}</h3>
 						<h3>productJumsu:${dto.productJumsu}</h3>
 					</c:if>
-					<input readonly type="text" value="${dto.productNum}" name="productNum" id="productNum">
+					<input readonly type="hidden" value="${dto.productNum}" name="productNum" id="productNum">
 				</div>
 				<div>
 				

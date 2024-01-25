@@ -76,7 +76,26 @@ $('#userName').blur(()=>{
             document.getElementById("idResult").innerHTML = "중복 사용 불가";
         }
     })
-    
+
+
+    // $.get("idChech?userName="+$("#userName").val(),function(response){
+    //     console.log(response);
+    // })
+    // let userName= $("#userName").val();
+    // $.ajax({
+    //     url:"./idCheck",
+    //     method:"GET",
+    //     data:{
+    //         userName:userName
+    //     },
+    //     success:function(r){
+    //         console.log(r)
+    //     },
+    //     error:function(){
+    //         alert('아이디 검증 실패')
+    //     }
+    // })
+
 });
 
 
