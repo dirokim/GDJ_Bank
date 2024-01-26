@@ -5,7 +5,7 @@
   	
   		  <mapper namespace="com.winter.app.product.ReplyDAO">
   		  
-  		  <select id="totalCount" parameterType="ReplyDTO">
+  		  <select id="totalCount" parameterType="ReplyDTO" resultType="Long">
   		  SELECT COUNT(PRODUCTNUM) FROM REPLY WHERE PRODUCTNUM = #{productNum}
   		  </select>
   		  
@@ -13,15 +13,10 @@
   		  
   		  <select id="setList" parameterType="Map" resultType="ReplyDTO">
   		  SELECT * FROM
-  		  (
-  		  SELECT ROWNUM R , RP.*
-  		  (
-  		  SELECT * FROM REPLY WHERE PRODUCTNUM = #{productNum}
-  		  ORDER BY PRODUCTNUM DESC
-  		  )
-  		  RP
-  		  )
-  		  WHERE R BETWEEN #{startRow} AND #{lastRow}
+  		  (SELECT ROWNUM R , RP.*
+  		  (SELECT * FROM REPLY WHERE PRODUCTNUM = #{replyDTO.productNum}
+  		  ORDER BY REPLYNUM DESC) RP)
+  		  WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
   		  </select>
   		  
   		  <insert id="setReply" parameterType="ReplyDTO" >
