@@ -16,7 +16,7 @@ $('#checkAll').click(()=>{
     $('.checks').prop("checked", v);
 });
 
-$('.checks').click(function(){
+$('.checks').on("click",".checks",function(){
     let flag=true;
     
     $('.checks').each(function(idx, c){

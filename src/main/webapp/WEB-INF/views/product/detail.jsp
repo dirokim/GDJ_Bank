@@ -32,11 +32,60 @@
 					<a href="../account/add?productNum=${dto.productNum}">등록</a>
 					<button id="btn3" type="button">장바구니 추가</button>
 
+			<div class="my-3" id="replyList">
+			</div>
+			
+		<nav aria-label="Page navigation example">
+		
+			<ul class="pagination">
+			<c:if test="${!start}">
+				<li class="page-item"><a class="page-link" href="/product/detail?page=${pager.startNum-1}"
+					aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>
+				</c:if>
+				
+				
+				<c:forEach begin="${pager.startNum}"  end="${pager.lastNum}"  var="p">
+				<li class="page-item"><a class="page-link" href="/product/detail?page=${p}">${p}</a></li>
+				</c:forEach>
+	
+			<c:if test="${!last }">
+				<li class="page-item"><a class="page-link" href="/product/detail?page=${pager.lastNum+1}"
+					aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
+					</c:if>
+			</ul>
+			
+		</nav>
 
+
+
+
+		<div class="my-3">
+					<form id="replyForm">
+						  <input type="hidden" name="productNum" value="${dto.productNum}">	
+						  <div class="mb-3">
+							<textarea class="form-control" name="replyContents" id="replyContents" rows="3"></textarea>
+						  </div>
+						  <div class="mb-3">
+						  <select class="form-select" name="replyJumsu" aria-label="Default select example">
+							<option value="5">5</option>
+							<option value="4">4</option>
+							<option value="3">3</option>
+							<option value="2">2</option>
+							<option value="1">1</option>
+						  </select>
+						  </div>
+
+						  <div>
+							<button type="button" class="btn btn-primary" id="replyAdd">댓글달기</button>
+						  </div>
+					</form>
+						
+				</div>
+				
 
         </main>
             <!--사용전 경로를 꼭 수정 하세요  -->
 	<c:import url="../temps/footer.jsp"></c:import>
-	<script src="/resources/js/member/wishlistAdd.js"></script>
+	<script src="../../../resources/js/member/wishlistAdd.js"></script>
     </body>
 </html>

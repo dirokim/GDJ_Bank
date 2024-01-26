@@ -41,7 +41,7 @@
 									</thead>
 									<tbody id="tbody">
 									
-									<form  id="deleteForm">
+									
 
 										<c:forEach items="${requestScope.list}" var="var">
 								<tr>
@@ -57,7 +57,7 @@
 
 								</tr>
 							</c:forEach>
-									</form>
+									
 									</tbody>
 								
 								</table>

@@ -1,4 +1,66 @@
 const btn3 = document.getElementById("btn3");
+const replyAdd = document.getElementById("replyAdd");
+const replyForm = document.getElementById("replyForm");
+const replyList = document.getElementById("replyList");
+const productNum = document.getElementById("productNum");
+
+
+
+replyList.addEventListener("click",(e)=>{
+    if(e.target.getAttribute("id")=='more'){
+        alert("test");
+        let p = e.target.getAttribute("data-replyList-page");
+        
+        fetch("/reply/list?productNum="+productNum.value+"&page="+(p*1+1),{
+    
+            method:"GET"
+        
+        }).then(reso=>reso.text())
+        .then(reso=>{
+            console.log(productNum.value);
+            $("#replyList").html(reso);
+        })
+    }
+})
+
+
+fetch("/reply/list?productNum="+productNum.value,{
+    
+    method:"GET"
+
+}).then(reso=>reso.text())
+.then(reso=>{
+    console.log(productNum.value);
+    $("#replyList").html(reso);
+})
+
+replyAdd.addEventListener("click",()=>{
+    let form = new FormData(replyForm);
+    fetch("/reply/add",{
+        method:"POST",
+        body:form
+    }).then(res=>res.text())
+    .then(res=>{$("#replyList").html(res)});
+})
+
+    
+//  $("#replybtn").click(function(){
+//     $.ajax({
+//         url:"/reply/add",
+//         method:"POST",
+//         body:{from},
+//         success:function(result){
+//             if(result>0){
+//                 alert("등록 성공");
+//             }
+//         },
+//         error:function(){
+
+//         }
+
+//     })
+
+//  })
 
 btn3.addEventListener("click",()=>{
     // fetch("/wishlist/add?productNum="+$('#productNum').val(),{
