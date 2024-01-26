@@ -40,21 +40,23 @@
 										</tr>
 									</thead>
 									<tbody id="tbody">
+									
 									<form  id="deleteForm">
 
 										<c:forEach items="${requestScope.list}" var="var">
-											<tr>
-												<td>
-													<div class="form-check">
-														<input class="form-check-input checks" type="checkbox" name="productNum" value="${var.productNum}" >
-													</div>
-												</td>
-												<td>${var.productNum}</td>
-												<td><a href="/product/detail?productNum=${var.productNum}">${var.productName}</a></td>
-												<td>${var.productRate}</td>
-	
-											</tr>
-										</c:forEach>
+								<tr>
+									<td>
+										<div class="form-check">
+											<input class="form-check-input checks" type="checkbox"
+												name="productNum" value="${var.productNum}">
+										</div>
+									</td>
+									<td>${var.productNum}</td>
+									<td><a href="/product/detail?productNum=${var.productNum}">${var.productName}</a></td>
+									<td>${var.productRate}</td>
+
+								</tr>
+							</c:forEach>
 									</form>
 									</tbody>
 								
