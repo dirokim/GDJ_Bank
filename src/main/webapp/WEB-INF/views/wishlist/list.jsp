@@ -40,7 +40,7 @@
 									</thead>
 									<tbody id="tbody">
 										<c:if test="${list.size()==0} ">
-											<tr>
+									<tr>
 												<td colspan="2">검색 결과 없습니다</td>
 											</tr>
 										</c:if>

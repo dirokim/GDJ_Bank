@@ -21,7 +21,6 @@ $('.checks').click(function(){
     $("#checkAll").prop("checked", flag);
 })
 
-
 // const btn = document.getElementById("btn");
 // const result = [];
 // btn.addEventListener("click",()=>{
@@ -59,7 +58,7 @@ $("#btn").click(function(){
             nums.push($(item).val());
             console.log(nums);
             // checkEl.push($(item).val());
-            item.parentNode.parentNode.parentNode.remove();
+            // item.parentNode.parentNode.parentNode.remove();
             
 
             //2번쨰
@@ -74,27 +73,45 @@ $("#btn").click(function(){
         }
     })
 
-    deletewithJquery();
-
+   // deletewithJquery(nums);
+    deletewithFetch(nums);
 })
 
-function deletewithJquery(){
-    $.ajax({
-        method:"POST",
-        url:"./delete",
-        traditional:true,
-        data:{
-            productNum:nums
-        },
-        success:function(res){
-            $("#tbody").html(res);
-        },
-        error:function(){
-            alert("알수없는 에러발생");
-            location.reload();
-        }
+function deletewithFetch(nums){
+    let param ="";
+    nums.array.forEach(element => {
+        param= param+"productNum="+element+"%";
+    });
+
+    fetch("./delete",{
+        method:"Post",
+        body:param
+        
+    }).then(response=>{return response.text()})
+    .then(response=>{
+        let tr = document.getElementById("tbody");
+        tr.innerHTML = response;
     })
 }
+
+
+// function deletewithJquery(){
+//     $.ajax({
+//         method:"POST",
+//         url:"./delete",
+//         traditional:true,
+//         data:{
+//             productNum:nums
+//         },
+//         success:function(res){
+//             $("#tbody").html(res);
+//         },
+//         error:function(){
+//             alert("알수없는 에러발생");
+//             location.reload();
+//         }
+//     })
+// }
 
 
 // $('#btn3').click(function(){
