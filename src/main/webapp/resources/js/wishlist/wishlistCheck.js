@@ -1,6 +1,15 @@
 const checkAll = document.getElementById("checkAll");
 const checks = document.getElementsByClassName("checks");
 
+
+
+$("$btn2").click(function(){
+    $("$deleteForm").attr("action","/account/add");
+    $("$deleteForm").submit();
+});
+
+
+
 $('#checkAll').click(()=>{
     let v = $("#checkAll").prop("checked");
     
@@ -73,45 +82,55 @@ $("#btn").click(function(){
         }
     })
 
-   // deletewithJquery(nums);
-    deletewithFetch(nums);
+   deletewithJquery(nums);
+    // deletewithFetch(nums);
 })
 
-function deletewithFetch(nums){
-    let param ="";
-    nums.array.forEach(element => {
-        param= param+"productNum="+element+"%";
-    });
+// function deletewithFetch(nums){
+    // let param ="";
+    // nums.array.forEach(element => {
+    //     param= param+"productNum="+element+"%";
+    // });
+    
+//     let deleteForm = document.getElementById("deleteForm");
+//     let form = new FormData(deleteForm);
 
-    fetch("./delete",{
-        method:"Post",
-        body:param
+
+
+
+
+//     fetch("./delete",{
+//         method:"Post",
+//         body:form
         
-    }).then(response=>{return response.text()})
-    .then(response=>{
-        let tr = document.getElementById("tbody");
-        tr.innerHTML = response;
-    })
-}
-
-
-// function deletewithJquery(){
-//     $.ajax({
-//         method:"POST",
-//         url:"./delete",
-//         traditional:true,
-//         data:{
-//             productNum:nums
-//         },
-//         success:function(res){
-//             $("#tbody").html(res);
-//         },
-//         error:function(){
-//             alert("알수없는 에러발생");
-//             location.reload();
-//         }
+//     }).then(response=>{return response.text()})
+//     .then(response=>{
+//         let tr = document.getElementById("tbody");
+//         tr.innerHTML = response;
 //     })
 // }
+
+let form = new FormData("#deleteForm")[0];
+
+function deletewithJquery(){
+    $.ajax({
+        method:"POST",
+        url:"./delete",
+        traditional:true,
+        contentType:false,
+        processData:false,
+        data:{
+            form
+        },
+        success:function(res){
+            $("#tbody").html(res);
+        },
+        error:function(){
+            alert("알수없는 에러발생");
+            location.reload();
+        }
+    })
+}
 
 
 // $('#btn3').click(function(){

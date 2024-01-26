@@ -20,6 +20,7 @@
 						
 						<div>
 								<div>
+									<button type="button" id="btn2">가입</button>
 									<button type="button" id="btn">선택삭제</button> &nbsp;
 									<button type="button" id="btn3">전체삭제</button>
 								</div>
@@ -39,17 +40,13 @@
 										</tr>
 									</thead>
 									<tbody id="tbody">
-										<c:if test="${list.size()==0} ">
-									<tr>
-												<td colspan="2">검색 결과 없습니다</td>
-											</tr>
-										</c:if>
+									<form  id="deleteForm">
 
 										<c:forEach items="${requestScope.list}" var="var">
 											<tr>
 												<td>
 													<div class="form-check">
-														<input class="form-check-input checks" type="checkbox" value="${var.productNum}" >
+														<input class="form-check-input checks" type="checkbox" name="productNum" value="${var.productNum}" >
 													</div>
 												</td>
 												<td>${var.productNum}</td>
@@ -58,7 +55,7 @@
 	
 											</tr>
 										</c:forEach>
-								
+									</form>
 									</tbody>
 								
 								</table>
