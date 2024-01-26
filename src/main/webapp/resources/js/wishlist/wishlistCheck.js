@@ -74,7 +74,11 @@ $("#btn").click(function(){
         }
     })
 
+    deletewithJquery();
 
+})
+
+function deletewithJquery(){
     $.ajax({
         method:"POST",
         url:"./delete",
@@ -90,9 +94,7 @@ $("#btn").click(function(){
             location.reload();
         }
     })
-})
-
-
+}
 
 
 // $('#btn3').click(function(){
