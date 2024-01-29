@@ -13,7 +13,6 @@ public class ProductDTO {
 	
 	
 	
-	
 	public Long getProductNum() {
 		return productNum;
 	}
