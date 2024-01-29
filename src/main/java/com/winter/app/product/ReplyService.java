@@ -16,6 +16,12 @@ public class ReplyService {
 	@Autowired
 	private ReplyDAO replyDAO;
 	
+	public int setDelete (ReplyDTO replyDTO) throws Exception { 
+		return	replyDAO.setDelete(replyDTO);	
+
+	}
+	
+	
 	public List<ReplyDTO> setList (ReplyDTO replyDTO,Pager pager) throws Exception {
 		Map<String,Object> map = new HashMap<String, Object>();
 		Long totalCount = replyDAO.totalCount(replyDTO);

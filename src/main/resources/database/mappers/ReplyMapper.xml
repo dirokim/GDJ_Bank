@@ -5,6 +5,13 @@
   	
   		  <mapper namespace="com.winter.app.product.ReplyDAO">
   		  
+  		  
+  		  
+  		  <delete id="setDelete" parameterType="ReplyDTO">
+  		  DELETE REPLY WHERE REPLYNUM = #{replyNum}
+  		  </delete> 
+  		  
+  		  
   		  <select id="totalCount" parameterType="ReplyDTO" resultType="Long">
   		  SELECT COUNT(PRODUCTNUM) FROM REPLY WHERE PRODUCTNUM = #{productNum}
   		  </select>

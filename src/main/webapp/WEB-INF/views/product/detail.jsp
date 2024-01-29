@@ -45,12 +45,12 @@
 							<th></th>
 						</tr>
 					</thead>
-					<tbody id="replyList">
-
+					<tbody id="replyList" data-user="${member.userName}">
+						
 
 				</tbody>
 				<div>
-					<button id="more" data-replylist-page="1" data-replylist-totalPage="1">더보기(${pager.page}/${pager.totalPage})</button>
+					<button id="more" data-replyList-page="1" data-replyList-totalPage="1">더보기(${pager.page}/${pager.totalPage})</button>
 				</div>
 
 			</table>
@@ -69,7 +69,7 @@
 				<li class="page-item"><a class="page-link" href="/product/detail?page=${p}">${p}</a></li>
 				</c:forEach>
 	
-			<c:if test="${!last }">
+			<c:if test="${!last}">
 				<li class="page-item"><a class="page-link" href="/product/detail?page=${pager.lastNum+1}"
 					aria-label="Next"> <span aria-hidden="true">&raquo;</span></a></li>
 					</c:if>

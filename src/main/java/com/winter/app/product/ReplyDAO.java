@@ -15,6 +15,12 @@ public class ReplyDAO {
 	
 	private final String NAMESPACE = "com.winter.app.product.ReplyDAO.";
 	
+	
+	
+	public int setDelete (ReplyDTO replyDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete",replyDTO);
+	}
+	
 	public Long totalCount (ReplyDTO replyDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"totalCount",replyDTO);
 	}

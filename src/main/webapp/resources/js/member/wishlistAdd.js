@@ -2,10 +2,10 @@ const btn3 = document.getElementById("btn3");
 const replyAdd = document.getElementById("replyAdd");
 const replyForm = document.getElementById("replyForm");
 const replyList = document.getElementById("replyList");
-const productNum = document.getElementById("productNum");
+const frm  = document.getElementById("frm");
 const up = document.getElementById("up");
-
-
+const more = document.getElementById("more");
+const create = document.getElementById("create");
 // replyList.addEventListener("click",(e)=>{
 //     if(e.target.getAttribute("id")=='more'){
 //         alert("test");
@@ -27,9 +27,7 @@ getReplyList(1,up.getAttribute("data-product-num"));
 
 //더보기
 more.addEventListener("click",()=>{
-    let p = more.getAttribute("data-replyList-page"); //현재 페이지번호
-    let a = more.getAttribute("data-replyList-totalPage");//전체페이지 번호
-        
+
        
        if(p>a){
         alert("마지막 페이지입니다");
@@ -59,9 +57,12 @@ function getReplyList(page,num){
    })
 }
 
+
+//리스트 만드는 함수
 function makeList(r){
-    more.setAttributd("data-relpyList-page",r.pager.page*1+1);
+    more.setAttributd("data-relpyList-page",(r.pager.page*1)+1);
     more.setAttributd("data-relpyList-totalPage",r.pager.totalPage);
+    let userName = replyList.setAttribute("data-user");
     r= r.datas;
    for(let i=0; i <r.length;i++){
     let  tr =  document.createElement("tr");
@@ -79,6 +80,23 @@ function makeList(r){
        td.innerText = d.getFullYear+"."+(d.getMonth()+1)+"."+d.getDate();
        tr.append(td);
 
+       if(userName == r[i].userName) {
+       td = document.createElement("td");
+       let b = document.createElement("button");
+       b.innerHTML = "삭제";
+       b.setAttribute("class","del");
+       b.setAttribute("data-replyNum",r[i].replyNum);
+       td.append(b);
+       tr.append(td);
+
+       td = document.createElement("td");
+        b = document.createElement("button");
+       b.innerHTML = "수정";
+       b.setAttribute("class","update");
+       b.setAttribute("data-replyNum",r[i].replyNum);
+       td.append(b);
+       tr.append(td);
+       }
        replyList.append(tr);
        
     }
@@ -96,6 +114,24 @@ function makeList(r){
 //     console.log(productNum.value);
 //     $("#replyList").html(reso);
 // })
+
+
+
+//삭제 버튼
+$("#replyList").on("click",".del",function(){
+    let n = $(this).attr("data-replyNum");
+    fetch("../reply/delete",{
+        method:"POST",
+        body:"replyNum:"+n+",productNum:"+up.getAttribute("data-product-num")
+       
+    }).then(r=>r.json())
+    .then(r=>{
+        replyList.innerHTML="";
+        makeList(r);
+    })
+})
+
+
 
 //댓글 등록
 replyAdd.addEventListener("click",()=>{

@@ -23,6 +23,9 @@ public class ProductController {
 	
 
 	
+	
+	
+	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView setList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();

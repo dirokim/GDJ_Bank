@@ -25,6 +25,18 @@ public class ReplyController {
 	private ReplyService replyService;
 	
 	
+	@PostMapping("delete")
+	@ResponseBody
+	public Map<String,Object> setDelete(Pager pager,ReplyDTO replyDTO) throws Exception{
+		replyService.setDelete(replyDTO);
+		List<ReplyDTO> ar = replyService.setList(replyDTO, pager);
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("datas",ar);
+		map.put("pager",pager);
+		return map;
+	}
+	
+	
 	@GetMapping("list")
 	@ResponseBody
 	public Map<String,Object> getList(ReplyDTO replyDTO, Pager pager) throws Exception {
