@@ -16,7 +16,7 @@ public class ReplyService {
 	@Autowired
 	private ReplyDAO replyDAO;
 	
-	public Map<String,Object> setList (ReplyDTO replyDTO,Pager pager) throws Exception {
+	public List<ReplyDTO> setList (ReplyDTO replyDTO,Pager pager) throws Exception {
 		Map<String,Object> map = new HashMap<String, Object>();
 		Long totalCount = replyDAO.totalCount(replyDTO);
 		pager.makeRow();
@@ -24,8 +24,8 @@ public class ReplyService {
 		pager.makePage(totalCount);
 		map.put("pager",pager);
 		map.put("replyDTO", replyDTO);
-		map.put("list",replyDAO.setList(map));
-		return map;
+		List<ReplyDTO> ar = replyDAO.setList(map);
+		return ar;
 				
 		
 	}

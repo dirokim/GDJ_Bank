@@ -48,7 +48,7 @@
 									<td>
 										<div class="form-check">
 											<input class="form-check-input checks" type="checkbox"
-												name="productNum" value="${var.productNum}">
+											id="up"	name="productNum"  data-product-num value="${var.productNum}">
 										</div>
 									</td>
 									<td>${var.productNum}</td>

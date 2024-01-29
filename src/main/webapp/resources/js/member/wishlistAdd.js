@@ -3,7 +3,7 @@ const replyAdd = document.getElementById("replyAdd");
 const replyForm = document.getElementById("replyForm");
 const replyList = document.getElementById("replyList");
 const productNum = document.getElementById("productNum");
-
+const up = document.getElementById("up");
 
 
 // replyList.addEventListener("click",(e)=>{
@@ -23,40 +23,66 @@ const productNum = document.getElementById("productNum");
 //     }
 // })
 
+getReplyList(1,up.getAttribute("data-product-num"));
 
-
+//더보기
 more.addEventListener("click",()=>{
     let p = more.getAttribute("data-replyList-page"); //현재 페이지번호
     let a = more.getAttribute("data-replyList-totalPage");//전체페이지 번호
-        p= p*1+1;
+        
        
        if(p>a){
         alert("마지막 페이지입니다");
 
        }
-       
-       
-        more.setAttributd("data-replyList-page",p);
 
-        fetch("/reply/list?productNum="+up.getAttribute("data-replyList-page")+"&page="+p,{
-    
-            method:"GET"
-        
-        }).then(reso=>reso.text())
-        .then(reso=>{
-            $("#replyList").append(reso);
-
-        })
+       getReplyList(p,up.getAttribute("data-product-num"));
 
 
     
 })
+//리스트 가져오는 함수
+function getReplyList(page,num){
 
-function getReplyList(page){
+   fetch("../reply/list?page="+page+"&productNum="+num,{
+        method:"GET",
+        
+   }).then(r=>r.json())
+   .then(r=>{
+        
 
-   fetch("",{
-    
-   }) 
+        makeList(r)
+
+        
+       
+     
+   })
+}
+
+function makeList(r){
+    more.setAttributd("data-relpyList-page",r.pager.page*1+1);
+    more.setAttributd("data-relpyList-totalPage",r.pager.totalPage);
+    r= r.datas;
+   for(let i=0; i <r.length;i++){
+    let  tr =  document.createElement("tr");
+    let  td =  document.createElement("td");
+       td.innerText = r[i].replyContents;
+       tr.append(td);
+       
+       td =  document.createElement("td");
+       td.innerText = r[i].userName;
+       tr.append(td);
+
+       td =  document.createElement("td");
+       let d = new Date(r[i].replyDate);
+
+       td.innerText = d.getFullYear+"."+(d.getMonth()+1)+"."+d.getDate();
+       tr.append(td);
+
+       replyList.append(tr);
+       
+    }
+   
 }
 
 
@@ -71,13 +97,18 @@ function getReplyList(page){
 //     $("#replyList").html(reso);
 // })
 
+//댓글 등록
 replyAdd.addEventListener("click",()=>{
     let form = new FormData(replyForm);
     fetch("/reply/add",{
         method:"POST",
         body:form
-    }).then(res=>res.text())
-    .then(res=>{$("#replyList").html(res)});
+    }).then(res=>res.json())
+    .then(res=>{
+        replyList.innerHTML="";
+        makeList(res);
+        replyForm.reset();
+    });
 
     more.setAttributd("data-replyList-page",1); 
 })

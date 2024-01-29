@@ -28,7 +28,9 @@
 						<h3>그런번호 없습니다.</h3>
 						</c:if>
 				</div>
-					<a href="./update">업데이트</a>
+					<a href="./update" class="btn btn-light" id="up"
+					data-product-num="${dto.productNum}">업데이트</a>
+					<a href="./delete">delete</a>
 					<a href="../account/add?productNum=${dto.productNum}">등록</a>
 					<button id="btn3" type="button">장바구니 추가</button>
 
