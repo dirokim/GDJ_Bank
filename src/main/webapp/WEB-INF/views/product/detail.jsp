@@ -32,7 +32,38 @@
 					<a href="../account/add?productNum=${dto.productNum}">등록</a>
 					<button id="btn3" type="button">장바구니 추가</button>
 
-			<div class="my-3" id="replyList">
+			<div class="my-3">
+				<table>
+					<thead>
+						<tr>
+							<th>Contents</th>
+							<th>Writer</th>
+							<th>Date</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="replyList">
+					<c:forEach items="${list}" var="r">
+						<tr>
+
+							<td>${r.userName}</td>
+							<td>${r.replyContents}</td>
+							<td>${r.replyDate}</td>
+							
+							<td>
+								<c:if test="${r.userName eq member.userName}"><button>DELETE</button></c:if></td>
+							<td><c:if test="${r.userName eq member.userName}"><button>UPDATE</button></c:if></td>
+
+						</tr>
+					</c:forEach>
+
+				</tbody>
+				<div>
+					<button id="more" data-replylist-page="${pager.page}">더보기(${pager.page}/${pager.totalPage})</button>
+				</div>
+
+			</table>
 			</div>
 			
 		<nav aria-label="Page navigation example">

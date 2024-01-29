@@ -1,6 +1,7 @@
 package com.winter.app.product;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +21,9 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private ReplyService replyService;
+	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView setList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -34,15 +38,17 @@ public class ProductController {
 	public ModelAndView setDetail(ProductDTO productDTO) throws Exception {
 		productDTO = productService.serDetail(productDTO);
 		
-//		ReplyService replyService = new ReplyService();
-//		replyDTO.setProductNum(productDTO.getProductNum());
 		System.out.println(productDTO.getProductNum());
-//		List<ReplyDTO> ar = replyService.setList(replyDTO);
+
 		ModelAndView mv = new ModelAndView();
-//		mv.addObject("list",ar);
+
 		mv.addObject("dto", productDTO);
 		mv.setViewName("product/detail");
-		
+		Pager pager = new Pager();
+		ReplyDTO replyDTO = new ReplyDTO();
+		replyDTO.setProductNum(productDTO.getProductNum());
+		Map<String,Object> map = replyService.setList(replyDTO, pager);
+		mv.addObject("list",map.get("list"));
 		return mv;
 	}
 

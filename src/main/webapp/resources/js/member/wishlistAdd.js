@@ -6,33 +6,65 @@ const productNum = document.getElementById("productNum");
 
 
 
-replyList.addEventListener("click",(e)=>{
-    if(e.target.getAttribute("id")=='more'){
-        alert("test");
-        let p = e.target.getAttribute("data-replyList-page");
+// replyList.addEventListener("click",(e)=>{
+//     if(e.target.getAttribute("id")=='more'){
+//         alert("test");
+//         let p = e.target.getAttribute("data-replyList-page");
         
-        fetch("/reply/list?productNum="+productNum.value+"&page="+(p*1+1),{
+//         fetch("/reply/list?productNum="+productNum.value+"&page="+(p*1+1),{
+    
+//             method:"GET"
+        
+//         }).then(reso=>reso.text())
+//         .then(reso=>{
+//             console.log(productNum.value);
+//             $("#replyList").html(reso);
+//         })
+//     }
+// })
+
+
+
+more.addEventListener("click",()=>{
+    let p = more.getAttribute("data-replyList-page"); //현재 페이지번호
+    let a = more.getAttribute("data-replyList-totalPage");//전체페이지 번호
+        p= p*1+1;
+       
+       if(p>a){
+        alert("마지막 페이지입니다");
+
+       }
+       
+       
+        more.setAttributd("data-replyList-page",p);
+
+        fetch("/reply/list?productNum="+up.getAttribute("data-replyList-page")+"&page="+p,{
     
             method:"GET"
         
         }).then(reso=>reso.text())
         .then(reso=>{
-            console.log(productNum.value);
-            $("#replyList").html(reso);
+            $("#replyList").append(reso);
+
         })
-    }
-})
 
 
-fetch("/reply/list?productNum="+productNum.value,{
     
-    method:"GET"
-
-}).then(reso=>reso.text())
-.then(reso=>{
-    console.log(productNum.value);
-    $("#replyList").html(reso);
 })
+
+
+
+
+
+// fetch("/reply/list?productNum="+productNum.value,{
+    
+//     method:"GET"
+
+// }).then(reso=>reso.text())
+// .then(reso=>{
+//     console.log(productNum.value);
+//     $("#replyList").html(reso);
+// })
 
 replyAdd.addEventListener("click",()=>{
     let form = new FormData(replyForm);
@@ -41,6 +73,8 @@ replyAdd.addEventListener("click",()=>{
         body:form
     }).then(res=>res.text())
     .then(res=>{$("#replyList").html(res)});
+
+    more.setAttributd("data-replyList-page",1); 
 })
 
     

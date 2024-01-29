@@ -17,9 +17,18 @@ public class ProductDTO {
 	private List<AccountDTO> accountDTOs;
 	
 	private ProductFileDTO productFileDTO;
+	private List<ReplyDTO> replyDTOs;
 	
 	
 	
+	
+	
+	public List<ReplyDTO> getReplyDTOs() {
+		return replyDTOs;
+	}
+	public void setReplyDTOs(List<ReplyDTO> replyDTOs) {
+		this.replyDTOs = replyDTOs;
+	}
 	public Long getProductNum() {
 		return productNum;
 	}

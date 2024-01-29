@@ -13,7 +13,7 @@
   		  
   		  <select id="setList" parameterType="Map" resultType="ReplyDTO">
   		  SELECT * FROM
-  		  (SELECT ROWNUM R , RP.*
+  		  (SELECT ROWNUM R , RP.* FROM
   		  (SELECT * FROM REPLY WHERE PRODUCTNUM = #{replyDTO.productNum}
   		  ORDER BY REPLYNUM DESC) RP)
   		  WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
