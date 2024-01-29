@@ -21,8 +21,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@Autowired
-	private ReplyService replyService;
+
 	
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView setList(Pager pager) throws Exception {
@@ -37,18 +36,11 @@ public class ProductController {
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public ModelAndView setDetail(ProductDTO productDTO) throws Exception {
 		productDTO = productService.serDetail(productDTO);
-		
 		System.out.println(productDTO.getProductNum());
-
 		ModelAndView mv = new ModelAndView();
-
 		mv.addObject("dto", productDTO);
 		mv.setViewName("product/detail");
-		Pager pager = new Pager();
-		ReplyDTO replyDTO = new ReplyDTO();
-		replyDTO.setProductNum(productDTO.getProductNum());
-		Map<String,Object> map = replyService.setList(replyDTO, pager);
-		mv.addObject("list",map.get("list"));
+	
 		return mv;
 	}
 

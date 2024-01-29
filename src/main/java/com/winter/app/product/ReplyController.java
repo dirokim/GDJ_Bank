@@ -28,6 +28,12 @@ public class ReplyController {
 		Map<String,Object> map = replyService.setList(replyDTO,pager);
 		model.addAttribute("list",map.get("list"));
 		model.addAttribute("pager",map.get("pager"));
+		
+		//[{"userName":"???","contents":"???","date":"????"},
+		//{"userName":"???","contents":"???","date":"????"}
+		//{"userName":"???","contents":"???","date":"????"}
+		//]
+		
 		return "product/replyList";
 	}
 	

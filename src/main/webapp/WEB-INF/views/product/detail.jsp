@@ -44,23 +44,11 @@
 						</tr>
 					</thead>
 					<tbody id="replyList">
-					<c:forEach items="${list}" var="r">
-						<tr>
 
-							<td>${r.userName}</td>
-							<td>${r.replyContents}</td>
-							<td>${r.replyDate}</td>
-							
-							<td>
-								<c:if test="${r.userName eq member.userName}"><button>DELETE</button></c:if></td>
-							<td><c:if test="${r.userName eq member.userName}"><button>UPDATE</button></c:if></td>
-
-						</tr>
-					</c:forEach>
 
 				</tbody>
 				<div>
-					<button id="more" data-replylist-page="${pager.page}">더보기(${pager.page}/${pager.totalPage})</button>
+					<button id="more" data-replylist-page="1" data-replylist-totalPage="1">더보기(${pager.page}/${pager.totalPage})</button>
 				</div>
 
 			</table>
