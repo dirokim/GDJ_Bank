@@ -46,14 +46,13 @@
 						</tr>
 					</thead>
 					<tbody id="replyList" data-user="${member.userName}">
-						
-
-				</tbody>
+		
+					</tbody>
+				
+			</table>
 				<div>
 					<button id="more" data-replyList-page="1" data-replyList-totalPage="1">더보기(${pager.page}/${pager.totalPage})</button>
 				</div>
-
-			</table>
 			</div>
 			
 		<nav aria-label="Page navigation example">

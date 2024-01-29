@@ -49,7 +49,7 @@ function getReplyList(page,num){
    .then(r=>{
         
 
-        makeList(r)
+        makeList(r);
 
         
        
@@ -62,7 +62,7 @@ function getReplyList(page,num){
 function makeList(r){
     more.setAttributd("data-relpyList-page",(r.pager.page*1)+1);
     more.setAttributd("data-relpyList-totalPage",r.pager.totalPage);
-    let userName = replyList.setAttribute("data-user");
+    let userName = replyList.getAttribute("data-user");
     r= r.datas;
    for(let i=0; i <r.length;i++){
     let  tr =  document.createElement("tr");
@@ -105,16 +105,6 @@ function makeList(r){
 
 
 
-// fetch("/reply/list?productNum="+productNum.value,{
-    
-//     method:"GET"
-
-// }).then(reso=>reso.text())
-// .then(reso=>{
-//     console.log(productNum.value);
-//     $("#replyList").html(reso);
-// })
-
 
 
 //삭제 버튼
@@ -122,7 +112,8 @@ $("#replyList").on("click",".del",function(){
     let n = $(this).attr("data-replyNum");
     fetch("../reply/delete",{
         method:"POST",
-        body:"replyNum:"+n+",productNum:"+up.getAttribute("data-product-num")
+        headers : {"Content-type": 'application/x-www-form-urlencoded;charset=utf-8'},
+        body:"replyNum:"+n+"&productNum:"+up.getAttribute("data-product-num")
        
     }).then(r=>r.json())
     .then(r=>{

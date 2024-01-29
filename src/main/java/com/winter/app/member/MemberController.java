@@ -98,7 +98,7 @@ public class MemberController {
 		if(result >0) {
 			msg = "등록 성공";
 		}
-		
+
 		model.addAttribute("msg",msg);
 		model.addAttribute("path","/");
 		return "commons/result";
