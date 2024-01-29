@@ -52,7 +52,12 @@ more.addEventListener("click",()=>{
     
 })
 
+function getReplyList(page){
 
+   fetch("",{
+    
+   }) 
+}
 
 
 

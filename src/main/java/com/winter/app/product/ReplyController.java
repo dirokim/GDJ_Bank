@@ -34,6 +34,7 @@ public class ReplyController {
 		//{"userName":"???","contents":"???","date":"????"}
 		//]
 		
+		
 		return "product/replyList";
 	}
 	
