@@ -43,7 +43,7 @@
   </filter-mapping>
 
 	
-	<error-page>
+<!-- 	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/views/errors/erroe.jsp</location>
 	</error-page>
@@ -61,7 +61,7 @@
 	<error-page>
 		<error-code>400</error-code>
 		<location>/errors/error400</location>
-	</error-page>
+	</error-page> -->
 
   <filter>
     <display-name>Fileter1</display-name>

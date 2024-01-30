@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.winter.app.errors.MemberLoginException;
 import com.winter.app.util.FileManager;
 
 @Service
@@ -36,10 +37,15 @@ public class MemberService {
 				 memberDTO.setRoleDTOs(m.getRoleDTOs());
 				 return memberDTO;
 			 }else {
+				 //아이디는 맞는데 패스워드가 다르다
 				 m = null;
+				 throw new MemberLoginException("PASSWORD를 확인하세요");
 			 }
+		 }else {
+			 //id 가 안맏는다 
+			 throw new MemberLoginException("아이디를 확인하세요");
 		 }
-		return m;
+		
 
 	}
 	

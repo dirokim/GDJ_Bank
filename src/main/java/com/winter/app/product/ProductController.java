@@ -1,11 +1,13 @@
 package com.winter.app.product;
 
+import java.sql.SQLDataException;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,8 +23,22 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	
 
 	
+	//예외 처리 메서드
+	@ExceptionHandler(NullPointerException.class)
+	public String nullHandler() {
+		
+		return "errors/error";
+		
+	}
+	@ExceptionHandler(Exception.class)
+	public String Handler() {
+		
+		return "errors/error";
+		
+	}
 	
 	
 	
@@ -30,6 +46,15 @@ public class ProductController {
 	public ModelAndView setList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<ProductDTO> ar = productService.serList(pager);
+		
+		if(ar.size()%2==0) {
+			throw  new NullPointerException();
+		}else if(ar.size()%2==1){
+			throw new SQLDataException();
+		}
+		
+		
+		
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		mv.setViewName("product/list");

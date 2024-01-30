@@ -10,8 +10,7 @@ public class ErrorController {
 
 	@GetMapping("error400")
 	public String error400 () throws Exception {
-		
-		
+
 		return "errors/error";
 	}
 
