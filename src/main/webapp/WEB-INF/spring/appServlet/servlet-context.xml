@@ -27,13 +27,15 @@
 	
 	<!-- <beans:bean class="com.winter.app.interceptors.TestInterceptors" id="testInterceptors"></beans:bean> -->
 	<interceptors>
+
+	
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/notice/*"/>
 			<beans:ref  bean="testInterceptors"/>
 		</interceptor>
 		
-		
+			
 		<interceptor>
 			<mapping path="/qna/update"/>
 			<mapping path="/qna/delete"/>			
@@ -49,13 +51,23 @@
 			<mapping path="/member/update"/>
 			<mapping path="/member/delete"/>
 			<mapping path="/wishlist/*" />
+			<mapping path="/notice/add"/>
+			<mapping path="/notice/update"/>
+			<mapping path="/notice/delete"/>
+			
 			<exclude-mapping path="/qna/list"/>
 			<exclude-mapping path="/wishlist/add"/>
 			<beans:ref bean="authenticationCeptor"/>					
-
 		</interceptor>
+
+
+	<interceptor>
+		<mapping path="/notice/add" />
+		<mapping path="/notice/update" />
+		<mapping path="/notice/delete" />
+		<beans:ref bean="adminCheckInterceptor" />
+	</interceptor>
 	</interceptors>
-	
 	
 	
 </beans:beans>

@@ -20,6 +20,8 @@ import com.winter.app.member.MemberDTO;
 
 @Component
 public class WriterCheck extends HandlerInterceptorAdapter {
+	//작성자가 맞는지 판단
+	
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
