@@ -10,14 +10,14 @@ public class ExceptionController {
 	public String hadler1() {
 		return "errors/error";
 	}
-	@ExceptionHandler(Exception.class)
-	public String hadler2() {
-		System.out.println("프론트 에러 발생1");
-		return "errors/error";
-	}
 	@ExceptionHandler(RuntimeException.class)
 	public String hadler3() {
 		System.out.println("프론트 에러 발생2");
+		return "errors/error";
+	}
+	@ExceptionHandler(Exception.class)
+	public String hadler2() {
+		System.out.println("프론트 에러 발생1");
 		return "errors/error";
 	}
 	@ExceptionHandler(Throwable.class)
