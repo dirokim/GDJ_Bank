@@ -6,6 +6,8 @@ const frm  = document.getElementById("frm");
 const up = document.getElementById("up");
 const more = document.getElementById("more");
 const create = document.getElementById("create");
+const replyUpdateButton = document.getElementById("replyUpdateButton");
+const replyUpdateForm = document.getElementById("replyUpdateForm");
 // replyList.addEventListener("click",(e)=>{
 //     if(e.target.getAttribute("id")=='more'){
 //         alert("test");
@@ -23,11 +25,42 @@ const create = document.getElementById("create");
 //     }
 // })
 
-getReplyList(1,up.getAttribute("data-product-num"));
+
+
+
+//모달 수정 버튼 
+
+replyUpdateButton.addEventListener("click",()=>{
+    alert("update");    
+    let formData = new FormData(replyUpdateForm);
+
+    fetch("../reply/update",{
+        method:"POST",
+        body:formData
+    }).then(r=>r.json())
+    .then(r=>{
+        alert(r);
+        
+        if(r>0){
+            //td 의 아이디 가져와서 내용 수정 
+            let i =  "replyContents"+document.getElementById("replyUpdateNum").value;
+            i = document.getElementById(i);
+            i.innerHTML = document.getElementById("replyUdateContents").value;
+        }else{
+            alert("수정 실패");            
+        }
+        //모달 close  강제 클릭 .click();
+        document.getElementById("replyCloseButton").click();
+        replyUpdateForm.reset();
+    })
+})
+
+
 
 //더보기
 more.addEventListener("click",()=>{
-
+    let p = more.getAttribute("data-replyList-page");//현재 페이지 번호
+	let a = more.getAttribute("data-replyList-totalPage");//전체 페이지 번호
        
        if(p>a){
         alert("마지막 페이지입니다");
@@ -39,39 +72,24 @@ more.addEventListener("click",()=>{
 
     
 })
-//리스트 가져오는 함수
-function getReplyList(page,num){
 
-   fetch("../reply/list?page="+page+"&productNum="+num,{
-        method:"GET",
-        
-   }).then(r=>r.json())
-   .then(r=>{
-        
-
-        makeList(r);
-
-        
-       
-     
-   })
-}
 
 
 //리스트 만드는 함수
 function makeList(r){
-    more.setAttributd("data-relpyList-page",(r.pager.page*1)+1);
-    more.setAttributd("data-relpyList-totalPage",r.pager.totalPage);
+    more.setAttribute("data-replyList-page",(r.pager.page*1)+1);
+    more.setAttribute("data-replyList-totalPage",r.pager.totalPage);
     let userName = replyList.getAttribute("data-user");
-    r= r.datas;
+    r = r.datas;
    for(let i=0; i <r.length;i++){
     let  tr =  document.createElement("tr");
     let  td =  document.createElement("td");
+        td.setAttribute("id","replyContents"+r[i].replyNum);
        td.innerText = r[i].replyContents;
        tr.append(td);
        
        td =  document.createElement("td");
-       td.innerText = r[i].userName;
+       td.innerHTML = r[i].userName;
        tr.append(td);
 
        td =  document.createElement("td");
@@ -93,9 +111,13 @@ function makeList(r){
         b = document.createElement("button");
        b.innerHTML = "수정";
        b.setAttribute("class","update");
-       b.setAttribute("data-replyNum",r[i].replyNum);
+       b.setAttribute("data-replyNum", r[i].replyNum);
+       b.setAttribute("data-bs-toggle","modal");
+       b.setAttribute("data-bs-target","#replyUpdateModal")
        td.append(b);
        tr.append(td);
+
+
        }
        replyList.append(tr);
        
@@ -105,6 +127,43 @@ function makeList(r){
 
 
 
+//리스트 가져오는 함수
+function getReplyList(page,num){
+
+    fetch("../reply/list?page="+page+"&productNum="+num,{
+         method:"GET"
+         
+    }).then(r=>r.json())
+    .then(r=>{
+         
+ 
+         makeList(r);
+ 
+         
+
+      
+    })
+ }
+
+ getReplyList(1,up.getAttribute("data-product-num"));
+
+// 수정 버튼 
+replyList.addEventListener("click",(e)=>{
+    if(e.target.classList.contains("update")){
+        //모달 textarea
+        const replyUpdateContents = document.getElementById("replyUpdateConents");
+       
+        //td 의 id 생성 
+        let i = 'replyContents'+e.target.getAttribute("date-replyNum");
+        const r = document.getElementById(i);
+        replyUpdateContents.value  = r.innerHTML;
+        document.getElementById("replyUpdateNum").value = e.target.getAttribute("date-replyNum");
+        //td 의 다음 형제의 내용 contents
+        document.getElementById("replyWriter").value = r.nextSibling.innerHTML
+
+    }
+    
+});
 
 
 //삭제 버튼

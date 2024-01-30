@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.winter.app.member.MemberDTO;
 import com.winter.app.util.Pager;
 
-@Controller
+@RestController
 @RequestMapping("/reply/*")
 public class ReplyController {
 	
@@ -25,8 +26,15 @@ public class ReplyController {
 	private ReplyService replyService;
 	
 	
+	
+	@PostMapping("update")
+	public int setUpdate (ReplyDTO replyDTO) throws Exception {
+	int result = replyService.setUpdate(replyDTO);
+		return result;
+		
+	}
+	
 	@PostMapping("delete")
-	@ResponseBody
 	public Map<String,Object> setDelete(Pager pager,ReplyDTO replyDTO) throws Exception{
 		replyService.setDelete(replyDTO);
 		List<ReplyDTO> ar = replyService.setList(replyDTO, pager);
@@ -38,7 +46,6 @@ public class ReplyController {
 	
 	
 	@GetMapping("list")
-	@ResponseBody
 	public Map<String,Object> getList(ReplyDTO replyDTO, Pager pager) throws Exception {
 		List<ReplyDTO> ar = replyService.setList(replyDTO,pager);
 		
@@ -57,7 +64,6 @@ public class ReplyController {
 	}
 	
 	@PostMapping("add")
-	@ResponseBody
 	public Map<String,Object> setReply (ReplyDTO replyDTO,HttpSession session,Model model,Pager pager) throws Exception {
 	MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		replyDTO.setUserName(memberDTO.getUserName());
