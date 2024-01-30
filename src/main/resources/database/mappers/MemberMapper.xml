@@ -55,6 +55,9 @@
   		  <insert id="joinAdd" parameterType="MemberDTO" >
   		  INSERT INTO MEMBER VALUES (#{userName},#{password},#{name},#{email},#{phone},#{address})
   		  </insert>
+  		  <insert id="setMemberRole" parameterType="memberDTO">
+  		  INSERT INTO MEMBERROLE VALUES (#{userName},(SELECT ROLENUM FROM ROLE WHERE ROLENAME='ROLE_MEMBER))
+  		  </insert>
   		  
   		  <insert id="addAvatar" parameterType="Avatar" >
   		  INSERT INTO AVATAR VALUES (AVATAR_SEQ.NEXTVAL,#{userName},#{fileName},#{oriName})

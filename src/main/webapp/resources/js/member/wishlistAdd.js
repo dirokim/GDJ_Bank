@@ -34,7 +34,7 @@ replyUpdateButton.addEventListener("click",()=>{
     alert("update");    
     let formData = new FormData(replyUpdateForm);
 
-    fetch("../reply/update",{
+    fetch("/reply/update",{
         method:"POST",
         body:formData
     }).then(r=>r.json())
@@ -130,7 +130,7 @@ function makeList(r){
 //리스트 가져오는 함수
 function getReplyList(page,num){
 
-    fetch("../reply/list?page="+page+"&productNum="+num,{
+    fetch("/reply/list?page="+page+"&productNum="+num,{
          method:"GET"
          
     }).then(r=>r.json())
@@ -169,7 +169,8 @@ replyList.addEventListener("click",(e)=>{
 //삭제 버튼
 $("#replyList").on("click",".del",function(){
     let n = $(this).attr("data-replyNum");
-    fetch("../reply/delete",{
+   
+    fetch("/reply/delete",{
         method:"POST",
         headers : {"Content-type": 'application/x-www-form-urlencoded;charset=utf-8'},
         body:"replyNum:"+n+"&productNum:"+up.getAttribute("data-product-num")
